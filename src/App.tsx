@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Redirect } from "react-router-dom";
 import './App.css';
 import Nav from './components/Nav';
@@ -18,6 +18,10 @@ const App: React.FC = () => {
         <Route exact path="/ComExplain" component={ComExplain} />
         <Route exact path="/MobExplain" component={MobExplain} />
         <Route exact path="/IDK" component={IDK} />
+        <Route exact path="/Login" component={Login} />
+        <Route exact path="/Signup" component={Signup} />
+        <Route exact path="/Community" component={Community} />
+        <Route exact path="/ModifyInfo" component={ModifyInfo} />
       </Router>
     </div>
   );
