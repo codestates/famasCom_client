@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from "react-router-dom";
 import './App.css';
 import Nav from './components/Nav';
 import { Main, Login, Signup, ComExplain, Community, MobExplain, ModifyInfo, IDK } from './pages/Index';

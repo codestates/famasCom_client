@@ -8,7 +8,6 @@ import BTNSection from '../components/BTNSection';
 import styled from 'styled-components';
 import Footer from '../components/Footer';
 
-
 class Main extends React.Component {
     render() {
         return (
