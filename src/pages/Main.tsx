@@ -1,10 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Wrapper from '../themes/Wrapper'
+import Nav from '../components/Nav'
 
 class Main extends React.Component {
     render() {
         return (
-            <div></div>
+            <Wrapper>
+                <Nav/>
+                <h1>////메인페이지</h1>
+            </Wrapper>
         )
     }
 }
