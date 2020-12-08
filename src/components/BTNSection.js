@@ -12,22 +12,22 @@ export default function BTNSection() {
             <IconBtn>
                 <Icon>
                     <img className="man-icon" src={man} height="170px" width="150px" alt="man"></img>
+                    <p>60대 김ㅇㅇ씨</p>
                 </Icon>
-                    <span>60대 김ㅇㅇ씨</span>
                 <Link className="explain-list-link" to="/ComExplain"><Button change>컴퓨터 사용이 어려워요!</Button></Link>
             </IconBtn>
             <IconBtn>
                 <Icon>
                     <img className="woman-icon" src={woman} height="160px" width="143px" alt="woman"></img>
+                    <p>50대 박ㅇㅇ씨</p>
                 </Icon>
-                    <span>50대 박ㅇㅇ씨</span>
                 <Link className="explain-list-link" to="/MobExplain"><Button change>스마트폰 사용이 어려워요!</Button></Link>
             </IconBtn>
             <IconBtn>
                 <Icon>
                     <img className="oldMan-icon" src={oldMan} height="170px" width="150px" alt="old-man"></img>
                 </Icon>
-                    <span>70대 이ㅇㅇ씨</span>
+                    <p>70대 이ㅇㅇ씨</p>
                 <Link className="explain-list-link" to="/IDK"><Button change>하나도 모르겠어요!</Button></Link>
             </IconBtn>
         </Btns>
@@ -46,7 +46,8 @@ const IconBtn = styled.li`
     list-style:none;
 `;
 const Icon = styled.div`
-    list-style:none;
+display: flex;
+justify-content: space-around;
 `;
 
 const Button = styled.button`

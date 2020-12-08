@@ -14,7 +14,7 @@ type typeProps = {
 
 interface Indexable {
   [key: string]: string;
-};
+}
 
 const textMap: Indexable = {
   login: "로그인",
