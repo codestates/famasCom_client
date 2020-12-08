@@ -1,22 +1,28 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Main, ComExplain, MobExplain, IDK, NotFound } from './pages/Index';
+import Nav from './components/Nav';
+import { Main, Login, Signup, ComExplain, Community, MobExplain, ModifyInfo, IDK } from './pages/Index';
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Switch>
+    <div className="App">
+      <Router>
         <Route exact path="/" component={Main} />
         <Route exact path="/ComExplain" component={ComExplain} />
         <Route exact path="/MobExplain" component={MobExplain} />
         <Route exact path="/IDK" component={IDK} />
-        <Route component={NotFound} />
-        </Switch>
-      </div>    
-    </BrowserRouter>
+        <Route exact path="/Login" component={Login} />
+        <Route exact path="/Signup" component={Signup} />
+        <Route exact path="/Community" component={Community} />
+        <Route exact path="/ModifyInfo" component={ModifyInfo} />
+      </Router>
+    </div>
   );
 }
 
