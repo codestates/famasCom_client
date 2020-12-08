@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 class Main extends React.Component {
     render() {
@@ -8,5 +8,6 @@ class Main extends React.Component {
         )
     }
 }
+
 
 export default Main;

@@ -1,14 +1,32 @@
 import React from 'react';
-import { Redirect } from "react-router-dom";
-import './App.css';
-// import Nav from './component/Nav';
-// import { MyPage, Main, Login, SignUp, CouponSetUp, CouponChoose } from './pages';
+import { Switch, Route } from 'react-router-dom';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+function App() {
+	
+	return (
+		<div className="App">
+			<Switch>
+				<Route path="/login" component={Login} />
+				<Route path="/signup" component={Signup} />
+			</Switch>
+		</div>
+	);
+}
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+export default App;
+
+// import React from 'react';
+// import { Redirect } from "react-router-dom";
+// import './App.css';
+// // import Nav from './component/Nav';
+// // import { MyPage, Main, Login, SignUp, CouponSetUp, CouponChoose } from './pages';
+
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+// } from "react-router-dom";
 
 // function App() {
 // class App extends React.Component {

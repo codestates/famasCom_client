@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './App';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ComExplain, Community, Login, Main, MobExplain, ModifyInfo, Signup } from './pages/Index';
+import { BrowserRouter } from 'react-router-dom';
+// import { ComExplain, Community, Login, Main, MobExplain, ModifyInfo, Signup } from './pages/Index';
 
 ReactDOM.render(
-  <React.StrictMode>
-    {/* <App /> */}
-  </React.StrictMode>,
+  <BrowserRouter>
+  <App />
+</BrowserRouter>,
   document.getElementById('root')
 );
 

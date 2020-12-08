@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import AuthTemplate from '../components/auth/AuthTemplate'
+import SignupForm from '../components/auth/SignupForm';
 
-class Signup extends React.Component {
-    render() {
-        return (
-            <div></div>
-        )
-    }
-}
+const Signup = () => {
+return (
+  <AuthTemplate>
+    <SignupForm />
+  </AuthTemplate>
+)}
 
 export default Signup;
