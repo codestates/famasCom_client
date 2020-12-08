@@ -1,22 +1,20 @@
 import * as React from 'react';
 import { Component, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './css/Main.css';
 import Nav from '../components/Nav';
 import dummyText from '../components/DummyText';
 import Section from '../components/Section';
 import BTNSection from '../components/BTNSection';
 import styled from 'styled-components';
+import Footer from '../components/Footer';
 
 
 class Main extends React.Component {
     render() {
         return (
-            <div className="main-wrapper">
+            <MainWrapper>
                 <Nav />
-                <div className="content">
-                    <h1>FAMAS COM</h1>
-                </div>
+                <MainTitle>FAMAS COM</MainTitle>
                 <BTNSection/>
                 
                 <Section
@@ -43,12 +41,24 @@ class Main extends React.Component {
                     dark={false}
                     id="section4"
                 />
-
-            </div>
+                <Footer/>
+            </MainWrapper>
         );
     }
 }
 
+const MainWrapper = styled.div`
+margin-top: 4.5rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+height: 100%;
+`
+const MainTitle = styled.h1`
+display: flex;
+flex-direction: column;
+align-items: center;
+`
 
 
 export default Main;

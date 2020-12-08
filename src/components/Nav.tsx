@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { animateScroll as scroll } from "react-scroll";
 import styled from "styled-components";
 import logo from "../images/FamasCOM.png";
+import NavLogin from './NavLogin';
 
 
 class Nav extends React.Component {
@@ -32,6 +32,12 @@ class Nav extends React.Component {
                         <Item>
                             <Link to="/Login">로그인/회원가입</Link>
                         </Item>
+                        {/* <NavLogin 
+                            usrName={this.props.usrName}
+                            usrUpdate={this.props.usrUpdate}
+                            updateRedirect={this.props.updateRedirect}
+                            goToHome={this.props.goToHome}
+                        /> */}
                     </ItemList>
                 </NavContainer>
             </Navbar>
