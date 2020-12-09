@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
 // ▼ 회원가입 또는 로그인 페이지의 레이아웃을 나타내는 컴포넌트 ▼
-
 interface AuthTemplateProps {
   children: any;
 }
@@ -12,16 +10,14 @@ const AuthTemplate = ({children}:AuthTemplateProps) => {
     <AuthTemplateBlock>
       <WhiteBox>
         <div className="logo-area">
-          <Link to="/">FAMAS COM</Link>
+          <Link to="/" style={{ textDecoration: 'none' }}>FAMAS COM</Link>
           </div>
         {children}
       </WhiteBox>
     </AuthTemplateBlock>
     )
 }
-
 export default AuthTemplate;
-
 const AuthTemplateBlock = styled.div`
 position: absolute;
 left: 0;
@@ -34,7 +30,6 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 `;
-
 const WhiteBox = styled.div`
   .logo-area {
     dispaly: block;

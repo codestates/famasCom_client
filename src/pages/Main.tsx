@@ -7,6 +7,7 @@ import Section from '../components/Section';
 import BTNSection from '../components/BTNSection';
 import styled from 'styled-components';
 import Footer from '../components/Footer';
+import GoToTop from '../components/common/GoToTop'
 
 class Main extends React.Component {
     render() {
@@ -40,6 +41,7 @@ class Main extends React.Component {
                     dark={false}
                     id="section4"
                 />
+                <GoToTop/>
                 <Footer/>
             </MainWrapper>
         );
