@@ -8,7 +8,7 @@ type typeProps = {
   value: string;
   email: string;
   password: string;
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>, props: RouteComponentProps) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 

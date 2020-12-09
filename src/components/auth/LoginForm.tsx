@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import axios from 'axios';
 import AuthForm from '../auth/AuthForm';
+import History from 'history'
+
 
 type Inputs = { email: string; password: string }
 
@@ -25,7 +27,7 @@ const LoginForm = () => {
     });
   };
   
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>, props:RouteComponentProps) => {
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 		if (email !== '' && password !== '') {
       axios
@@ -34,10 +36,7 @@ const LoginForm = () => {
           password: password,
         })
       .then((res) => {
-        console.log(res);
-
-        props.history.push("/");
-        
+        console.log("login data>>>>>>>>>>>> token", res.data.token);
       })
       .catch((res) => {
         if (res.status === 409) {

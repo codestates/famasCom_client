@@ -30,8 +30,7 @@ const ChattForm = () => {
   
   const onReset = () => {
     setEditorData('')
-  };
- 
+  }
   
   // 댓글 삭제 모달창 이벤트
   const onDeletelick = () => {
@@ -127,15 +126,23 @@ const ChattForm = () => {
   const handleSubmitClick = (e: React.MouseEvent<HTMLButtonElement>): void =>  {
     e.preventDefault();
     if (editorHtml !== "") {
-      axios
-        .post('https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/post-msg', {
-          username: "kimcoding",
-          msg: editorHtml
-        })
-        .then((res) => {
-          console.log(res.status)
-          // 리랜더링 실시 해야함
-          
+      let postData = {
+        username: "kimcoding",
+        msg: editorHtml 
+      };
+  
+      let axiosConfig = {
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+        }
+      };
+  
+      axios.post('https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/post-msg', postData, axiosConfig)
+      .then((res) => {
+        console.log("RESPONSE RECEIVED: ", res);
+      })
+      .then((res) => {
+          console.log(res)
             axios
               .get('https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/get-msg')
               .then((res) => {
