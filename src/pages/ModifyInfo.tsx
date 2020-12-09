@@ -38,7 +38,7 @@ export default function ModifyInfo() {
         inputPassword: '',
         inputEmail: ''
     });
-    const [secessionState, setSecessionState] = useState(false);
+    const [secessionState, setSecessionState] = useState<boolean>(false);
     useEffect(() => {
         axios
             .get('http://localhost:8080/user/info')
