@@ -1,23 +1,28 @@
 import React from "react";
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-type Secession = {
+type SecessionType = {
 	secessionState: boolean;
-	onSecessionlick: () => void;
-	infoModifyHandler: (e: any) => void;
+	handleSecessionOpen: () => void;
+	infoModifyHandler: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-export default function Secession({secessionState, onSecessionlick, infoModifyHandler}: Secession) {
+export default function Secession({secessionState, handleSecessionOpen, infoModifyHandler}: SecessionType) {
 
   if (secessionState) {
     return (
       <Modal>
       <div id="myModal" className="authModal">
         <div className="modal-content">
-          <span className="close" onClick={onSecessionlick}>&times;</span>
+          <span className="close" onClick={handleSecessionOpen}>&times;</span>
           <p>탈퇴하시겠습니까?</p>
-						<button className="secession_btn" onClick={infoModifyHandler}>예</button>
-						<button onClick={onSecessionlick}>아니오</button>
+						<button className="secession_btn" onClick={infoModifyHandler}>
+							<Link to="/" style={{ textDecoration: 'none' }}>
+								예
+							</Link>
+						</button>
+						<button onClick={handleSecessionOpen}>아니오</button>
         </div>
         </div>
         </Modal>

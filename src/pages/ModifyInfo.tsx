@@ -1,321 +1,343 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import Responsive from '../components/common/Responsive';
-import Secession from '../components/SecessionModal'
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import ReplyIcon from '@material-ui/icons/Reply';
+import SaveIcon from '@material-ui/icons/Save';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
+import ImageIcon from '@material-ui/icons/Image';
+import Divider from '@material-ui/core/Divider';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import IconButton from '@material-ui/core/IconButton';
+import HelpIcon from '@material-ui/icons/Help';
+import { Link } from 'react-router-dom';
+import Modal from '@material-ui/core/Modal';
+import Secession from '../components/myinfo/SecessionModal'
 
-type ModifyInfoTtpe = {
-    id: boolean;
-    password: boolean;
-    email: boolean;
-    name: boolean;
-    nameBtn: boolean;
-    pwBtn: boolean;
-    idBtn: boolean;
-    emailBtn: boolean;
-    currentId: string;
-    currentPassword: string;
-    currentEmail: string;
+function rand() {
+    return Math.round(Math.random() * 20) - 10;
+    }
+  
+  function getModalStyle() {
+    const top = 50 + rand();
+    const left = 50 + rand();
+  
+    return {
+      top: `${top}%`,
+      left: `${left}%`,
+      transform: `translate(-${top}%, -${left}%)`,
+    };
+    }
+  
+  const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+      root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        width: 500,
+        flexDirection: 'column',
+        justifyContent: 'space-even'
+      },
+      '& > *': {
+        margin: theme.spacing(1),
+      },
+      margin: {
+        margin: theme.spacing(1),
+      },
+      input: {
+        display: 'none',
+      },
+      button: {
+        margin: theme.spacing(1),
+        height: 55,
+        width: 200,
+        fontSize: 18
+      },
+      textField: {
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        width: '25ch',
+      },
+      head:{
+        padding:'2em'
+      },
+      heading: {
+        fontSize: theme.typography.pxToRem(25),
+        flexBasis: '33.33%',
+        flexShrink: 0,
+      },
+      body: {
+        fontSize: theme.typography.pxToRem(20),
+        flexBasis: '33.33%',
+        flexShrink: 0,
+        padding:'1em 2em'
+      },
+      paper: {
+        position: 'absolute',
+        width: 400,
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+      },
+    }),
+  );
+
+type ModifyInfoType = {
+    // currentId: string;
+    // currentPassword: string;
+    // currentEmail: string;
     inputId: string;
     inputPassword: string;
-    inputEmail: string;
+    inputName: string;
 }
 
 export default function ModifyInfo() {
-    const [infoModify, setInfoModify] = useState<ModifyInfoTtpe>({
-        id: false,
-        password: false,
-        email: false,
-        name: false,
-        nameBtn: false,
-        pwBtn: false,
-        idBtn: false,
-        emailBtn: false,
-        currentId: 'kimcoding',
-        currentPassword: '',
-        currentEmail: 'haseok2118@gmail.com',
+    const [infoModify, setInfoModify] = useState<ModifyInfoType>({
+        // currentId: '',
+        // currentPassword: '',
+        // currentEmail: '',
         inputId: '',
         inputPassword: '',
-        inputEmail: ''
+        inputName:''
     });
     const [secessionState, setSecessionState] = useState<boolean>(false);
-    useEffect(() => {
-        axios
-            .get('http://localhost:8080/user/info')
-            .then((res) => {
-                console.log(res);
-                const { data } = res;
-                setInfoModify(Object.assign({}, infoModify, { currentId: data.username, currentPassword: data.password, currentEmail: data.email }));
-            })
-    }, [infoModify.currentId, infoModify.currentPassword, infoModify.currentEmail]);
+    const classes = useStyles();
+    const [value, setValue] = React.useState(0);
+    //모달 설정
+    const [modalStyle] = React.useState(getModalStyle);
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => {setOpen(true);};
+    const handleClose = () => { setOpen(false); };
+    const body = (
+        <div style={modalStyle} className={classes.paper}>
+        <h2 id="simple-modal-title">모달 제목창</h2>
+        <p id="simple-modal-description">강의를 눌러서 확인해보세요 !</p>
+        <p>궁금한 점이 있다면 `질문하러 가기` 버튼을 눌러보세요!</p>
+        <Button onClick={handleClose}>알았어요!</Button>
+        </div>
+    );
+    const token = localStorage.getItem("token")
+    console.log(localStorage.getItem("token"))
+    
+    // useEffect(() => {
+    //     axios
+    //         .post('https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/update-userData/')
+    //         .then((res) => {
+    //             console.log(res);
+    //             const { data } = res;
+    //             setInfoModify(Object.assign({}, infoModify, { currentId: data.username, currentPassword: data.password, currentEmail: data.email }));
+    //         })
+    // }, [infoModify.currentId, infoModify.currentPassword, infoModify.currentEmail]);
 
-    const infoBtnClick = (e: any) => {
-        if (e.target.className === 'modifyUsernameBtn') {
-          setInfoModify({
-            ...infoModify, nameBtn: true, name: true
-          })
-        } else if (e.target.className === 'modifyPwBtn') {
-          setInfoModify({
-            ...infoModify, pwBtn: true, password: true
-        })
-        } else if (e.target.className === 'modifyIdBtn') {
-          setInfoModify({
-            ...infoModify, idBtn: true, id: true
-        })
-        } else if (e.target.className === 'modifyMailBtn') {
-          setInfoModify({
-            ...infoModify, emailBtn: true, email: true
-        })
-        }
-      }
-      
-      const infoBtnClickForBack = (e: any) => {
-        
-        if (e.target.className === 'modifyUsernameBtn') {
-          setInfoModify({
-            ...infoModify, nameBtn: false, name: false
-        })
-        } else if (e.target.className === 'modifyPwBtn') {
-          setInfoModify({
-            ...infoModify, pwBtn: false, password: false
-        })
-        } else if (e.target.className === 'modifyIdBtn') {
-          setInfoModify({
-            ...infoModify, idBtn: false, id: false
-        })
-        } else if (e.target.className === 'modifyMailBtn') {
-          setInfoModify({
-            ...infoModify, emailBtn: false, email: false
-        })
-        }
-      }
-   
-    const onSecessionlick = () => {
-        setSecessionState(false)
-    }
     const handleSecessionOpen = () => {
-        setSecessionState(true)
+        setSecessionState(!secessionState)
     }
-    const infoModifyHandler = async (e: any) => {
-        if (e.target.className === 'modifyUsernameBtn') {
-            await axios.post('http://localhost:8080/user/changeInfo', {
-                username: infoModify.inputId,
+    const infoModifyHandler = async (e: React.MouseEvent<HTMLButtonElement>) => {
+        if (e.currentTarget.id === 'modifyBtn') {
+            axios.defaults.headers['Authorization'] = `Bearer ${localStorage.getItem("token")}`
+            await axios.post('https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/update-userData/', {
+                user_name: infoModify.inputName,
+                nickName: infoModify.inputId,
+                password: infoModify.inputPassword
             });
-            setInfoModify((prev) => {
-                return Object.assign({}, infoModify, { id: !prev.id, inputId: '', currentId: infoModify.inputId });
-            });
-        } else if (e.target.className === 'modifyPwBtn') {
-            await axios.post('http://localhost:8080/user/changeInfo', {
-                password: infoModify.inputPassword,
-            });
-            setInfoModify((prev) => {
-                return Object.assign({}, infoModify, { password: !prev.password, inputPassword: '', currentPassword: infoModify.inputPassword });
-            });
-            
-        } else if (e.target.className === 'secession_btn') {
-            await axios.post('http://localhost:8080/user/changeInfo');
+            // setInfoModify('')
+        } else if (e.currentTarget.className === 'secession_btn') {
+            axios.defaults.headers['Authorization'] = `Bearer ${localStorage.getItem("token")}`
+            await axios.post('https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/delete-userData/');
             // history.push("/main")
-        };
+        }
     }
-        console.log(infoModify);
-        const inputModifyChange = (e: any) => {
-            if (e.target.id === 'inputModifyId') {
-                setInfoModify(Object.assign({}, infoModify, { inputId: e.target.value }));
-            } else if (e.target.id === 'inputModifyPassword') {
-                setInfoModify(Object.assign({}, infoModify, { inputPassword: e.target.value }));
-            }
-        };
+    console.log(infoModify);
+    const inputModifyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.currentTarget.id === 'inputModifyId') {
+            setInfoModify(Object.assign({}, infoModify, { inputId: e.currentTarget.value }));
+            console.log("별명은요>>>>>>>>>",e.currentTarget.value)
+        } else if (e.currentTarget.id === 'inputModifyPassword') {
+            setInfoModify(Object.assign({}, infoModify, { inputPassword: e.currentTarget.value }));
+            console.log("비밀번호는요>>>>>>>>>",e.currentTarget.value)
+        } else if (e.currentTarget.id === 'inputModifyName') {
+            setInfoModify(Object.assign({}, infoModify, { inputName: e.currentTarget.value }));
+            console.log("본명은요>>>>>>>>>",e.currentTarget.value)
+        }
+    };
+    
         return (
-            <StyleModify>
-                <div className="userInfoWrapper" >
-                    <div className="infoChange">
-                        <span className="modi-line-or">
-                            <span className="modi-txt-or">회원 정보 수정</span>
-                        </span>
-                        <div className="infoData">
-                            <div className="thumb_profile">
-                                <img src="https://ifh.cc/g/40WSh1.png" width="80" height="80"></img>
-                            </div>
-                            <button>
-                                <img src="https://ifh.cc/g/9DRZaE.png" width="31" height="31"></img>
-                            </button>
-                        
-                            <span className="modify-txt">별명</span>
-                            <div className="modify-input">
-                                {infoModify.name ? <input id="inputModifyId" type="text" onChange={inputModifyChange} value={infoModify.inputId} placeholder={infoModify.currentId} />
-                                    : <span className="seenText">{infoModify.currentId}</span>}
-                                {infoModify.nameBtn ? (<><button className="modifyUsernameBtn" onClick={infoModifyHandler}>확인</button> <button className="modifyUsernameBtn" onClick={infoBtnClickForBack}>취소</button></>)
-                                    : <button className="modifyUsernameBtn" onClick={infoBtnClick}>수정</button>}
-                            </div>
-                        </div>
-                        <div className="infoData">
-                            <span className="modify-txt">비밀번호</span>
-                            <div className="modify-input">
-                                {infoModify.password ? <input id="inputModifyPassword" type="text" onChange={inputModifyChange} value={infoModify.inputPassword} />
-                                    : <span className="seenText">****</span>}
-                                {infoModify.pwBtn ? (<><button className="modifyPwBtn" onClick={infoModifyHandler}  >확인</button> <button className="modifyPwBtn" onClick={infoBtnClickForBack}>취소</button></>)
-                                    : <button className="modifyPwBtn" onClick={infoBtnClick}>수정</button>}
-                            </div>
-                        </div>
-                        <div className="infoData">
-                            <span className="modify-txt">휴대폰 번호(아이디)</span>
-                            <div className="modify-input">
-                                {infoModify.id ? <input id="inputModifyPassword" type="text" onChange={inputModifyChange} value={infoModify.inputPassword} />
-                                    : <span className="seenText">****</span>}
-                                {infoModify.idBtn ? (<><button className="modifyIdBtn" onClick={infoModifyHandler}  >확인</button> <button className="modifyIdBtn" onClick={infoBtnClickForBack}>취소</button></>)
-                                    : <button className="modifyIdBtn" onClick={infoBtnClick}>수정</button>}
-                            </div>
-                        </div>
-                        <div className="infoData">
-                            <span className="modifyEmail">전자우편 주소</span>
-                            <div className="modify-input">
-                                {infoModify.email ? <input id="inputModifyEmail" type="text" onChange={inputModifyChange} value={infoModify.inputEmail} />
-                                    : <span className="seenText">{infoModify.currentEmail}</span>}
-                                {infoModify.emailBtn ? (<><button className="modifyMailBtn" onClick={infoModifyHandler}  >확인</button> <button className="modifyMailBtn" onClick={infoBtnClickForBack}>취소</button></>)
-                                    : <button className="modifyMailBtn" onClick={infoBtnClick}>수정</button>}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="leaveMember" onClick={handleSecessionOpen}>탈퇴</div>
-                    <Secession infoModifyHandler={infoModifyHandler} onSecessionlick={onSecessionlick} secessionState={secessionState} />
-                </div>
-            </StyleModify>
-        );
-    }
+        <MyInfoTemplateBlock>
+      <WhiteBox>
+        <div className={classes.root}>
+        <ListItem>
+        <ListItemAvatar>
+          <Avatar>
+            <ImageIcon />
+          </Avatar>
+        </ListItemAvatar>
+            <ListItemText primary="사진" secondary="파일명" />
+              <>
+              <input accept="image/*" className={classes.input} id="icon-button-file" type="file" />
+              <label htmlFor="icon-button-file">
+              <IconButton color="primary" aria-label="upload picture" component="span">
+                <PhotoCamera />
+              </IconButton>
+              </label>
+              </>
+          </ListItem>
+        
+          <Divider variant="inset" component="li" style={{ listStyle: 'none' }} />
+         
+      <div>
+        <TextField
+              id="inputModifyName"
+              label="본명"
+              style={{ margin: 8 }}
+              placeholder="본명을 입력해 주세요."
+              fullWidth
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+            }}
+            onChange={inputModifyChange}
+            value={infoModify.inputName}
+            type="text"
+            />
+          </div>
+          <div>
+          <TextField
+              id="inputModifyId"
+            label="별명"
+            style={{ margin: 8 }}
+            placeholder="별명을 입력해 주세요."
+            helperText="영어도 사용가능합니다."
+            fullWidth
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={inputModifyChange}
+            value={infoModify.inputId}
+            type="text"
+          />
+        </div>
+        <div>
+            <TextField
+              id="inputModifyPassword"
+                label="비밀번호"
+                style={{ margin: 8 }}
+                placeholder="변경할 비밀번호를 입력해 주세요."
+                fullWidth
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                onChange={inputModifyChange}
+                value={infoModify.inputPassword}
+                type="text"
+              />
+          </div>
 
-const StyleModify = styled(Responsive)`{
-  .userInfoWrapper {
-        /* border: 1px solid rgb(28, 28, 233); */
-        display: block;
-        width: 700px;
-        height: 430px;
-        margin: 0 auto 70px;
-        font - family: "Noto Sans Light", "Malgun Gothic", sans - serif;
-    }
-  .userInfoText {
-        height: 100px;
-        margin - bottom: 15px;
-        /* border: 1px solid rgb(169, 169, 230); */
-    }
-  .infoChange {
-        height: 400px;
-        text - align: center;
-        /* border: 1px solid rgb(217, 217, 227); */
-    }
-  .leaveMember {
-        /* margin-top: 205px; */
-        display: inline; 
-        height: 100px;
-        cursor: pointer;
-        /* border: 1px solid rgb(74, 74, 80); */
-    }
-  .infoData {
-        display: flex;
-        flex - direction: column;
-        height: 100px;
-        border: none;
-        justify - content: center;
-        align - items: center;
-        border - bottom: 1px solid #eee;
-    }
-  .seenText {
-        position: relative;
-        margin: 0 80px 0 10px;
-        font-size: 18px;
-        height: 32px;
-        width: 100 %;
-    }
-  .modify - txt,
-  .modifyEmail {
-        top: 5 %;
-        margin - left: 10px;
-        width: 100 %;
-        text - align: left;
-        position: relative;
-        display: block;
-        font - weight: 400;
-        font - size: 18px;
-        color: #333;
-    }
-  #inputModifyId {
-        width: 150px;
-        height: 25px;
-        margin - left: 10px;
-        display: inline;
-        border - radius: 10px;
-        border: none;
-        border-bottom: black;
-        outline-style: none;
-        font-size: 18px;
-    }
-  #inputModifyPassword {
-        width: 150px;
-        height: 25px;
-        margin - left: 10px;
-        display: inline;
-        border - radius: 10px;
-        border: 1px solid rgb(168, 168, 174);
-    }
-  .modify - input {
-        top: 16 %;
-        width: 100 %;
-        position: relative;
-        margin: 0 10px 0 0;
-        text - align: initial;
-        display: inline - block;
-        height: 25px;
-        font - size: 17px;
-        line - height: 32px;
-        color: #959595;
-        vertical - align: top;
-    }
-  .modifyIdBtn
-  .modifyMailBtn
-  .modifyPwBtn
-  .modifyUsernameBtn {
-        width: 116px;
-        height: 32px;
-        margin - left: 5px;
-        border: 1px solid #bbb;
-        border - radius: 16px;
-        color: #666;
-        outline: none;
-        background - color: white;
-        font - size: 13px;
-        line - height: 15px;
-        float: right;
-    }
-    .modifyIdBtn
-    .modifyMailBtn
-    .modifyPwBtn
-    .modifyUsernameBtn: hover {
-        color: rgb(179, 173, 173);
-    }
-  
-  .modi - line - or {
-        top: 10 %;
-        position: relative;
-        display: block;
-        width: 100 %;
-        padding: 10px 0;
-    }
-  .modi - line - or: before,
-  .modi - line - or: after {
-        display: inline - block;
-        width: calc(47.5 % - 20px);
-        height: 1px;
-        margin: 8px 0;
-        background - color: rgba(0, 0, 0, 0.384);
-        vertical - align: top;
-        content: "";
-    }
-  .modi - txt - or {
-        display: inline - block;
-        width: 70px;
-        font - size: 12px;
-        line - height: 18px;
-        text - align: center;
-        color: rgba(0, 0, 0, 0.637);
-    }
+          <ButtonBox>
+          <Button
+                                variant="contained"
+                                id='modifyBtn'
+            color="primary"
+            size="large"
+            className={classes.button}
+            startIcon={<ReplyIcon />}
+          >
+              <Link to="/">나가기</Link>
+          </Button>   
+          <Button
+            variant="contained"
+            color="primary"
+                                size="large"
+                                id='modifyBtn'
+            className={classes.button}
+            startIcon={<SaveIcon />}
+            onClick={infoModifyHandler}
+          >
+              저장하기
+          </Button>
+          </ButtonBox>
+          
+        </div>
+        <Footer1 onClick={handleSecessionOpen}>
+        회원 탈퇴
+        </Footer1>
+        <Footer2>
+        <div onClick={handleOpen}><HelpIcon/> 도움말</div>
+        </Footer2>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+          {body}
+        </Modal>
+        <Secession infoModifyHandler={infoModifyHandler} handleSecessionOpen={handleSecessionOpen} secessionState={secessionState} />
+        </WhiteBox>
+      </MyInfoTemplateBlock>
+        );
 }
-`
+    
+
+
+const MyInfoTemplateBlock = styled.div`
+position: absolute;
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+background: transparent 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+`;
+
+const WhiteBox = styled.div`
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  width: 600px;
+  height: 500px;
+  border: 1px solid #000;
+  background: transparent 100%;
+`;
+
+const ButtonBox = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+`;
+
+const Footer1 = styled.div`
+margin-top: 4rem;
+font-size: 1.125rem;
+text-align: right;
+a {
+  color: gray;
+  text-decoration: none;
+  &:hover {
+    color: black
+  }
+}
+`;
+
+const Footer2 = styled.div`
+margin-top: -1.9rem;
+font-size: 1.125rem;
+text-align: left;
+a {
+  color: gray;
+  text-decoration: none;
+  &:hover {
+    color: black
+  }
+}
+`;
