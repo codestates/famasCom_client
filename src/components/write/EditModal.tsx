@@ -54,7 +54,7 @@ const QuillWrapper = styled.div`
   line-height: 1.5;
 }
 .ql-container .ql-blank ::before {
-  left 0px
+  left : 0px
 }
 `;
 

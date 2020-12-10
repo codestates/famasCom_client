@@ -2,33 +2,33 @@ import React from "react";
 import styled from 'styled-components';
 
 type DeleteModalProps = {
-  msgid: string;
-  deleteModalState: boolean;
-  onDeletelick: () => void;
-  handleMsgDelete: (e: React.MouseEvent<HTMLButtonElement>) => void;
+	msgid: string;
+	deleteModalState: boolean;
+	onDeletelick: () => void;
+	handleMsgDelete: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 
-export default function DeleteModal({deleteModalState, onDeletelick, handleMsgDelete ,msgid}: DeleteModalProps) {
+export default function DeleteModal({ deleteModalState, onDeletelick, handleMsgDelete, msgid }: DeleteModalProps) {
 
-  if (deleteModalState) {
-    return (
-      <Modal>
-      <div id="myModal" className="authModal">
-        <div className="modal-content">
-          <span className="close" onClick={onDeletelick}>&times;</span>
-          <p>삭제하시겠습니까?</p>
+	if (deleteModalState) {
+		return (
+			<Modal>
+				<div id="myModal" className="authModal">
+					<div className="modal-content">
+						<span className="close" onClick={onDeletelick}>&times;</span>
+						<p>삭제하시겠습니까?</p>
 						<button id={msgid} onClick={handleMsgDelete}>예</button>
 						<button onClick={onDeletelick}>아니오</button>
-        </div>
-        </div>
-        </Modal>
-    )
-  } else {
-    return null
-  }
-} 
- 
+					</div>
+				</div>
+			</Modal>
+		)
+	} else {
+		return null
+	}
+}
+
 const Modal = styled.div`
 /* The Modal (background) */
 .authModal {

@@ -26,6 +26,5 @@ background: transparent 75%;
 display: flex;
 flex-direction: column;
 align-items: center;
-}
-`;
+`
 
