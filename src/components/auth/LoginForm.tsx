@@ -34,10 +34,12 @@ const LoginForm = () => {
           password: password,
         })
       .then((res) => {
-        console.log(res);
-
+        console.log("토큰와라!!!!!!",res.data.token);
+//로그인 토큰 저장
+        if(res.data.token){
+          localStorage.setItem("token",res.data.token)
+        }
         props.history.push("/");
-        
       })
       .catch((res) => {
         if (res.status === 409) {
