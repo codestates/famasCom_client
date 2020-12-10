@@ -18,6 +18,7 @@ import HelpIcon from '@material-ui/icons/Help';
 import { Link } from 'react-router-dom';
 import Modal from '@material-ui/core/Modal';
 import Secession from '../components/myinfo/SecessionModal'
+import Nav from '../components/Nav';
 
 function rand() {
     return Math.round(Math.random() * 20) - 10;
@@ -167,8 +168,11 @@ export default function ModifyInfo() {
         }
     };
     
-        return (
-        <MyInfoTemplateBlock>
+  return (
+    <>
+        <Nav />
+      <MyInfoTemplateBlock>
+        <div className="border">
       <WhiteBox>
         <div className={classes.root}>
         <ListItem>
@@ -248,7 +252,7 @@ export default function ModifyInfo() {
             className={classes.button}
             startIcon={<ReplyIcon />}
           >
-              <Link to="/">나가기</Link>
+                <Link to="/" style={{ textDecoration: 'none' }}>나가기</Link>
           </Button>   
           <Button
             variant="contained"
@@ -279,8 +283,10 @@ export default function ModifyInfo() {
           {body}
         </Modal>
         <Secession infoModifyHandler={infoModifyHandler} handleSecessionOpen={handleSecessionOpen} secessionState={secessionState} />
-        </WhiteBox>
+          </WhiteBox>
+          </div>
       </MyInfoTemplateBlock>
+      </>
         );
 }
     
@@ -297,15 +303,24 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+.border {
+  width: 100%;
+  height: 580px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+}
 `;
 
 const WhiteBox = styled.div`
+position: absolute;
+left: 33%;
+top: 24.5%;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
   padding: 2rem;
   width: 600px;
   height: 500px;
   border: 1px solid #000;
-  background: transparent 100%;
+  background: white;
 `;
 
 const ButtonBox = styled.div`
