@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 class Nav extends React.Component {
     render() {
+        console.log(localStorage.getItem("token"))
+      
         return (
+        
     <NavBody>
         <NavLogo><h2>LOGO</h2></NavLogo>
         <NavItems>
@@ -22,6 +25,11 @@ class Nav extends React.Component {
             <NavLink to="/Community">
                 <NavItem title="눌러보세요!"><h2>정보공유</h2></NavItem>
             </NavLink>
+            {localStorage.getItem("token") &&
+                <NavLink to="/ModifyInfo">
+                    <NavItem title="눌러보세요!"><h2>내 정보</h2></NavItem>
+                </NavLink>}
+            {!localStorage.getItem("token") && < ></>}
             <NavLink to="/Login">
                 <NavItem title="눌러보세요!"><h2>회원으로 접속하기</h2></NavItem>
             </NavLink>

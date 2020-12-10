@@ -5,10 +5,11 @@ import Button from '../common/Button';
 
 // 회원가입 또는 로그인 폼을 나타내는 컴포넌트
 type typeProps = {
+  token: string;
   value: string;
   email: string;
   password: string;
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>, props: RouteComponentProps) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -21,7 +22,7 @@ const textMap: Indexable = {
   signup: "회원가입",
 }
 
-const AuthForm = ({ value , email, password, handleSubmit, handleChange}: typeProps) => {
+const AuthForm = ({ value , email, password, token, handleSubmit, handleChange}: typeProps) => {
   const text = textMap[value];
   return (
     <AuthFormBlock>
@@ -29,7 +30,8 @@ const AuthForm = ({ value , email, password, handleSubmit, handleChange}: typePr
       <form>
         <StyledInput autoComplete="username" name="email" value={email}  onChange={handleChange} placeholder="첫 번째! 계정을 입력해 주세요." />
         <StyledInput autoComplete="new-password" name="password" value={password} onChange={handleChange} placeholder="두 번째! 비밀번호를 입력해 주세요." />
-        <Button onClick={handleSubmit}>{text}</Button>
+        {token && <Button onClick={handleSubmit}><Link to="/">{text}</Link></Button>}
+          {!token && <Button onClick={handleSubmit}>{text}</Button>}
       </form>
       <Footer>
         {value === "login" ?  (<Link to="/signup">회원가입</Link>) :  (<Link to="/login">로그인</Link>) }
