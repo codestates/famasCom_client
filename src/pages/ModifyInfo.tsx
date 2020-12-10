@@ -189,7 +189,6 @@ export default function ModifyInfo() {
           </ListItem>
         
           <Divider variant="inset" component="li" style={{ listStyle: 'none' }} />
-         
       <div>
         <TextField
               id="inputModifyName"
