@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
-import NavLogin from './NavLogin'
-
-class Nav extends React.Component {
-    render() {
-        return (
+const Nav = () => {
+    console.log(localStorage.getItem("token"))
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+    }
+    return (
     <NavBody>
         <NavLogo><h2>LOGO</h2></NavLogo>
         <NavItems>
@@ -23,16 +24,26 @@ class Nav extends React.Component {
             </NavLink>
             <NavLink to="/Community">
                 <NavItem title="눌러보세요!"><h2>정보공유</h2></NavItem>
-            </NavLink>
-            <NavLink to="/Login">
-                <NavItem title="눌러보세요!"><h2>회원으로 접속하기</h2></NavItem>
-            </NavLink>
-            <NavLogin>
-            </NavLogin>
+                </NavLink>
+                {localStorage.getItem("token") &&
+                <>
+                    <NavLink to="/ModifyInfo">
+                        <NavItem title="눌러보세요!"><h2>내 정보</h2></NavItem>
+                    </NavLink>
+                    <button>
+                        <NavItem title="눌러보세요!" onClick={handleLogout} ><h2><Link to="/Login"> 접속 종료</Link></h2>
+                    </NavItem>
+                    </button>
+                </>
+                }
+                {!localStorage.getItem("token") &&
+                    <NavLink to="/Login">
+                        <NavItem title="눌러보세요!"><h2>회원으로 접속</h2></NavItem>
+                </NavLink>
+                }
         </NavItems>
     </NavBody>
         )
-    }
 }
 const NavBody = styled.div`
     background; white;

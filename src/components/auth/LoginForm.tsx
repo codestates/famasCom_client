@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import axios from 'axios';
 import AuthForm from '../auth/AuthForm';
 
-type Inputs = { email: string; password: string }
+
+type Inputs = { email: string; password: string; }
 
 const LoginForm = () => {
-	const [inputs, setInputs] = useState<Inputs>({email: '', password: ''});
+  const [inputs, setInputs] = useState<Inputs>({ email: '', password: '' });
+  const [token, setToken] = useState<string>('');
   const { email, password } = inputs; // 비구조화 할당을 통해 값 추출
  
 
@@ -25,7 +27,7 @@ const LoginForm = () => {
     });
   };
   
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>, props:RouteComponentProps) => {
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 		if (email !== '' && password !== '') {
       axios
@@ -34,10 +36,12 @@ const LoginForm = () => {
           password: password,
         })
       .then((res) => {
-        console.log(res);
-
-        props.history.push("/");
-        
+        console.log("login data>>>>>>>>>>>> res.data", res.data.token);
+        setToken(res.data)
+        localStorage.setItem("token" , res.data.token)
+      })
+      .then(() => {
+        console.log("login data>>>>>>>>>>>> token", token);
       })
       .catch((res) => {
         if (res.status === 409) {
@@ -49,7 +53,7 @@ const LoginForm = () => {
   };
   
   return (
-    <AuthForm value="login" email={email} password={password}  handleChange={handleChange}  handleSubmit={handleSubmit} />
+    <AuthForm value="login" email={email} password={password}  handleChange={handleChange}  handleSubmit={handleSubmit} token={token} />
   )
 }
 

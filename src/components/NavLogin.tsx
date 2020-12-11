@@ -1,23 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import {withRouter, Link, Redirect} from 'react-router-dom';
-import axios from 'axios';
 
 const NavLgoin = () => {
   const [redirect, setRedirect] = useState<string>('');
   const [showModal, setShowModal] = useState<boolean>(false);
   const token = localStorage.getItem("token")
+
   const handleLogout = () => {
     handleModalClick()
     localStorage.removeItem("token")
-    axios.post('')
-      .then(res => {
-        console.log(res)
-      })
-      .catch(err => console.log(err));
   };
+
   const handleModalClick = () => {
     setShowModal(!showModal);
   };
+
   const handleUiByLogin = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!token) {
@@ -41,7 +38,9 @@ const NavLgoin = () => {
           { showModal && (
             <div className="nav-modal-container">
               <Link className="modal-nav-content list-link" onClick={handleModalClick} to="/mypage">내정보</Link>
+              <div>
               <button className="modal-nav-content logout" onClick={handleLogout}>접속종료</button>
+              </div>
             </div>
           )}
           <li className="nav-content">
@@ -50,7 +49,8 @@ const NavLgoin = () => {
         </div>
       )
     }
-  }
+  };
+
   
   return (
   <>
