@@ -24,9 +24,9 @@ class Nav extends React.Component {
             <NavLink to="/Community">
                 <NavItem title="눌러보세요!"><h2>정보공유</h2></NavItem>
             </NavLink>
-            {/* <NavLink to="/Login">
+            <NavLink to="/Login">
                 <NavItem title="눌러보세요!"><h2>회원으로 접속하기</h2></NavItem>
-            </NavLink> */}
+            </NavLink>
             <NavLogin>
             </NavLogin>
         </NavItems>

@@ -12,6 +12,7 @@ import MainWrapper from '../themes/Wrapper'
 class Main extends React.Component {
     render() {
         return (
+            <>
             <MainWrapper>
                 <Nav />
                 <MainTitle>FAMAS COM</MainTitle>
@@ -41,8 +42,9 @@ class Main extends React.Component {
                     dark={false}
                     id="section4"
                 />
-                <Footer/>
             </MainWrapper>
+                <Footer/>
+            </>
         );
     }
 }
