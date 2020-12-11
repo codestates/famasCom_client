@@ -2,11 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Human from '../images/human.svg';
 import styled from 'styled-components';
+import Wrapper from '../themes/Wrapper';
 
 class Footer extends React.Component {
     render() {
         return (
-            <Foot>
+            <Wrapper>
+                <Foot>
                 <Cards>
                     <Card>
                         <img src={Human} alt="human"/>
@@ -38,6 +40,7 @@ class Footer extends React.Component {
                     </Card>
                 </Cards>
             </Foot>
+        </Wrapper>
         )
     }
 }

@@ -7,6 +7,7 @@ import Section from '../components/Section';
 import BTNSection from '../components/BTNSection';
 import styled from 'styled-components';
 import Footer from '../components/Footer';
+import MainWrapper from '../themes/Wrapper'
 
 class Main extends React.Component {
     render() {
@@ -46,13 +47,6 @@ class Main extends React.Component {
     }
 }
 
-const MainWrapper = styled.div`
-margin-top: 4.5rem;
-display: flex;
-flex-direction: column;
-align-items: center;
-height: 100%;
-`
 const MainTitle = styled.h1`
 display: flex;
 flex-direction: column;
