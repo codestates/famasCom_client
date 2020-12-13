@@ -8,6 +8,7 @@ const Nav = () => {
     }
     return (
     <NavBody>
+        <NavContainer>
         <NavLogo><h2>LOGO</h2></NavLogo>
         <NavItems>
             <NavLink to="/">
@@ -42,14 +43,25 @@ const Nav = () => {
                 </NavLink>
                 }
         </NavItems>
+        </NavContainer>
     </NavBody>
         )
 }
-const NavBody = styled.div`
-    background; white;
-    display:flex;
-    justify-content:space-between;
+const NavBody = styled.nav`
+    width: 100%;
+    height: 4rem;
+    outline-style: solid;
+    outline-width: 1px;
 `
+const NavContainer = styled.div`
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 8rem;
+    padding-right: 8rem;
+`
+
 const NavLogo = styled.div`
     padding:10px;
 `
