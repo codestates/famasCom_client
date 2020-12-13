@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import { Link } from 'react-router-dom';
-import Nav from '../components/Nav'
+import Navbar from '../components/common/navbar'
+import Siderbar from '../components/common/siderbar'
 import styled from 'styled-components'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
@@ -9,6 +10,7 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import Wrapper from '../themes/Wrapper'
 import Modal from '@material-ui/core/Modal';
+
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -77,10 +79,16 @@ const MobExplain = () => {
         <Button onClick={handleClose}>알았어요!</Button>
       </div>
     );
-    
-    return (
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const toggle = () => {
+      setIsOpen(!isOpen)
+    }
+  return (
+    <>
+    <Navbar toggle={toggle}/>
+    <Siderbar isOpen={isOpen} toggle={toggle} />
     <Wrapper>
-        <Nav/>
+        
         <MobExplainBox>
             <h1 className="textBox">스마트폰 사용법</h1>
     <div className={classes.root}>
@@ -121,7 +129,9 @@ const MobExplain = () => {
 
     </ButtonArea>
     </MobExplainBox>
-    </Wrapper>
+      </Wrapper>
+      
+      </>
     )
   }
 
