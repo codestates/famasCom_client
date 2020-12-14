@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import Footer from '../components/Footer';
 import GoToTop from '../components/common/GoToTop'
 import MainWrapper from '../themes/Wrapper'
-// import About from '../components/About'
+import About from '../components/About'
 
 class Main extends React.Component {
     render() {
@@ -45,8 +45,7 @@ class Main extends React.Component {
                     id="section4"
                 />
                 <GoToTop/>
-                {/* <About/> */}
-                <Footer/>
+                <About/>
             </MainWrapper>
                 <Footer/>
             </>
