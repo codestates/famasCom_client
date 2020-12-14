@@ -1,6 +1,6 @@
 {
-    "extends": "eslint:recommended",
-    "env": {
+    "extends": ["eslint:recommended"]
+    ,"env": {
         "browser": true,
         "commonjs": true,
         "node": true,

@@ -10,7 +10,7 @@ const AuthTemplate = ({children}:AuthTemplateProps) => {
     <AuthTemplateBlock>
       <WhiteBox>
         <div className="logo-area">
-          <Link to="/">FAMAS COM</Link>
+          <Link to="/" style={{ textDecoration: 'none' }}>FAMAS COM</Link>
           </div>
         {children}
       </WhiteBox>
