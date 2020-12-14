@@ -10,6 +10,12 @@ type DeleteModalProps = {
 
 
 export default function DeleteModal({ deleteModalState, onDeletelick, handleMsgDelete, msgid }: DeleteModalProps) {
+	console.log("🚀 ~ file: DeleteModal.tsx ~ line 13 ~ DeleteModal ~ msgid", msgid)
+	handleMsgDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
+		e.currentTarget
+
+		console.log("🚀 ~ file: DeleteModal.tsx ~ line 17 ~ DeleteModal ~ e.currentTarget", e.currentTarget)
+	}
 
 	if (deleteModalState) {
 		return (
@@ -18,7 +24,9 @@ export default function DeleteModal({ deleteModalState, onDeletelick, handleMsgD
 					<div className="modal-content">
 						<span className="close" onClick={onDeletelick}>&times;</span>
 						<p>삭제하시겠습니까?</p>
-						<button id={msgid} onClick={handleMsgDelete}>예</button>
+						<button
+							id={msgid}
+							onClick={handleMsgDelete}>예</button>
 						<button onClick={onDeletelick}>아니오</button>
 					</div>
 				</div>

@@ -1,12 +1,18 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 export const EntiryWrapper = styled.div`
   display: inline;
 `;
 export const QuillWrapper = styled.div`
+  .ql-toolbar {
+    background: #eaecec;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+  }
   .ql-container {
     min-height: 30px;
-    border-radius: 0px;
-    padding: 0;
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    padding: 10px;
     font-size: 1.125rem;
     line-height: 1.5;
   }
@@ -26,11 +32,10 @@ export const StyleButton = styled.button`
   border-radius: 4px;
   font-size: 1.125rem;
   font-weight: bold;
-  font-family: '맑은 고딕';
+  font-family: "맑은 고딕";
   color: black;
   background: #6eb584;
   display: inline-block;
-  float: right;
   text-align: center;
   line-height: 22px;
   &:hover {
@@ -41,8 +46,8 @@ export const StyleButton = styled.button`
 
 export const Line = styled.div`
   border-radius: 5px;
-  background-color: gray;
+  background-color: #eaecec;
   display: block;
-  width: 95%;
-  height: 2px;
+  width: 100%;
+  height: 1px;
 `;

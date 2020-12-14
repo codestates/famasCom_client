@@ -1,10 +1,13 @@
 import React from "react";
+import { Button } from 'antd';
 
 type addLikeProps = {
-    msgid: string;
+    // msgid: string;
     handleLike: (e: any) => void;
 };
 
-export default function AddLike({ msgid, handleLike }: addLikeProps) {
-    return <div id={msgid} onClick={handleLike}></div>
+export default function AddLike({ handleLike }: addLikeProps) {
+    return <Button
+        //id={msgid} 
+        onClick={handleLike}></Button>
 }

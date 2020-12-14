@@ -1,49 +1,47 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css'; 
+import 'react-quill/dist/quill.snow.css';
 import 'antd/dist/antd.css';
 import { Button } from 'antd';
 
 type EditFormProps = {
- 
+  handleEditStoryChange: (html: any) => void;
   editState: boolean;
   onEditclick: () => void;
-  handleUdateClick: (e: React.MouseEvent<HTMLInputElement>) => void;
-  msgid: string;
+  handleUpdateClick: (e: React.MouseEvent<HTMLInputElement>) => void;
+  msgEditorHtml: string;
+  //msgid: string;
 };
 
-export default function EditModal({ editState, onEditclick, handleUdateClick, msgid}: EditFormProps) {
-  const [editorHtml, setEditorData] = useState<string>('');
-  const handleEditStoryChange = (html:any) => {
-    setEditorData(html);
-    console.log(html)
-  }; 
+export default function EditModal({ editState, onEditclick, handleUpdateClick, handleEditStoryChange, msgEditorHtml }: EditFormProps) {
 
   if (editState) {
     return (
       <Modal>
-      <div id="myModal" className="authModal">
-        <div className="modal-content">
+        <div id="myModal" className="authModal">
+          <div className="modal-content">
             <QuillWrapper>
-              <ReactQuill theme="snow" value={editorHtml} onChange={handleEditStoryChange} />
+              <ReactQuill theme="snow" value={msgEditorHtml} onChange={handleEditStoryChange} />
             </QuillWrapper>
-            <Button type="primary" size="large" className="edit_btn" id={msgid} onClick={handleUdateClick}>
-            수정
+            <Button type="primary" size="large" className="edit_btn"
+              //id={msgid} 
+              onClick={handleUpdateClick}>
+              수정
             </Button>
             &nbsp;&nbsp;
             <Button type="primary" size="large" className="edit_btn" onClick={onEditclick}>
-            취소
+              취소
             </Button>
           </div>
         </div>
-        </Modal>
+      </Modal>
     )
   } else {
     return null
   }
-} 
- 
+}
+
 const QuillWrapper = styled.div`
 
 .ql-container {
