@@ -14,7 +14,7 @@ height: 3rem;
 border-radius: 4px;
 font-size: 1.3rem;
 font-weight: bold;
-font-family: '맑은 고딕'
+font-family: '맑은 고딕';
 line-height: 1.5;
 color: black;
 background: #01BF71;
