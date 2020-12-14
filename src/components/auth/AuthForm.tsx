@@ -22,25 +22,15 @@ const textMap: Indexable = {
   signup: "회원가입",
 }
 
-<<<<<<< HEAD
 const AuthForm = ({ value, email, password, handleSubmit, handleChange }: typeProps) => {
-=======
-const AuthForm = ({ value , email, password, token, handleSubmit, handleChange}: typeProps) => {
->>>>>>> 50bc9c164ab65dc5311b19bc7fe3ee8575f7d1dc
   const text = textMap[value];
   return (
     <AuthFormBlock>
       <h3>{text}</h3>
       <form>
-<<<<<<< HEAD
         <StyledInput autoComplete="username" name="email" value={email} onChange={handleChange} placeholder="첫 번째! 계정을 입력해 주세요." />
         <StyledInput autoComplete="new-password" name="password" type="password" value={password} onChange={handleChange} placeholder="두 번째! 비밀번호를 입력해 주세요." />
         <Button onClick={handleSubmit}>{text}</Button>
-=======
-        <StyledInput autoComplete="username" name="email" value={email}  onChange={handleChange} placeholder="첫 번째! 계정을 입력해 주세요." />
-        <StyledInput autoComplete="new-password" name="password" value={password} onChange={handleChange} placeholder="두 번째! 비밀번호를 입력해 주세요." />
-           <Button onClick={handleSubmit}>{text}</Button>
->>>>>>> 50bc9c164ab65dc5311b19bc7fe3ee8575f7d1dc
       </form>
       <Footer>
         {value === "login" ? (<Link to="/signup">회원가입</Link>) : (<Link to="/login">로그인</Link>)}
