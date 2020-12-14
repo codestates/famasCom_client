@@ -1,6 +1,7 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Link } from 'react-router-dom';
-import Nav from '../components/Nav'
+import Navbar from '../components/common/navbar'
+import Siderbar from '../components/common/siderbar'
 import styled from 'styled-components'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
@@ -77,10 +78,16 @@ const ComExplain = () => {
         <Button title="눌러보세요!" onClick={handleClose}>알았어요!</Button>
       </div>
     );
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const toggle = () => {
+      setIsOpen(!isOpen)
+    }
     
-    return (
+  return (
+    <>
+      <Navbar toggle={toggle}/>
+       <Siderbar isOpen={isOpen} toggle={toggle} />
     <Wrapper>
-        <Nav/>
         <ComExplainBox>
           <h1 className="textBox">컴퓨터 사용법</h1>
           <div className={classes.root}>
@@ -127,7 +134,8 @@ const ComExplain = () => {
 
     </ButtonArea>
     </ComExplainBox>
-    </Wrapper>
+      </Wrapper>
+      </>
     )
   }
 
