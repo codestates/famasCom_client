@@ -6,7 +6,7 @@ import { FaTimes } from 'react-icons/fa'
 type side = {
   isOpen: boolean;
 }
-
+//
 export const SiderContainer = styled.aside<side>`
 position: fixed;
 z-index: 999;

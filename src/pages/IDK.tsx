@@ -11,10 +11,12 @@ import Typography from '@material-ui/core/Typography';
 import Wrapper from '../themes/Wrapper'
 import Modal from '@material-ui/core/Modal';
 
+import IDKSection from 'components/IdkSection/IDKSection'
+import Responsive from '../components/common/Responsive'
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
-
+//
 function getModalStyle() {
   const top = 50 + rand();
   const left = 50 + rand();
@@ -87,6 +89,8 @@ const IDK = () => {
     <>
       <Navbar toggle={toggle}/>
       <Siderbar isOpen={isOpen} toggle={toggle} />
+      < IDKSection />
+      <IDKTemplateBlock>
     <Wrapper>
       
         <IDKBox>
@@ -130,7 +134,7 @@ const IDK = () => {
     </ButtonArea>
         </IDKBox>
       </Wrapper>
-    
+      </IDKTemplateBlock>
       </>
     )
   }
@@ -144,6 +148,7 @@ const IDK = () => {
     align-items:center;  
     flex-direction: column;
     background:#f6f6f6;
+    margin-top: 5%;
   `
 
   const AccoSummary = styled(AccordionSummary)`
@@ -169,5 +174,15 @@ const IDK = () => {
         cursor: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqXPznJzia-b1rU6QAOTHXaj3pLK2-mWFWfg&usqp=CAU), auto;
       }
 `
+
+const IDKTemplateBlock = styled(Responsive)`
+position: relative;
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+background: #fff;
+
+`;
 
 export default IDK;

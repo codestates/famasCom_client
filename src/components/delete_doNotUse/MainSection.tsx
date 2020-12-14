@@ -15,7 +15,7 @@ type IndexProps = {
   alt: string;
   imgStart: string;
 }
-
+//
 const MainSection = ({ lightBg, topLine, lightText, lightTextDesc, headline, description,
   buttonLabel, img, alt, imgStart
 }: IndexProps) => {

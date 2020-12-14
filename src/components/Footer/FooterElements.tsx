@@ -23,7 +23,7 @@ export const FooterLinksContainer = styled.div`
     padding-top: 32px;
   }
 `;
-
+//
 export const FooterLinksWrapper = styled.div`
   display: flex;
 

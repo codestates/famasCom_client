@@ -20,3 +20,4 @@ export const Line = styled.div`
   height: 10px;
   color: #fff;
 `;
+

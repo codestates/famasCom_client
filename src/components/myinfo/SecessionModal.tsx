@@ -82,3 +82,4 @@ const Modal = styled.div`
 	cursor: pointer;
 }
 `;
+//

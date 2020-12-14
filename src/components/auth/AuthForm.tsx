@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../common/Button';
-
+//
 // 회원가입 또는 로그인 폼을 나타내는 컴포넌트
 type typeProps = {
   token: string;
@@ -18,7 +18,7 @@ interface Indexable {
 }
 
 const textMap: Indexable = {
-  login: "로그인",
+  login: "회원 접속",
   signup: "회원가입",
 }
 
@@ -45,34 +45,36 @@ const AuthFormBlock = styled.div`
     margin: 0;
     color: black;
     margin-bottom: 1rem;
+    font-size: 1.3rem;
   }
 `;
 
 // 폼 하단에 로그인 혹은 회원가입 링크 보여줌
 const Footer = styled.div`
 margin-top: 2rem;
-font-size: 1.125rem;
+font-size: 1.3rem;
 text-align: right;
 a {
-  color: gray;
+  color: #1c2237;
   text-decoration: none;
   &:hover {
-    color: black
+    color: #01BF71;
   }
 }
 `;
 // &은 sass 문법임 
 // css 에서 + 는 1 + 2애서 2에만 해당 css가 적용됨 https://developer.mozilla.org/ko/docs/Web/CSS/%EC%9D%B8%EC%A0%91_%ED%98%95%EC%A0%9C_%EC%84%A0%ED%83%9D%EC%9E%90
 const StyledInput = styled.input`
-font-size: 1rem;
+font-size: 1.3rem;
 border: none;
-border-bottom: 1px solid #ced4da;
-padding-bottom: 0.5rem;
+border-bottom: 2px solid #1c2237;
+margin-bottom: 1em;
+padding-bottom: 0.5em;
 outline: none;
 width: 100%;
 &:focus {
   color: $oc-teal-7;
-  border-bottom: 1px solid #868e96;
+  border-bottom: 2px solid #01BF71;
 }
 & + & {
   margin-top: 1rem;
