@@ -9,34 +9,26 @@ padding: 15px;
 outline:#6eb584;
 ;`;
 import { EntiryWrapper, QuillWrapper, StyleButton, Line } from "./style/StoryFormstyle.js"
-import { Comment } from 'antd';
 
 // 댓글 폼을 나타내는 컴포넌트
 
 type StoryFormProps = {
   datas: any;
+  onReset: () => void;
+  reRending: () => void;
   editorHtml: string;
-  msgEditorHtml: string;
-  editState: boolean;
-  rechatValue: string;
   commentValue: string;
-  deleteModalState: boolean;
-  onDeletelick: () => void;
-  onEditclick: () => void;
-  handleEditStoryChange: (html: any) => void;
   onHandleChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   handleLike: (e: React.MouseEvent<HTMLInputElement>) => void;
-  handleMsgDelete: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  handleRechatChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleUpdateClick: (e: React.FormEvent<HTMLInputElement>) => void;
   handleStoryChange: (html: any) => void;
   handleSubmitClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onsubmit: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  handleReChatClick: (e: React.FormEvent<HTMLInputElement>) => void;
 };
 
-const StoryForm = ({ rechatValue, editState, deleteModalState, onDeletelick, onEditclick, handleMsgDelete, handleRechatChange,
-  handleUpdateClick, datas, editorHtml, handleStoryChange, handleSubmitClick, handleReChatClick, handleLike, onHandleChange, commentValue, onsubmit, handleEditStoryChange, msgEditorHtml }: StoryFormProps) => {
+const StoryForm = ({
+  datas, editorHtml, handleStoryChange,
+  handleSubmitClick, handleLike, onHandleChange,
+  commentValue, onsubmit, reRending, onReset }: StoryFormProps) => {
 
   return (
     <EntiryWrapper>
@@ -50,26 +42,21 @@ const StoryForm = ({ rechatValue, editState, deleteModalState, onDeletelick, onE
 
 
       {/* 메세지를 하나씩!! 뿌려줌 */}
-      {!datas ? '' : datas.sort((one: any, two: any) => (one.createdAt > two.createdAt ? -1 : 1)).map((item: any) => (
-        <React.Fragment>
-          <Reply datas={item}
-            msgEditorHtml={msgEditorHtml}
-            onsubmit={onsubmit}
-            onHandleChange={onHandleChange}
-            handleLike={handleLike}
-            handleEditStoryChange={handleEditStoryChange}
-            handleMsgDelete={handleMsgDelete}
-            deleteModalState={deleteModalState}
-            onDeletelick={onDeletelick}
-            editState={editState}
-            handleUpdateClick={handleUpdateClick}
-            onEditclick={onEditclick}
-            commentValue={commentValue}
-            rechatValue={rechatValue}
-            handleRechatChange={handleRechatChange}
-            handleReChatClick={handleReChatClick} />
-        </React.Fragment>)
-      )}
+      {!datas ? <div>
+        데이터를 가져오고있습니다.
+      </div> : datas.sort((one: any, two: any) =>
+        (one.createdAt > two.createdAt ? -1 : 1)).map((item: any) => (
+          <React.Fragment>
+            <Reply datas={item}
+              onReset={onReset}
+              reRending={reRending}
+              onsubmit={onsubmit}
+              onHandleChange={onHandleChange}
+              handleLike={handleLike}
+              commentValue={commentValue}
+            />
+          </React.Fragment>)
+        )}
     </EntiryWrapper>
   )
 }

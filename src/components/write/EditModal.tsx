@@ -11,10 +11,10 @@ type EditFormProps = {
   onEditclick: () => void;
   handleUpdateClick: (e: React.MouseEvent<HTMLInputElement>) => void;
   msgEditorHtml: string;
-  //msgid: string;
+  msgid: string;
 };
 
-export default function EditModal({ editState, onEditclick, handleUpdateClick, handleEditStoryChange, msgEditorHtml }: EditFormProps) {
+export default function EditModal({ editState, onEditclick, handleUpdateClick, handleEditStoryChange, msgEditorHtml, msgid }: EditFormProps) {
 
   if (editState) {
     return (
@@ -25,7 +25,7 @@ export default function EditModal({ editState, onEditclick, handleUpdateClick, h
               <ReactQuill theme="snow" value={msgEditorHtml} onChange={handleEditStoryChange} />
             </QuillWrapper>
             <Button type="primary" size="large" className="edit_btn"
-              //id={msgid} 
+              id={msgid}
               onClick={handleUpdateClick}>
               수정
             </Button>

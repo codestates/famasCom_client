@@ -1,42 +1,36 @@
 import React, { useState } from 'react';
 import { CommentSwappar, FormWapper } from "./style/ReplyStyle"
 import moment from 'moment';
+import axios from 'axios';
 import 'antd/dist/antd.css';
 import Avatar from '@material-ui/core/Avatar';
-import { Comment, Tooltip, Button, Form, List, Input } from 'antd'
-import DeleteModal from './DeleteModal'
+
+import { Comment, Tooltip, Form, Button, List, Input } from 'antd'
+import { Modal } from './DeleteModal'
 import EditModal from './EditModal'
 import { type } from 'os';
 import { StyleButton } from "./style/StoryFormstyle.js"
 import AddLike from './AddLike';
 
+
 type StoryFormProps = {
   datas: any;
-  msgEditorHtml: string;
-  editState: boolean;
-  rechatValue: string;
+  onReset: () => void;
   commentValue: string;
-  deleteModalState: boolean;
-  onDeletelick: () => void;
-  onEditclick: () => void;
-  handleEditStoryChange: (html: any) => void;
+  reRending: () => void;
   handleLike: (e: React.MouseEvent<HTMLInputElement>) => void;
   onHandleChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  handleMsgDelete: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  handleRechatChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleUpdateClick: (e: React.FormEvent<HTMLInputElement>) => void;
-  handleReChatClick: (e: React.FormEvent<HTMLInputElement>) => void;
   onsubmit: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const { TextArea } = Input
 
 const Reply = ({ datas,
-  deleteModalState, onDeletelick, handleMsgDelete, handleEditStoryChange,
-  handleUpdateClick, editState, onEditclick, handleLike, onHandleChange, commentValue,
-  onsubmit, msgEditorHtml }: StoryFormProps) => {
+  handleLike, onHandleChange, commentValue,
+  onsubmit, reRending, onReset }: StoryFormProps) => {
 
-  //console.log("🚀 ~ file: Reply.tsx ~ line 44 ~ datas", datas)
+  /*---------------------------------------------------*/
+
   const time = moment(datas.createdAt, "YYYYMMDD")
 
   //대댓글 랜더 관련 훅 
@@ -46,25 +40,98 @@ const Reply = ({ datas,
     setCommentOpen(!commentOpen);
   }
 
-  //대댓글 관련 훅
+  //대댓글 관련 
+  /*!------ 대댓글모달훅 -------------------------*/
+  //훅
   const [replyOpen, setReplyOpen] = useState<boolean>(false);
 
-  //대댓글 관련 토글 
+  //토글 
   const handleReplyOpen = () => {
     setReplyOpen(!replyOpen);
   }
-  //좋아요 관련 
+  /*------ 대댓글모달훅 -------------------------*/
 
+  // 삭제 관련 
+  /*!------ 댓글삭제모달훅 -------------------------*/
+  const [deleteModalState, setDeleteModalState] = useState<boolean>(false);
+  const onDeleteClick = () => {
+    setDeleteModalState(!deleteModalState)
+  }
+  //댓글 삭제 이벤트
+  const handleMsgDelete = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    await axios
+      .post(`https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/delete-msgData/${e.currentTarget.id}`)
+      .then((res) => {
+        console.log(res.status)
+        onDeleteClick()
+        reRending()
+      })
+      .catch((err) => console.log("err가:" + err));
+  };
+  /*------ 댓글삭제 -------------------------*/
+  /*!------ 댓글수정 -------------------------*/
+  /*!------ 댓글수정인풋데이터훅 -------------------------*/
+  const [msgEditorHtml, setMsgEditorHtml] = useState<string>('');
+  //수정 에디터 리셋
+  const EdionReset = () => {
+    setMsgEditorHtml('')
+  }
+  /*!------ 댓글수정모달훅 -------------------------*/
+  const [editState, setEditState] = useState<boolean>(false);
+  // 댓글 수정 모달창 이벤트
+  const onEditclick = () => {
+    setEditState(!editState)
+  }
+  // 댓글 수정 체인지
+  const handleEditStoryChange = (html: any) => {
+    setMsgEditorHtml(html);
+  }
+
+
+  // 댓글 수정 이벤트
+  const handleUpdateClick = (e: React.FormEvent<HTMLInputElement>): void => {
+    e.preventDefault();
+    axios.defaults.headers['Authorization'] = `Bearer ${localStorage.getItem("token")}`
+    if (msgEditorHtml !== "") {
+      axios
+        .post(`https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/update-msgData/${e.currentTarget.id}`, {
+          msg: msgEditorHtml
+        })
+        .then((res) => {
+          console.log(res.status)
+          EdionReset()
+          onEditclick()
+          reRending()
+        })
+        .catch((err) => console.log("err:" + err));
+      onReset();
+    }
+  };
+
+
+
+
+
+
+  /*------ 댓글수정모달훅 -------------------------*/
   //comment Actions
   const actions: any = [
     <span id={datas.msgId} onClick={handleLike} className="iLike"
       style={{ cursor: 'pointer' }}> 좋아요 ♥︎ {datas.goodLike}</span>,
     <span onClick={handleReplyOpen} key="comment-basic-reply-to">댓글 등록</span>,
     <span onClick={onEditclick} className="edit_btn" style={{ cursor: 'pointer' }}>수정</span>,
-    <span onClick={onDeletelick} className="delete_btn" style={{ cursor: 'pointer' }}>삭제</span>,
+    <span onClick={onDeleteClick} className="delete_btn" style={{ cursor: 'pointer' }}>삭제</span>,
     <div onClick={handleCommentOpen} className="comment_btn"
       style={{ cursor: 'pointer' }}>댓글({datas.comments.length})</div>
   ]
+  // incode HTML
+  const changeHtml: any = [
+    <div dangerouslySetInnerHTML={{ __html: datas.msg }}></div>
+  ]
+
+
+
 
   return (
     <CommentSwappar >
@@ -75,7 +142,7 @@ const Reply = ({ datas,
         avatar={
           <Avatar alt={datas.userName} src="/static/images/avatar/1.jpg" />
         }
-        content={datas.msg}
+        content={changeHtml}
         datetime={
           <Tooltip title={moment().subtract(1, 'hour').format('YYYY-MM-DD HH:mm:ss')}>
             <span>{time.fromNow()}</span>
@@ -92,14 +159,32 @@ const Reply = ({ datas,
             )
             }</List>
         }
-        <AddLike handleLike={handleLike} /*msgid={datas.msgId}*/ />
-        <DeleteModal onDeletelick={onDeletelick} deleteModalState={deleteModalState}
-          handleMsgDelete={handleMsgDelete} msgid={datas.msgId} />
+        <AddLike handleLike={handleLike} />
+
+        {/* EditModal */}
+
         <EditModal onEditclick={onEditclick} editState={editState} handleUpdateClick={handleUpdateClick}
-          handleEditStoryChange={handleEditStoryChange} msgEditorHtml={msgEditorHtml} /*msgid={datas.msgId}*/ />
+          handleEditStoryChange={handleEditStoryChange} msgEditorHtml={msgEditorHtml} msgid={datas.msgId} />
       </Comment>
 
+      {/* deleteModal */}
+
+      {deleteModalState &&
+        <Modal>
+          <div id="myModal" className="authModal">
+            <div className="modal-content">
+              <span className="close" onClick={onDeleteClick}>&times;</span>
+              <p>삭제하시겠습니까?</p>
+              <Button
+                onClick={handleMsgDelete} id={datas.msgId}>예</Button>
+              <Button onClick={onDeleteClick}>아니오</Button>
+            </div>
+          </div>
+        </Modal>
+      }
+
       {/*Comment Form */}
+
       {replyOpen &&
         <FormWapper>
           <Form>
@@ -114,7 +199,6 @@ const Reply = ({ datas,
           </Form>
         </FormWapper>
       }
-
     </CommentSwappar >
   )
 }
