@@ -1,6 +1,7 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import Nav from '../components/Nav'
+import React, { useState } from 'react';
+import Navbar from '../components/common/navbar'
+import Siderbar from '../components/common/siderbar'
 import styled from 'styled-components'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
@@ -77,10 +78,17 @@ const IDK = () => {
         <Button onClick={handleClose}>알았어요!</Button>
       </div>
     );
-    
-    return (
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+  const toggle = () => {
+    setIsOpen(!isOpen)
+  }
+
+  return (
+    <>
+      <Navbar toggle={toggle}/>
+      <Siderbar isOpen={isOpen} toggle={toggle} />
     <Wrapper>
-        <Nav/>
+      
         <IDKBox>
             <h1 className="textBox">하나도 모르겠어요!</h1>
     <div className={classes.root}>
@@ -120,8 +128,10 @@ const IDK = () => {
         </Modal>
 
     </ButtonArea>
-    </IDKBox>
-    </Wrapper>
+        </IDKBox>
+      </Wrapper>
+    
+      </>
     )
   }
 
