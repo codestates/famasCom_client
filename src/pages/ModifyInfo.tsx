@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { createStyles, makeStyles, Theme, withStyles } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme ,withStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import ReplyIcon from '@material-ui/icons/Reply';
@@ -27,97 +27,101 @@ import { Link as LinkR } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 //
 function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
+    return Math.round(Math.random() * 20) - 10;
+    }
+  
+  function getModalStyle() {
+    const top = 50 + rand();
+    const left = 50 + rand();
+  
+    return {
+      top: `${top}%`,
+      left: `${left}%`,
+      transform: `translate(-${top}%, -${left}%)`,
+    };
+    }
+  
+  const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+      root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        width: 500,
+        flexDirection: 'column',
+        justifyContent: 'space-even'
+      },
+      '& > *': {
+        margin: theme.spacing(1),
+      },
+      margin: {
+        margin: theme.spacing(1),
+      },
+      input: {
+        display: 'none',
+      },
+      button: {
+        margin: theme.spacing(1),
+        height: 55,
+        width: 200,
+        fontSize: 18,
+        background: "#01bf71",
+        color:"#010606"
+        
+      },
+      textField: {
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        width: '25ch',
+      },
+      head:{
+        padding:'2em'
+      },
+      heading: {
+        fontSize: theme.typography.pxToRem(25),
+        flexBasis: '33.33%',
+        flexShrink: 0,
+      },
+      body: {
+        fontSize: theme.typography.pxToRem(20),
+        flexBasis: '33.33%',
+        flexShrink: 0,
+        padding:'1em 2em'
+      },
+      paper: {
+        position: 'absolute',
+        width: 400,
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+      },
+      arrow: {
+        color: theme.palette.common.black,
+      },
+      tooltip: {
+        backgroundColor: theme.palette.common.black,
+      },
+    }),
+  );
 
-function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      width: 500,
-      flexDirection: 'column',
-      justifyContent: 'space-even'
-    },
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-    margin: {
-      margin: theme.spacing(1),
-    },
-    input: {
-      display: 'none',
-    },
-    button: {
-      margin: theme.spacing(1),
-      height: 55,
-      width: 200,
-      fontSize: 18
-    },
-    textField: {
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
-      width: '25ch',
-    },
-    head: {
-      padding: '2em'
-    },
-    heading: {
-      fontSize: theme.typography.pxToRem(25),
-      flexBasis: '33.33%',
-      flexShrink: 0,
-    },
-    body: {
-      fontSize: theme.typography.pxToRem(20),
-      flexBasis: '33.33%',
-      flexShrink: 0,
-      padding: '1em 2em'
-    },
-    paper: {
-      position: 'absolute',
-      width: 400,
-      backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
-      boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
-    },
-    arrow: {
-      color: theme.palette.common.black,
-    },
+  const HtmlTooltip = withStyles((theme: Theme) => ({
     tooltip: {
-      backgroundColor: theme.palette.common.black,
+      backgroundColor: '#f5f5f9',
+      color: 'rgba(0, 0, 0, 0.87)',
+      maxWidth: 220,
+      fontSize: theme.typography.pxToRem(12),
+      border: '1px solid #dadde9',
+      right:'80%'
     },
-  }),
-);
-
-const HtmlTooltip = withStyles((theme: Theme) => ({
-  tooltip: {
-    backgroundColor: '#f5f5f9',
-    color: 'rgba(0, 0, 0, 0.87)',
-    maxWidth: 220,
-    fontSize: theme.typography.pxToRem(12),
-    border: '1px solid #dadde9',
-    right: '80%'
-  },
-}))(Tooltip);
+  }))(Tooltip);
 
 type ModifyInfoType = {
-  // currentId: string;
-  // currentPassword: string;
-  // currentEmail: string;
-  inputId: string;
-  inputPassword: string;
-  inputName: string;
+    // currentId: string;
+    // currentPassword: string;
+    // currentEmail: string;
+    inputId: string;
+    inputPassword: string;
+    inputName: string;
 }
 
 export default function ModifyInfo() {
@@ -178,52 +182,100 @@ export default function ModifyInfo() {
             await axios.post('https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/delete-userData/');
             await history.push("/main")
         }
-
     }
-  }
-  console.log(infoModify);
-  const inputModifyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.currentTarget.id === 'inputModifyId') {
-      setInfoModify(Object.assign({}, infoModify, { inputId: e.currentTarget.value }));
-      console.log("별명은요>>>>>>>>>", e.currentTarget.value)
-    } else if (e.currentTarget.id === 'inputModifyPassword') {
-      setInfoModify(Object.assign({}, infoModify, { inputPassword: e.currentTarget.value }));
-      console.log("비밀번호는요>>>>>>>>>", e.currentTarget.value)
-    } else if (e.currentTarget.id === 'inputModifyName') {
-      setInfoModify(Object.assign({}, infoModify, { inputName: e.currentTarget.value }));
-      console.log("본명은요>>>>>>>>>", e.currentTarget.value)
+    console.log(infoModify);
+    const inputModifyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.currentTarget.id === 'inputModifyId') {
+            setInfoModify(Object.assign({}, infoModify, { inputId: e.currentTarget.value }));
+            console.log("별명은요>>>>>>>>>",e.currentTarget.value)
+        } else if (e.currentTarget.id === 'inputModifyPassword') {
+            setInfoModify(Object.assign({}, infoModify, { inputPassword: e.currentTarget.value }));
+            console.log("비밀번호는요>>>>>>>>>",e.currentTarget.value)
+        } else if (e.currentTarget.id === 'inputModifyName') {
+            setInfoModify(Object.assign({}, infoModify, { inputName: e.currentTarget.value }));
+            console.log("본명은요>>>>>>>>>",e.currentTarget.value)
+        }
+    };
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const toggle = () => {
+      setIsOpen(!isOpen)
     }
-  };
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const toggle = () => {
-    setIsOpen(!isOpen)
-  }
   return (
     <>
-      <Navbar toggle={toggle} />
+      <Navbar toggle={toggle}/>
       <Siderbar isOpen={isOpen} toggle={toggle} />
       <InfoSection />
       <MyInfoTemplateBlock>
         <div className="border">
-          <WhiteBox>
-            <div className={classes.root}>
-              <ListItem>
-                <ListItemAvatar>
-                  <Avatar>
-                    <ImageIcon />
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText primary="사진" secondary="파일명" />
-                <>
-                  <input accept="image/*" className={classes.input} id="icon-button-file" type="file" />
-                  <label htmlFor="icon-button-file">
-                    <IconButton color="primary" aria-label="upload picture" component="span">
-                      <PhotoCamera />
-                    </IconButton>
-                  </label>
-                </>
-              </ListItem>
-
+      <WhiteBox>
+        <div className={classes.root}>
+        <ListItem>
+        <ListItemAvatar>
+          <Avatar>
+            <ImageIcon />
+          </Avatar>
+        </ListItemAvatar>
+            <ListItemText primary="사진" secondary="파일명" />
+              <>
+              <input accept="image/*" className={classes.input} id="icon-button-file" type="file" />
+              <label htmlFor="icon-button-file">
+              <IconButton color="primary" aria-label="upload picture" component="span">
+                <PhotoCamera />
+              </IconButton>
+              </label>
+              </>
+          </ListItem>
+        
+          <Divider variant="inset" component="li" style={{ listStyle: 'none' }} />
+      <div>
+        <TextField
+              id="inputModifyName"
+              label="본명"
+              style={{ margin: 8 }}
+              placeholder="본명을 입력해 주세요."
+              fullWidth
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+            }}
+            onChange={inputModifyChange}
+            value={infoModify.inputName}
+            type="text"
+            />
+          </div>
+          <div>
+          <TextField
+              id="inputModifyId"
+            label="별명"
+            style={{ margin: 8 }}
+            placeholder="별명을 입력해 주세요."
+            helperText="영어도 사용가능합니다."
+            fullWidth
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            onChange={inputModifyChange}
+            value={infoModify.inputId}
+            type="text"
+          />
+        </div>
+        <div>
+            <TextField
+              id="inputModifyPassword"
+                label="비밀번호"
+                style={{ margin: 8 }}
+                placeholder="변경할 비밀번호를 입력해 주세요."
+                fullWidth
+                margin="normal"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                onChange={inputModifyChange}
+                value={infoModify.inputPassword}
+                type="text"
+              />
+          </div>
 
           <ButtonBox>
           <Btn id='modifyBtn'>
@@ -258,16 +310,15 @@ export default function ModifyInfo() {
           {body}
         </Modal>
         <Secession infoModifyHandler={infoModifyHandler} handleSecessionOpen={handleSecessionOpen} secessionState={secessionState} />
-
           </WhiteBox>
-
-        </div>
-
+          
+          </div>
+          
       </MyInfoTemplateBlock>
-    </>
-  );
+      </>
+        );
 }
-
+    
 
 
 const MyInfoTemplateBlock = styled.div`
@@ -371,4 +422,4 @@ color: #010606;
   color: #fff;
 }
 `
-
+//다시 머지
