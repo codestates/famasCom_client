@@ -22,7 +22,10 @@ import Navbar from '../components/common/navbar'
 import Siderbar from '../components/common/siderbar'
 import Tooltip, { TooltipProps } from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
-
+import InfoSection from 'components/myinfoSection/InfoSection'
+import { Link as LinkR } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
+//
 function rand() {
     return Math.round(Math.random() * 20) - 10;
     }
@@ -60,7 +63,10 @@ function rand() {
         margin: theme.spacing(1),
         height: 55,
         width: 200,
-        fontSize: 18
+        fontSize: 18,
+        background: "#01bf71",
+        color:"#010606"
+        
       },
       textField: {
         marginLeft: theme.spacing(1),
@@ -127,6 +133,7 @@ export default function ModifyInfo() {
         inputPassword: '',
         inputName:''
     });
+    let history = useHistory();
     const [secessionState, setSecessionState] = useState<boolean>(false);
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
@@ -143,7 +150,7 @@ export default function ModifyInfo() {
         <Button onClick={handleClose}>알았어요!</Button>
         </div>
     );
-    const token = localStorage.getItem("token")
+ 
     console.log(localStorage.getItem("token"))
     
     // useEffect(() => {
@@ -167,11 +174,13 @@ export default function ModifyInfo() {
                 nickName: infoModify.inputId,
                 password: infoModify.inputPassword
             });
-            // setInfoModify('')
-        } else if (e.currentTarget.className === 'secession_btn') {
+          await setInfoModify({ inputId: '', inputPassword: '', inputName: '' });
+
+        }
+        else if (e.currentTarget.className === 'secession_btn') {
             axios.defaults.headers['Authorization'] = `Bearer ${localStorage.getItem("token")}`
             await axios.post('https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/delete-userData/');
-            // history.push("/main")
+            await history.push("/main")
         }
     }
     console.log(infoModify);
@@ -195,6 +204,7 @@ export default function ModifyInfo() {
     <>
       <Navbar toggle={toggle}/>
       <Siderbar isOpen={isOpen} toggle={toggle} />
+      <InfoSection />
       <MyInfoTemplateBlock>
         <div className="border">
       <WhiteBox>
@@ -268,27 +278,11 @@ export default function ModifyInfo() {
           </div>
 
           <ButtonBox>
-          <Button
-                                variant="contained"
-                                id='modifyBtn'
-            color="primary"
-            size="large"
-            className={classes.button}
-            startIcon={<ReplyIcon />}
-          >
-                <Link to="/" style={{ textDecoration: 'none' }}>나가기</Link>
-          </Button>   
-          <Button
-            variant="contained"
-            color="primary"
-                                size="large"
-                                id='modifyBtn'
-            className={classes.button}
-            startIcon={<SaveIcon />}
-            onClick={infoModifyHandler}
-          >
-              저장하기
-          </Button>
+          <Btn id='modifyBtn'>
+          <BtnLink to="/"> <ReplyIcon style={{fontSize:'20px'}} /> &nbsp; 나가기</BtnLink>
+          </Btn>   
+          <Btn id='modifyBtn'
+            onClick={infoModifyHandler} > <SaveIcon /> &nbsp; 저장하기</Btn>
           </ButtonBox>
           
         </div>
@@ -303,7 +297,7 @@ export default function ModifyInfo() {
           </React.Fragment>
         }
       >
-        <div onClick={handleOpen}><HelpIcon/> 도움말</div>
+        <div onClick={handleOpen}><HelpIcon/>  도움말</div>
       </HtmlTooltip>
         
         </Footer2>
@@ -333,7 +327,7 @@ left: 0;
 right: 0;
 top: 0;
 bottom: 0;
-background: transparent 100%;
+background: #fff;
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -342,7 +336,7 @@ align-items: center;
   width: 100%;
   height: 580px;
   overflow: hidden;
-  background-color: #f5f5f5;
+  background-color: #fff;
 }
 `;
 
@@ -363,17 +357,19 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
+margin-top: 1rem;
 `;
 
 const Footer1 = styled.div`
 margin-top: 4rem;
 font-size: 1.125rem;
 text-align: right;
+cursor: pointer;
 a {
   color: gray;
   text-decoration: none;
   &:hover {
-    color: black
+    color: #01bf71;
   }
 }
 `;
@@ -382,11 +378,48 @@ const Footer2 = styled.div`
 margin-top: -1.9rem;
 font-size: 1.125rem;
 text-align: left;
+cursor: pointer;
 a {
   color: gray;
   text-decoration: none;
   &:hover {
-    color: black
+    color: #01bf71;
   }
 }
 `;
+
+const Btn = styled.nav`
+display: flex;
+align-items: center;
+border-radius: 5px;
+background: #01bf71;
+white-space: nowrap;
+padding: 10px 22px;
+margin-right: 10px;
+margin-left: 10px;
+color: #010606;
+font-size: 1.3rem;
+outline: none;
+border: none;
+cursor: pointer;
+text-decoration: none;
+transition: all 0.2s ease-in-out;
+
+&:hover {
+  transition: all 0.2s ease-in-out;
+  background: #1c2237;
+  color: #fff;
+}
+
+@media screen and (max-width: 1000px) {
+  display: none;
+}
+`
+const BtnLink = styled(LinkR)`
+color: #010606;
+&:hover {
+  
+  color: #fff;
+}
+`
+

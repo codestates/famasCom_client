@@ -1,51 +1,48 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css'; 
+import 'react-quill/dist/quill.snow.css';
 import 'antd/dist/antd.css';
 import { Button } from 'antd';
 
 type EditFormProps = {
- 
+  handleEditStoryChange: (html: any) => void;
   editState: boolean;
   onEditclick: () => void;
-  handleUdateClick: (e: React.MouseEvent<HTMLInputElement>) => void;
+  handleUpdateClick: (e: React.MouseEvent<HTMLInputElement>) => void;
+  msgEditorHtml: string;
   msgid: string;
 };
 
-export default function EditModal({ editState, onEditclick, handleUdateClick, msgid}: EditFormProps) {
-  const [editorHtml, setEditorData] = useState<string>('');
-  const handleEditStoryChange = (html:any) => {
-    setEditorData(html);
-    console.log(html)
-  }; 
+export default function EditModal({ editState, onEditclick, handleUpdateClick, handleEditStoryChange, msgEditorHtml, msgid }: EditFormProps) {
 
   if (editState) {
     return (
       <Modal>
-      <div id="myModal" className="authModal">
-        <div className="modal-content">
+        <div id="myModal" className="authModal">
+          <div className="modal-content">
             <QuillWrapper>
-              <ReactQuill theme="snow" value={editorHtml} onChange={handleEditStoryChange} />
+              <ReactQuill theme="snow" value={msgEditorHtml} onChange={handleEditStoryChange} />
             </QuillWrapper>
-            <Button type="primary" size="large" className="edit_btn" id={msgid} onClick={handleUdateClick}>
-            수정
+            <Button type="primary" size="large" className="edit_btn"
+              id={msgid}
+              onClick={handleUpdateClick}>
+              수정
             </Button>
             &nbsp;&nbsp;
             <Button type="primary" size="large" className="edit_btn" onClick={onEditclick}>
-            취소
+              취소
             </Button>
           </div>
         </div>
-        </Modal>
+      </Modal>
     )
   } else {
     return null
   }
-} 
- 
-const QuillWrapper = styled.div`
+}
 
+const QuillWrapper = styled.div`
 .ql-container {
   min-height: 150px;
   border-radius: 10px;
@@ -54,7 +51,7 @@ const QuillWrapper = styled.div`
   line-height: 1.5;
 }
 .ql-container .ql-blank ::before {
-  left 0px
+  left : 0px
 }
 `;
 
@@ -73,7 +70,6 @@ const Modal = styled.div`
 	background-color: rgb(0, 0, 0); /* Fallback color */
 	background-color: rgba(0, 0, 0, 0.01); /* Black w/ opacity */
 }
-
 /* Modal Content */
 .modal-content {
 	background-color: #fefefe;
@@ -86,7 +82,6 @@ const Modal = styled.div`
   font-size: 25px;
   color: black;
 }
-
 /* The Close Button */
 .close {
 	color: #aaaaaa;
@@ -94,7 +89,6 @@ const Modal = styled.div`
 	font-size: 28px;
 	font-weight: bold;
 }
-
 .close:hover,
 .close:focus {
 	color: #000;

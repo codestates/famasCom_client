@@ -1,13 +1,21 @@
 .home__section {
   color: rgb(250, 250, 250);
   padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .home_container {
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
-  z-index: 1;
-  justify-content: center;
-  margin-left: 40px;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  align-items: center;
+  grid-gap: 16px;
+  padding: 0 50px;
 }
 
 .home__row {
@@ -27,9 +35,12 @@
   margin-bottom: 15px;
   padding-right: 0;
   padding-left: 0;
-  flex: 1;
-  max-width: 50%;
-  flex-basis: 0;
+  max-width: 100%;
+  display: flex;
+
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   margin-right: 1.5rem;
   margin-left: 1.5rem;
 }
@@ -52,18 +63,10 @@
 
 .home_heading {
   margin-bottom: 24px;
-  font-size: 30px;
+  font-size: 27px;
   line-height: 1.1;
   font-weight: 600;
   color: #f7f8fa;
-
-  @media screen and (max-width: 768px) {
-    font-size: 22px;
-  }
-
-  @media screen and (max-width: 480px) {
-    font-size: 15px;
-  }
 }
 
 .dark {
@@ -77,16 +80,8 @@
 .home__subtitle {
   max-width: 350px;
   margin-bottom: 35px;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 24px;
-
-  @media screen and (max-width: 768px) {
-    font-size: 16px;
-  }
-
-  @media screen and (max-width: 480px) {
-    font-size: 11px;
-  }
 }
 
 .home__img-wrapper {
@@ -110,20 +105,31 @@ img {
   display: inline-block;
 }
 
-@media screen and (max-width: 991px) {
-  .container {
-    padding-right: 30px;
-    padding-left: 30px;
+@media screen and (max-width: 1000px) {
+  .home_container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .home__section {
+    height: 1500px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .home__hero-text-wrapper {
-    padding-bottom: 65px;
+  .home__section {
+    height: 2000px;
   }
 
-  .col {
-    max-width: 100%;
-    flex-basis: 100%;
+  .home_container {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+  }
+
+  .home_heading {
+    font-size: 26px;
+  }
+
+  .home__subtitle {
+    font-size: 18px;
   }
 }
+/**/

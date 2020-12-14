@@ -1,94 +1,65 @@
 import React from 'react';
-import styled from 'styled-components';
-import Responsive from '../common/Responsive';
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css'; 
+import 'react-quill/dist/quill.snow.css';
 import Reply from './Reply'
+import Responsive from '../common/Responsive';
+import styled from 'styled-components';
+const EditorBlock = styled(Responsive)`
+padding: 15px;
+outline:#6eb584;
+;`;
+import { EntiryWrapper, QuillWrapper, StyleButton, Line } from "./style/StoryFormstyle.js"
+
 // 댓글 폼을 나타내는 컴포넌트
+
 type StoryFormProps = {
   datas: any;
+  onReset: () => void;
+  reRending: () => void;
   editorHtml: string;
-  editState: boolean;
-  rechatValue: string;
-  deleteModalState: boolean;
-  onDeletelick: () => void;
-  onEditclick: () => void;
-  handleMsgDelete: (e: React.MouseEvent<HTMLButtonElement>)=> void;
-  handleRechatChange: (e: React.ChangeEvent<HTMLInputElement>)=> void;
-  handleUdateClick: (e: React.FormEvent<HTMLInputElement>)=> void;
+  commentValue: string;
+  onHandleChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  handleLike: (e: React.MouseEvent<HTMLInputElement>) => void;
   handleStoryChange: (html: any) => void;
-  handleSubmitClick: (e: React.MouseEvent<HTMLButtonElement>)=> void;
-  handleReChatClick: (e: React.FormEvent<HTMLInputElement>)=> void;
+  handleSubmitClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onsubmit: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-const StoryForm = ({rechatValue, editState, deleteModalState, onDeletelick, onEditclick, handleMsgDelete, handleRechatChange,
-  handleUdateClick, datas, editorHtml, handleStoryChange, handleSubmitClick, handleReChatClick}: StoryFormProps) => {
+const StoryForm = ({
+  datas, editorHtml, handleStoryChange,
+  handleSubmitClick, handleLike, onHandleChange,
+  commentValue, onsubmit, reRending, onReset }: StoryFormProps) => {
 
-  console.log("🚀 ~ file: StoryForm.js ~ line 12 ~ StoryForm ~ datas", datas)
-  
   return (
-    <React.Fragment>
+    <EntiryWrapper>
       <EditorBlock>
         <QuillWrapper>
-          <ReactQuill theme="snow" value={editorHtml} onChange={handleStoryChange} />
+          <ReactQuill theme="snow" value={editorHtml} onChange={handleStoryChange} placeholder={"남기실 글을 입력하세요."} />
         </QuillWrapper>
         <StyleButton onClick={handleSubmitClick}>등록</StyleButton>
       </EditorBlock>
-      <Line><br></br></Line>
-      <Reply datas={datas}
-        handleMsgDelete={handleMsgDelete} deleteModalState={deleteModalState} onDeletelick={onDeletelick}
-        editState={editState} handleUdateClick={handleUdateClick} onEditclick={onEditclick} rechatValue={rechatValue}
-        handleRechatChange={handleRechatChange} handleReChatClick={handleReChatClick}/>
-    </React.Fragment>
-    )
+      <Line></Line>
+
+
+      {/* 메세지를 하나씩!! 뿌려줌 */}
+      {!datas ? <div>
+        데이터를 가져오고있습니다.
+      </div> : datas.sort((one: any, two: any) =>
+        (one.createdAt > two.createdAt ? -1 : 1)).map((item: any) => (
+          <React.Fragment>
+            <Reply datas={item}
+              onReset={onReset}
+              reRending={reRending}
+              onsubmit={onsubmit}
+              onHandleChange={onHandleChange}
+              handleLike={handleLike}
+              commentValue={commentValue}
+            />
+          </React.Fragment>)
+        )}
+    </EntiryWrapper>
+  )
 }
+
 
 export default StoryForm;
-
-const EditorBlock = styled(Responsive)`
-padding-top: 1rem;
-`;
-
-const QuillWrapper = styled.div`
-
-.ql-container {
-  min-height: 50px;
-  border-radius: 10px;
-  padding: 0;
-  font-size: 1.125rem;
-  line-height: 1.5;
-}
-.ql-container .ql-blank ::before {
-  left 0px
-}
-`;
-const StyleButton = styled.button`
-border: none;
-cursor: pointer;
-outline: none;
-margin: 0.6rem 0 0;
-padding-top: 0.75rem;
-padding-bottom: 0.75rem;
-width: 8rem;
-height: 2.75rem;
-border-radius: 4px;
-font-size: 1.125rem;
-font-weight: bold;
-font-family: '맑은 고딕'
-color: black;
-background: #6EB584;
-display: inline-block;
-float: right;
-text-align: center;
-line-height: 22px;
-&:hover {
-  color:blue;
-  border: 2px solid blue;
-}
-`;
-
-const Line = styled.div`
-dispaly: block;
-width: 1022px;
-height: 10px;
-`;

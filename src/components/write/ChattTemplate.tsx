@@ -6,12 +6,12 @@ interface ChattTemplateProps {
   children: any;
 }
 
-const ChattTemplate = ({children}:ChattTemplateProps) => {
+const ChattTemplate = ({ children }: ChattTemplateProps) => {
   return (
     <ChatTemplateBlock>
-        {children}
+      {children}
     </ChatTemplateBlock>
-    )
+  )
 }
 
 export default ChattTemplate;
@@ -26,6 +26,4 @@ background: transparent 75%;
 display: flex;
 flex-direction: column;
 align-items: center;
-}
-`;
-
+`

@@ -11,7 +11,7 @@ import {
   NavBtn,
   NavBtnLink
 } from './NavbarElement'
-
+//
 type navprop = {
   toggle: () => void;
 }
