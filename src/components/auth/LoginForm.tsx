@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import {withRouter} from 'react-router-dom';
+import {Redirect, withRouter} from 'react-router-dom';
 import axios from 'axios';
 import AuthForm from '../auth/AuthForm';
+import { useHistory } from "react-router-dom";
 
 
 type Inputs = { email: string; password: string; }
@@ -10,7 +11,7 @@ const LoginForm = () => {
   const [inputs, setInputs] = useState<Inputs>({ email: '', password: '' });
   const [token, setToken] = useState<string>('');
   const { email, password } = inputs; // 비구조화 할당을 통해 값 추출
- 
+  let history = useHistory();
 
   const onReset = () => {
     setInputs({
@@ -36,12 +37,16 @@ const LoginForm = () => {
           password: password,
         })
       .then((res) => {
-        console.log("login data>>>>>>>>>>>> res.data", res.data.token);
-        setToken(res.data)
+        console.log("login data>>>>>>>>>>>> 응 토큰이야", res.data.token);
+        setToken(res.data.token)
         localStorage.setItem("token" , res.data.token)
       })
       .then(() => {
         console.log("login data>>>>>>>>>>>> token", token);
+        if (localStorage.getItem("token")) {
+          history.push("/");
+        }
+        
       })
       .catch((res) => {
         if (res.status === 409) {

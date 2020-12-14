@@ -60,6 +60,7 @@ const NavContainer = styled.div`
     justify-content: space-between;
     padding-left: 8rem;
     padding-right: 8rem;
+    
 `
 
 const NavLogo = styled.div`

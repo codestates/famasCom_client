@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme ,withStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import ReplyIcon from '@material-ui/icons/Reply';
@@ -18,7 +18,10 @@ import HelpIcon from '@material-ui/icons/Help';
 import { Link } from 'react-router-dom';
 import Modal from '@material-ui/core/Modal';
 import Secession from '../components/myinfo/SecessionModal'
-import Nav from '../components/Nav';
+import Navbar from '../components/common/navbar'
+import Siderbar from '../components/common/siderbar'
+import Tooltip, { TooltipProps } from '@material-ui/core/Tooltip';
+import Typography from '@material-ui/core/Typography';
 
 function rand() {
     return Math.round(Math.random() * 20) - 10;
@@ -86,8 +89,25 @@ function rand() {
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
       },
+      arrow: {
+        color: theme.palette.common.black,
+      },
+      tooltip: {
+        backgroundColor: theme.palette.common.black,
+      },
     }),
   );
+
+  const HtmlTooltip = withStyles((theme: Theme) => ({
+    tooltip: {
+      backgroundColor: '#f5f5f9',
+      color: 'rgba(0, 0, 0, 0.87)',
+      maxWidth: 220,
+      fontSize: theme.typography.pxToRem(12),
+      border: '1px solid #dadde9',
+      right:'80%'
+    },
+  }))(Tooltip);
 
 type ModifyInfoType = {
     // currentId: string;
@@ -167,10 +187,14 @@ export default function ModifyInfo() {
             console.log("본명은요>>>>>>>>>",e.currentTarget.value)
         }
     };
-    
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const toggle = () => {
+      setIsOpen(!isOpen)
+    }
   return (
     <>
-        <Nav />
+      <Navbar toggle={toggle}/>
+      <Siderbar isOpen={isOpen} toggle={toggle} />
       <MyInfoTemplateBlock>
         <div className="border">
       <WhiteBox>
@@ -272,7 +296,16 @@ export default function ModifyInfo() {
         회원 탈퇴
         </Footer1>
         <Footer2>
+        <HtmlTooltip
+        title={
+          <React.Fragment>
+            <Typography color="inherit">도움말을 클릭하시면 회원정보 수정 방법을 보실수 있어요!</Typography>
+          </React.Fragment>
+        }
+      >
         <div onClick={handleOpen}><HelpIcon/> 도움말</div>
+      </HtmlTooltip>
+        
         </Footer2>
         <Modal
           open={open}
@@ -284,7 +317,9 @@ export default function ModifyInfo() {
         </Modal>
         <Secession infoModifyHandler={infoModifyHandler} handleSecessionOpen={handleSecessionOpen} secessionState={secessionState} />
           </WhiteBox>
+          
           </div>
+          
       </MyInfoTemplateBlock>
       </>
         );
@@ -293,7 +328,7 @@ export default function ModifyInfo() {
 
 
 const MyInfoTemplateBlock = styled.div`
-position: absolute;
+position: relative;
 left: 0;
 right: 0;
 top: 0;
@@ -312,9 +347,9 @@ align-items: center;
 `;
 
 const WhiteBox = styled.div`
-position: absolute;
+position: relative;
 left: 33%;
-top: 24.5%;
+top: 7%;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
   padding: 2rem;
   width: 600px;
