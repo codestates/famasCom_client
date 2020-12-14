@@ -1,123 +1,205 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import { CommentSwappar, FormWapper } from "./style/ReplyStyle"
 import moment from 'moment';
+import axios from 'axios';
 import 'antd/dist/antd.css';
 import Avatar from '@material-ui/core/Avatar';
-import { Comment,Tooltip, Button, Form, List, Input  } from 'antd'
-import DeleteModal from './DeleteModal'
+
+import { Comment, Tooltip, Form, Button, List, Input } from 'antd'
+import { Modal } from './DeleteModal'
 import EditModal from './EditModal'
+import { type } from 'os';
+import { StyleButton } from "./style/StoryFormstyle.js"
+import AddLike from './AddLike';
 
-const Replying = styled.div`
-.reply {
-  text-decoration: none;
-  cursor: pointer;
-}
-`;
-
-const Footer = styled.div`
-display: flex;
-`;
-
-const Line = styled.div`
-dispaly: block;
-width: 1022px;
-height: 10px;
-color: #fff;
-`;
 
 type StoryFormProps = {
   datas: any;
-  editState: boolean;
-  rechatValue: string;
-  deleteModalState: boolean;
-  onDeletelick: () => void;
-  onEditclick: () => void;
-  handleMsgDelete: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  handleRechatChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleUdateClick: (e: React.FormEvent<HTMLInputElement>) => void;
-  handleReChatClick: (e: React.FormEvent<HTMLInputElement>) => void;
+  onReset: () => void;
+  commentValue: string;
+  reRending: () => void;
+  handleLike: (e: React.MouseEvent<HTMLInputElement>) => void;
+  onHandleChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onsubmit: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-const { TextArea } = Input;
+const { TextArea } = Input
 
 const Reply = ({ datas,
-  deleteModalState, onDeletelick, handleMsgDelete,
-  handleUdateClick, editState, onEditclick}: StoryFormProps) => {
-  
-  console.log("datas!!!!!!!!!!!", datas)
+  handleLike, onHandleChange, commentValue,
+  onsubmit, reRending, onReset }: StoryFormProps) => {
 
-  const [replyState, setReplyState] = useState<boolean>(false);
-  const handleReplyOpen =  (e: React.MouseEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    setReplyState(!replyState);
-    }
-  
-    return (
-      datas === null ? '' : datas.map((item:any) => {
-        console.log(item)
-        const actions:any = [
-          <span className="iLike" style={{ cursor: 'pointer' }}> 좋아요 ♥︎ {item.like}</span>,
-          <span onClick={handleReplyOpen} key="comment-basic-reply-to">댓글 등록</span>,
-          <span className="edit_btn" onClick={onEditclick} style={{ cursor: 'pointer' }}>수정</span>,
-          <span className="delete_btn" key={item.msgId} onClick={onDeletelick} style={{ cursor: 'pointer' }}>삭제</span>
-        ];
-        return (
-          <React.Fragment>
-            <Comment
-              key={item.msgId}
-              // autor={item.userName}
-              actions={actions}
-              avatar={
-                <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-              }
-              content={
-                <iframe className="story" frameBorder="0" width={100} srcDoc={item.msg}></iframe>
-              }
-              datetime={
-                <Tooltip title={moment().subtract(1, 'days').format('YYYY-MM-DD HH:mm:ss')}>
-                  <span>{moment().subtract(1, 'days').fromNow()}</span>
-                </Tooltip>
-              } >
-              {/* {item.comments.length === 0 ? <></> :
-                item.comments.map((cmt:any) => {
-                  console.log("cmt>>>>>>>>>>>>>>>>>>>🐶", cmt)
-                  return (
-                    <Comment
-                    key = {cmt.index}
-                    actions = {actions}
-                    avatar={<Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />}
-                    author = {cmt[0]}
-                    content = {cmt[1]}
-                    datetime={
-                  <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
-                    <span>{moment().fromNow()}</span>
-                  </Tooltip>
-                }  />
-                  )
-                })
-              } */}
-              <DeleteModal onDeletelick={onDeletelick} deleteModalState={deleteModalState} handleMsgDelete={handleMsgDelete} msgid={item.msgId} />
-              <EditModal msgid={item.msgId} onEditclick={onEditclick} editState={editState} handleUdateClick={handleUdateClick} />
-              <Footer>
-                {replyState &&
-                  <>
-                    <Form.Item>
-                      <TextArea rows={4} /*onChange={onHandleChange} value={CommentValue} */ />
-                    </Form.Item>
-                    <Form.Item>
-                      <Button /*htmlType="submit" loading={submitting} /*onClick={onsubmit}*/ type="primary">
-                        댓글 등록
-            </Button>
-                    </Form.Item>
-                  </>}
-        
-              </Footer>
-            
-            </Comment>
-            <Line><br></br></Line>
-          </React.Fragment>
-        )
-      })
-    )
+  /*---------------------------------------------------*/
+
+  const time = moment(datas.createdAt, "YYYYMMDD")
+
+  //대댓글 랜더 관련 훅 
+  const [commentOpen, setCommentOpen] = useState<boolean>(false);
+  //대댓글 랜더 관련 토글
+  const handleCommentOpen = () => {
+    setCommentOpen(!commentOpen);
   }
-  export default Reply
+
+  //대댓글 관련 
+  /*!------ 대댓글모달훅 -------------------------*/
+  //훅
+  const [replyOpen, setReplyOpen] = useState<boolean>(false);
+
+  //토글 
+  const handleReplyOpen = () => {
+    setReplyOpen(!replyOpen);
+  }
+  /*------ 대댓글모달훅 -------------------------*/
+
+  // 삭제 관련 
+  /*!------ 댓글삭제모달훅 -------------------------*/
+  const [deleteModalState, setDeleteModalState] = useState<boolean>(false);
+  const onDeleteClick = () => {
+    setDeleteModalState(!deleteModalState)
+  }
+  //댓글 삭제 이벤트
+  const handleMsgDelete = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    await axios
+      .post(`https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/delete-msgData/${e.currentTarget.id}`)
+      .then((res) => {
+        console.log(res.status)
+        onDeleteClick()
+        reRending()
+      })
+      .catch((err) => console.log("err가:" + err));
+  };
+  /*------ 댓글삭제 -------------------------*/
+  /*!------ 댓글수정 -------------------------*/
+  /*!------ 댓글수정인풋데이터훅 -------------------------*/
+  const [msgEditorHtml, setMsgEditorHtml] = useState<string>('');
+  //수정 에디터 리셋
+  const EdionReset = () => {
+    setMsgEditorHtml('')
+  }
+  /*!------ 댓글수정모달훅 -------------------------*/
+  const [editState, setEditState] = useState<boolean>(false);
+  // 댓글 수정 모달창 이벤트
+  const onEditclick = () => {
+    setEditState(!editState)
+  }
+  // 댓글 수정 체인지
+  const handleEditStoryChange = (html: any) => {
+    setMsgEditorHtml(html);
+  }
+
+
+  // 댓글 수정 이벤트
+  const handleUpdateClick = (e: React.FormEvent<HTMLInputElement>): void => {
+    e.preventDefault();
+    axios.defaults.headers['Authorization'] = `Bearer ${localStorage.getItem("token")}`
+    if (msgEditorHtml !== "") {
+      axios
+        .post(`https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/update-msgData/${e.currentTarget.id}`, {
+          msg: msgEditorHtml
+        })
+        .then((res) => {
+          console.log(res.status)
+          EdionReset()
+          onEditclick()
+          reRending()
+        })
+        .catch((err) => console.log("err:" + err));
+      onReset();
+    }
+  };
+
+
+
+
+
+
+  /*------ 댓글수정모달훅 -------------------------*/
+  //comment Actions
+  const actions: any = [
+    <span id={datas.msgId} onClick={handleLike} className="iLike"
+      style={{ cursor: 'pointer' }}> 좋아요 ♥︎ {datas.goodLike}</span>,
+    <span onClick={handleReplyOpen} key="comment-basic-reply-to">댓글 등록</span>,
+    <span onClick={onEditclick} className="edit_btn" style={{ cursor: 'pointer' }}>수정</span>,
+    <span onClick={onDeleteClick} className="delete_btn" style={{ cursor: 'pointer' }}>삭제</span>,
+    <div onClick={handleCommentOpen} className="comment_btn"
+      style={{ cursor: 'pointer' }}>댓글({datas.comments.length})</div>
+  ]
+  // incode HTML
+  const changeHtml: any = [
+    <div dangerouslySetInnerHTML={{ __html: datas.msg }}></div>
+  ]
+
+
+
+
+  return (
+    <CommentSwappar >
+      <Comment
+        actions={actions}
+        key={datas.msgId}
+        author={datas.userName}
+        avatar={
+          <Avatar alt={datas.userName} src="/static/images/avatar/1.jpg" />
+        }
+        content={changeHtml}
+        datetime={
+          <Tooltip title={moment().subtract(1, 'hour').format('YYYY-MM-DD HH:mm:ss')}>
+            <span>{time.fromNow()}</span>
+          </Tooltip>
+        } >
+        {/* Comment Lists  */}
+        {commentOpen &&
+          <List>
+            {datas.comments.map((cmt: any) => (
+              <Comment avatar={
+                <Avatar alt={datas.userName} src="/static/images/avatar/3.jpg" />
+              } author={cmt[0]} content={cmt[1]} />
+            )
+            )
+            }</List>
+        }
+        <AddLike handleLike={handleLike} />
+
+        {/* EditModal */}
+
+        <EditModal onEditclick={onEditclick} editState={editState} handleUpdateClick={handleUpdateClick}
+          handleEditStoryChange={handleEditStoryChange} msgEditorHtml={msgEditorHtml} msgid={datas.msgId} />
+      </Comment>
+
+      {/* deleteModal */}
+
+      {deleteModalState &&
+        <Modal>
+          <div id="myModal" className="authModal">
+            <div className="modal-content">
+              <span className="close" onClick={onDeleteClick}>&times;</span>
+              <p>삭제하시겠습니까?</p>
+              <Button
+                onClick={handleMsgDelete} id={datas.msgId}>예</Button>
+              <Button onClick={onDeleteClick}>아니오</Button>
+            </div>
+          </div>
+        </Modal>
+      }
+
+      {/*Comment Form */}
+
+      {replyOpen &&
+        <FormWapper>
+          <Form>
+            <Form.Item>
+              <Avatar alt={datas.userName} src="/static/images/avatar/3.jpg" />
+              <TextArea rows={1} onChange={onHandleChange} value={commentValue} />
+              <Button style={{ backgroundColor: '#6eb584', color: 'black' }}
+                htmlType="submit" loading={false} type="primary" onClick={onsubmit} id={datas.msgId}>
+                댓글 등록
+            </Button>
+            </Form.Item>
+          </Form>
+        </FormWapper>
+      }
+    </CommentSwappar >
+  )
+}
+export default Reply
