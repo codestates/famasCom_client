@@ -33,8 +33,10 @@ const AuthForm = ({ value, email, password, handleSubmit, handleChange }: typePr
         <StyledInput autoComplete="username" name="email" value={email} onChange={handleChange} placeholder="첫 번째! 계정을 입력해 주세요." />
         <StyledInput autoComplete="new-password" name="password" type="password" value={password} onChange={handleChange} placeholder="두 번째! 비밀번호를 입력해 주세요." />
         <Button onClick={handleSubmit}>{text}</Button>
-        <Kakao />
       </form>
+
+      <Line />
+      <Kakao />
       <Footer>
         {value === "login" ? (<Link to="/signup">회원가입</Link>) : (<Link to="/login">로그인</Link>)}
       </Footer>
@@ -83,3 +85,11 @@ width: 100%;
   margin-top: 1rem;
 }
 `;
+
+const Line = styled.div`
+  border-radius: 5px;
+  background-color: #eaecec;
+  display: block;
+  width: 100%;
+  height: 1px;
+`
