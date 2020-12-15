@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 //
 const buttonStyle = css`
@@ -17,7 +17,9 @@ font-weight: bold;
 font-family: '맑은 고딕';
 line-height: 1.5;
 color: black;
-background: #01BF71;
+border:black;
+background: #fff;
+
 &:hover {
   color:blue;
   border: 2px solid blue;

@@ -6,12 +6,11 @@ import { Link } from 'react-router-dom';
 interface AuthTemplateProps {
   children: any;
 }
-const AuthTemplate = ({children}:AuthTemplateProps) => {
+const AuthTemplate = ({ children }: AuthTemplateProps) => {
   return (
     <>
     <Icon to="/">fama's</Icon>
     <AuthTemplateBlock>
-      
       <WhiteBox>
         <div className="logo-area">
           <Link to="/" style={{ textDecoration: 'none', color: '#01BF71' }}>fama's Com</Link>
@@ -37,7 +36,7 @@ align-items: center;
 `;
 const WhiteBox = styled.div`
   .logo-area {
-    dispaly: block;
+    display: block;
     padding-bottom: 2rem;
     text-align: center;
     font-size: 2rem;
