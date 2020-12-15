@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { GlobalStyles } from './pages/Global-style';
-import { Main, Login, Signup, ComExplain, Community, MobExplain, ModifyInfo, IDK} from './pages/Index';
+import { Main, Login, Signup, ComExplain, Community, MobExplain, ModifyInfo, IDK, About } from './pages/Index';
 
 import {
   BrowserRouter as Router,
@@ -22,6 +22,7 @@ const App: React.FC = () => {
         <Route exact path="/Signup" component={Signup} />
         <Route exact path="/Community" component={Community} />
           <Route exact path="/ModifyInfo" component={ModifyInfo} />
+          <Route exact path="/About" component={About} />
       </Router>
       </div>
       </>
