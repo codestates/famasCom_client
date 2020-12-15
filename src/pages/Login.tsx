@@ -8,4 +8,4 @@ const Login = () => {
         </AuthTemplate>
     )
 }
-export default Login;
+export default Login;//

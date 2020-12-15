@@ -43,7 +43,6 @@ export default function EditModal({ editState, onEditclick, handleUpdateClick, h
 }
 
 const QuillWrapper = styled.div`
-
 .ql-container {
   min-height: 150px;
   border-radius: 10px;
@@ -71,7 +70,6 @@ const Modal = styled.div`
 	background-color: rgb(0, 0, 0); /* Fallback color */
 	background-color: rgba(0, 0, 0, 0.01); /* Black w/ opacity */
 }
-
 /* Modal Content */
 .modal-content {
 	background-color: #fefefe;
@@ -84,7 +82,6 @@ const Modal = styled.div`
   font-size: 25px;
   color: black;
 }
-
 /* The Close Button */
 .close {
 	color: #aaaaaa;
@@ -92,7 +89,6 @@ const Modal = styled.div`
 	font-size: 28px;
 	font-weight: bold;
 }
-
 .close:hover,
 .close:focus {
 	color: #000;

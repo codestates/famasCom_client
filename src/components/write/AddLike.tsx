@@ -11,3 +11,4 @@ export default function AddLike({ handleLike }: addLikeProps) {
         //id={msgid} 
         onClick={handleLike}></Button>
 }
+

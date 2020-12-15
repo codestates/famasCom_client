@@ -42,7 +42,7 @@
 }
 
 .top-line {
-  color: #fff;
+  color: #1c2237;
   font-size: 22px;
   line-height: 16px;
   font-weight: 750;
@@ -60,7 +60,7 @@
 }
 
 ._dark {
-  color: #fff;
+  color: #1c2237;
 }
 
 .darkBg {
@@ -110,3 +110,4 @@ img {
     flex-basis: 100%;
   }
 }
+/**/

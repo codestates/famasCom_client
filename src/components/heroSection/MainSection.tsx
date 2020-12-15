@@ -15,7 +15,7 @@ type IndexProps = {
   alt: string;
   imgStart: string;
 }
-
+//
 const MainSection = ({ lightBg, topLine, lightText, lightTextDesc, headline, description,
   buttonLabel, img, alt, imgStart
 }: IndexProps) => {
@@ -65,7 +65,7 @@ const MainSection = ({ lightBg, topLine, lightText, lightTextDesc, headline, des
 export default MainSection
 
 const MainBtn = styled(Link)`
-border-radius: 50px;
+border-radius: 5px;
   background: #01bf71;
   white-space: nowrap;
   padding: 10px 22px;
