@@ -31,7 +31,7 @@ class Nav extends React.Component {
     }
 }
 const NavBody = styled.div`
-    background; white;
+    background: white;
     display:flex;
     justify-content:space-between;
 `

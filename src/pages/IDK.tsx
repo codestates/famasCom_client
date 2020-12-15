@@ -1,6 +1,7 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import Nav from '../components/Nav'
+import React, { useState } from 'react';
+import Navbar from '../components/common/navbar'
+import Siderbar from '../components/common/siderbar'
 import styled from 'styled-components'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
@@ -10,10 +11,12 @@ import Typography from '@material-ui/core/Typography';
 import Wrapper from '../themes/Wrapper'
 import Modal from '@material-ui/core/Modal';
 
+import IDKSection from 'components/IdkSection/IDKSection'
+import Responsive from '../components/common/Responsive'
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
-
+//
 function getModalStyle() {
   const top = 50 + rand();
   const left = 50 + rand();
@@ -77,10 +80,19 @@ const IDK = () => {
         <Button onClick={handleClose}>알았어요!</Button>
       </div>
     );
-    
-    return (
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+  const toggle = () => {
+    setIsOpen(!isOpen)
+  }
+
+  return (
+    <>
+      <Navbar toggle={toggle}/>
+      <Siderbar isOpen={isOpen} toggle={toggle} />
+      < IDKSection />
+      <IDKTemplateBlock>
     <Wrapper>
-        <Nav/>
+      
         <IDKBox>
             <h1 className="textBox">하나도 모르겠어요!</h1>
     <div className={classes.root}>
@@ -120,8 +132,10 @@ const IDK = () => {
         </Modal>
 
     </ButtonArea>
-    </IDKBox>
-    </Wrapper>
+        </IDKBox>
+      </Wrapper>
+      </IDKTemplateBlock>
+      </>
     )
   }
 
@@ -134,6 +148,7 @@ const IDK = () => {
     align-items:center;  
     flex-direction: column;
     background:#f6f6f6;
+    margin-top: 5%;
   `
 
   const AccoSummary = styled(AccordionSummary)`
@@ -159,5 +174,15 @@ const IDK = () => {
         cursor: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqXPznJzia-b1rU6QAOTHXaj3pLK2-mWFWfg&usqp=CAU), auto;
       }
 `
+
+const IDKTemplateBlock = styled(Responsive)`
+position: relative;
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+background: #fff;
+
+`;
 
 export default IDK;

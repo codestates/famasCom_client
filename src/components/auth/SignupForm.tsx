@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import AuthForm from './AuthForm';
-
+//
 type Inputs = { email: string; password: string }
 const SignupForm = () => {
   
-  const [inputs, setInputs] = useState<Inputs>({email: '', password: ''});
+  const [inputs, setInputs] = useState<Inputs>({ email: '', password: '' });
+  const [token, setToken] = useState<string>('');
   const { email, password } = inputs; // 비구조화 할당을 통해 값 추출
 	
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,7 +47,7 @@ const SignupForm = () => {
   };
   
   return (
-    <AuthForm value="signup" email={email} password={password} handleChange={handleChange}  handleSubmit={handleSubmit} />
+    <AuthForm value="signup" email={email} password={password} handleChange={handleChange} handleSubmit={handleSubmit} token={token}/>
   )
 }
 
