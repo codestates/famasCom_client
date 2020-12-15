@@ -10,11 +10,11 @@ interface AuthTemplateProps {
   children: any;
 }
 const AuthTemplate = ({ children }: AuthTemplateProps) => {
-  const content = (
-    <div>
-      <p>누르면 첫 화면으로 이동합니다.</p>
-    </div>
-  );
+const content = (
+  <div>
+    <p>누르면 첫 화면으로 이동합니다.</p>
+  </div>
+);
 
   return (
     <>
@@ -47,7 +47,7 @@ align-items: center;
 `;
 const WhiteBox = styled.div`
   .logo-area {
-    dispaly: block;
+    display: block;
     padding-bottom: 2rem;
     text-align: center;
     font-size: 2rem;
