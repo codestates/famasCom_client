@@ -60,11 +60,12 @@
 }
 
 .community_dark {
-  color: #101010;
+  color: white;
+  text-shadow: black 2px 2px 5px;
 }
 
 .community_darkBg {
-  background-image: url(https://ifh.cc/g/xeJp6n.png);
+  background-image: url('../../images/banners/BannerCommunity.jpg');
 }
 
 .community_subtitle {

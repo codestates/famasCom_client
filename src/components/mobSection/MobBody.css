@@ -2,6 +2,7 @@
   color: #fff;
   padding: 160px 0;
   height: 350px;
+  text-shadow: black 2px 2px 5px;
 }
 
 .mob_container {
@@ -56,15 +57,15 @@
   font-size: 50px;
   line-height: 1.1;
   font-weight: 600;
-  color: #1c2237;
+  color: #fff;
 }
 
 .mob_dark {
-  color: #101010;
+  color: #fff;
 }
 
 .mob_darkBg {
-  background-image: url(https://ifh.cc/g/TBggHp.png);
+  background-image: url('../../images/banners/BannerMobile.jpg');
 }
 
 .mob_subtitle {
