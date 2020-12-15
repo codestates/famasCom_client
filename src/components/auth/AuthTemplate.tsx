@@ -5,17 +5,17 @@ import { Link } from 'react-router-dom';
 interface AuthTemplateProps {
   children: any;
 }
-const AuthTemplate = ({children}:AuthTemplateProps) => {
+const AuthTemplate = ({ children }: AuthTemplateProps) => {
   return (
     <AuthTemplateBlock>
       <WhiteBox>
         <div className="logo-area">
           <Link to="/" style={{ textDecoration: 'none' }}>FAMAS COM</Link>
-          </div>
+        </div>
         {children}
       </WhiteBox>
     </AuthTemplateBlock>
-    )
+  )
 }
 export default AuthTemplate;
 const AuthTemplateBlock = styled.div`
@@ -32,7 +32,7 @@ align-items: center;
 `;
 const WhiteBox = styled.div`
   .logo-area {
-    dispaly: block;
+    display: block;
     padding-bottom: 2rem;
     text-align: center;
     font-weight: bold;
