@@ -1,7 +1,7 @@
 import { Link as LinkR} from 'react-router-dom';
 import styled from 'styled-components';
-// import { Link as LinkS } from 'react-scroll';
-
+import { Link as LinkS } from 'react-scroll';
+//
 export const Nav = styled.nav`
 background: #fff;
 height: 100px;
@@ -94,7 +94,7 @@ align-items: center;
 }
 `
 export const NavBtnLink = styled(LinkR)`
-border-radius: 50px;
+border-radius: 5px;
 background: #01bf71;
 white-space: nowrap;
 padding: 10px 22px;

@@ -1,35 +1,7 @@
-import React from "react";
 import styled from 'styled-components';
 
-type DeleteModalProps = {
-  msgid: string;
-  deleteModalState: boolean;
-  onDeletelick: () => void;
-  handleMsgDelete: (e: React.MouseEvent<HTMLButtonElement>) => void;
-};
 
-
-export default function DeleteModal({deleteModalState, onDeletelick, handleMsgDelete ,msgid}: DeleteModalProps) {
-
-  if (deleteModalState) {
-    return (
-      <Modal>
-      <div id="myModal" className="authModal">
-        <div className="modal-content">
-          <span className="close" onClick={onDeletelick}>&times;</span>
-          <p>삭제하시겠습니까?</p>
-						<button id={msgid} onClick={handleMsgDelete}>예</button>
-						<button onClick={onDeletelick}>아니오</button>
-        </div>
-        </div>
-        </Modal>
-    )
-  } else {
-    return null
-  }
-} 
- 
-const Modal = styled.div`
+export const Modal = styled.div`
 /* The Modal (background) */
 .authModal {
 	display: block; /* Hidden by default */
@@ -79,3 +51,29 @@ const Modal = styled.div`
 	cursor: pointer;
 }
 `;
+
+export const DeleteBtn = styled.div`
+border-radius: 5px;
+background: #01bf71;
+white-space: nowrap;
+padding: 10px 22px;
+color: #010606;
+font-size: 1.3rem;
+outline: none;
+border: none;
+cursor: pointer;
+text-decoration: none;
+transition: all 0.2s ease-in-out;
+
+&:hover {
+  transition: all 0.2s ease-in-out;
+  background: #1c2237;
+  color: #fff;
+}
+`
+export const DeleteBtnWrapper = styled.div` 
+display: flex;
+flex-direction: row
+justify-content: center;
+margin-left: 25%;
+`

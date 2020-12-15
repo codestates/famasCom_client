@@ -22,7 +22,7 @@ import {
   SocialIcons,
   SocialIconLink
 } from './FooterElements';
-
+//
 const Footer = () => {
   const toggleHome = () => {
     scroll.scrollToTop();

@@ -43,7 +43,7 @@
 
 .top-line {
   color: #fff;
-  font-size: 22px;
+  font-size: 25px;
   line-height: 16px;
   font-weight: 750;
   letter-spacing: 1.4px;
@@ -72,6 +72,7 @@
   margin-bottom: 35px;
   font-size: 26px;
   line-height: 1.1;
+  font-weight: 550;
 }
 
 .home__hero-img-wrapper {
@@ -101,6 +102,23 @@ img {
 }
 
 @media screen and (max-width: 768px) {
+  .home__hero-text-wrapper {
+    padding-bottom: 65px;
+  }
+
+  .col {
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .home__hero-section {
+    color: #fff;
+    padding: 160px 0;
+    height: 900px;
+  }
+
   .home__hero-text-wrapper {
     padding-bottom: 65px;
   }

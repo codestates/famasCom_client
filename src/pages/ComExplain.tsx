@@ -10,6 +10,8 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import Wrapper from '../themes/Wrapper'
 import Modal from '@material-ui/core/Modal';
+import ComSection from 'components/computerSection/ComSection'
+import Responsive from '../components/common/Responsive'
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -25,7 +27,7 @@ function getModalStyle() {
     transform: `translate(-${top}%, -${left}%)`,
   };
 }
-
+//
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -86,7 +88,9 @@ const ComExplain = () => {
   return (
     <>
       <Navbar toggle={toggle}/>
-       <Siderbar isOpen={isOpen} toggle={toggle} />
+      <Siderbar isOpen={isOpen} toggle={toggle} />
+      <ComSection />
+      <ComTemplateBlock>
     <Wrapper>
         <ComExplainBox>
           <h1 className="textBox">컴퓨터 사용법</h1>
@@ -134,7 +138,8 @@ const ComExplain = () => {
 
     </ButtonArea>
     </ComExplainBox>
-      </Wrapper>
+        </Wrapper>
+        </ComTemplateBlock>
       </>
     )
   }
@@ -148,7 +153,7 @@ const ComExplain = () => {
     align-items:center;  
     flex-direction: column;
     background:#f6f6f6;
-    
+    margin-top: 5%;
   `
 
   const AccoSummary = styled(AccordionSummary)<IProps>`
@@ -175,5 +180,14 @@ const ComExplain = () => {
         cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABsUlEQVRYR+3XvWsUYRDH8c8ZCIIWQYhWQfGtsLSyU0sJNmojhJBY+BKwCBKwsBUbCwtBLULQyiamyR8gWoSQLsQmJJCAjaWFNhoNA3uwWTaXZ/cudymysLDsPjPzndnZ3zPb0OOj0eP4qgA8xGOsIq5/dAI+FeAKFnIB53CrmwAP8DYXcA0XugkQJX+TC7iO84cAhxU4CBW4lkF8rguTqgNlX8EXjGeBZ3APQziNRfxJgUoFeIKXOYcbOFMIEAChFf1YwlX8x0WEbvwuA0oFmM4yDId/8QsDBYehDedy96YQAhZ68R3XM5AdZqkAxVeQUt0t9OUWvsdY0XA/AYqxSuW7mwDzuNnLCszizoEFiGaJRhvGcWxiGR+ywaNOExaTbVmBF3ha0tohJp/wE/dTWr/FmpYA33CpzQB7mbcEOImJ7Bzcy1PN50lNeBQjmNyHiiQBNJM7gthgRmtmW2ZWCSAcdBriI+5W1YFOQjzD86oAzUq8xqM2Xkd8zpexUgegaRPDR+jFqYog/xDzxKt25oGm7THcxg2cxQl2/b2LASTU9B2+7gaduhtWTDp9ec8BtgFQflUhIQsz9wAAAABJRU5ErkJggg==), auto;
       }
 `
+const ComTemplateBlock = styled(Responsive)`
+position: relative;
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+background: #fff;
+
+`;
 
 export default ComExplain;

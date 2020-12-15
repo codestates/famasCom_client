@@ -10,8 +10,10 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import Wrapper from '../themes/Wrapper'
 import Modal from '@material-ui/core/Modal';
+import MobSection from 'components/mobSection/MobSection'
+import Responsive from '../components/common/Responsive'
 
-
+//
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
@@ -86,9 +88,10 @@ const MobExplain = () => {
   return (
     <>
     <Navbar toggle={toggle}/>
-    <Siderbar isOpen={isOpen} toggle={toggle} />
+      <Siderbar isOpen={isOpen} toggle={toggle} />
+      < MobSection />
+      <MobTemplateBlock>
     <Wrapper>
-        
         <MobExplainBox>
             <h1 className="textBox">스마트폰 사용법</h1>
     <div className={classes.root}>
@@ -126,10 +129,10 @@ const MobExplain = () => {
         >
           {body}
         </Modal>
-
     </ButtonArea>
     </MobExplainBox>
-      </Wrapper>
+        </Wrapper>
+        </MobTemplateBlock>
       
       </>
     )
@@ -144,6 +147,7 @@ const MobExplain = () => {
     align-items:center;  
     flex-direction: column;
     background:#f6f6f6;
+    margin-top: 5%;
   `
 
   const AccoSummary = styled(AccordionSummary)`
@@ -169,5 +173,14 @@ const MobExplain = () => {
         cursor: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqXPznJzia-b1rU6QAOTHXaj3pLK2-mWFWfg&usqp=CAU), auto;
       }
 `
+const MobTemplateBlock = styled(Responsive)`
+position: relative;
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+background: #fff;
+
+`;
 
 export default MobExplain;

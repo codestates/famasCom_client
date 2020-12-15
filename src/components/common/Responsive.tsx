@@ -6,7 +6,7 @@ type ResponsiveType = {
 const Responsive = ({ children, ...rest }:ResponsiveType) => {
   return <ResponsiveBlock {...rest }>{children}</ResponsiveBlock>
 }
-
+//
 export default Responsive;
 
 const ResponsiveBlock = styled.div`

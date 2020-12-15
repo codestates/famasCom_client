@@ -1,14 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
-const Nav = () => {
-    console.log(localStorage.getItem("token"))
-    const handleLogout = () => {
-        localStorage.removeItem("token");
-    }
-    return (
+class Nav extends React.Component {
+    render() {
+        return (
     <NavBody>
-        <NavContainer>
         <NavLogo><h2>LOGO</h2></NavLogo>
         <NavItems>
             <NavLink to="/">
@@ -25,44 +21,20 @@ const Nav = () => {
             </NavLink>
             <NavLink to="/Community">
                 <NavItem title="눌러보세요!"><h2>정보공유</h2></NavItem>
-                </NavLink>
-                {localStorage.getItem("token") &&
-                <>
-                    <NavLink to="/ModifyInfo">
-                        <NavItem title="눌러보세요!"><h2>내 정보</h2></NavItem>
-                    </NavLink>
-                    <button>
-                        <NavItem title="눌러보세요!" onClick={handleLogout} ><h2><Link to="/Login"> 접속 종료</Link></h2>
-                    </NavItem>
-                    </button>
-                </>
-                }
-                {!localStorage.getItem("token") &&
-                    <NavLink to="/Login">
-                        <NavItem title="눌러보세요!"><h2>회원으로 접속</h2></NavItem>
-                </NavLink>
-                }
+            </NavLink>
+            <NavLink to="/Login">
+                <NavItem title="눌러보세요!"><h2>회원으로 접속하기</h2></NavItem>
+            </NavLink>
         </NavItems>
-        </NavContainer>
     </NavBody>
         )
+    }
 }
-const NavBody = styled.nav`
-    width: 100%;
-    height: 4rem;
-    outline-style: solid;
-    outline-width: 1px;
+const NavBody = styled.div`
+    background: white;
+    display:flex;
+    justify-content:space-between;
 `
-const NavContainer = styled.div`
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 8rem;
-    padding-right: 8rem;
-    
-`
-
 const NavLogo = styled.div`
     padding:10px;
 `

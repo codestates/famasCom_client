@@ -13,7 +13,7 @@ type IndexProps = {
   imgStart: string;
   id: string;
 }
-
+//
 const MainSection = ({ lightBg, topLine, lightText, lightTextDesc, description,
   buttonLabel, imgStart, id
 }: IndexProps) => {
@@ -21,22 +21,10 @@ const MainSection = ({ lightBg, topLine, lightText, lightTextDesc, description,
     <>
        <div id={id}
         className={lightBg ? 'home__section' : 'home__section darkBg'}>
-        <div className='home_container' style={{
-                  marginLeft:"0"
-                }}>
-          <div
-            className='row home__row'
-            style={{
-              display: 'flex',
-              flexDirection: imgStart === 'start' ? 'row-reverse' : 'row'
-            }}
-          >
-            
-            <div className='home_col'>
+        <div className='home_container'>
+            <div className='home_col1'>
               <div className='home__img-wrapper'>
-                <img src='images/mob.png' alt='mob' className='home__hero-img' style={{
-                  marginLeft:"0"
-                }} />
+                <img src='images/mob.png' alt='mob' className='home__hero-img'  />
               </div>
               <div className='home__text-wrapper'>
                 <div className='home_top-line'>{topLine}</div>
@@ -56,9 +44,9 @@ const MainSection = ({ lightBg, topLine, lightText, lightTextDesc, description,
               </div>
             </div>
             
-            <div className='home_col'>
+            <div className='home_col2'>
             <div className='home__img-wrapper'>
-                <img src='images/desk.png' alt='desk' className='home__img' />
+                <img src='images/desk.png' alt='desk' className='home__hero-img' />
               </div>
               <div className='home__text-wrapper'>
                 <div className='home_top-line'>{topLine}</div>
@@ -79,9 +67,9 @@ const MainSection = ({ lightBg, topLine, lightText, lightTextDesc, description,
             </div>
          
 
-            <div className='home_col' style={{flexBasis:"0"}}>
+            <div className='home_col3' >
             <div className='home__img-wrapper'>
-                <img src='images/new.png' alt='new' className='home__img'/>
+                <img src='images/new.png' alt='new' className='home__hero-img'/>
               </div>
               <div className='home__text-wrapper'>
                 <div className='home_top-line'>{topLine}</div>
@@ -95,13 +83,11 @@ const MainSection = ({ lightBg, topLine, lightText, lightTextDesc, description,
                       : 'home__subtitle dark'
                   }
                 >
-                  {description}
+                  회원가입과 로그인 하는 방법부터 차근차근 알아가며 진행하고 새로운 세상을 접해봐요!
                 </p>
                 <HomeMainBtn to="/IDK">{buttonLabel}</HomeMainBtn>
               </div>
             </div>
-            
-          </div>
         </div>
       </div>
       </>
@@ -111,7 +97,7 @@ const MainSection = ({ lightBg, topLine, lightText, lightTextDesc, description,
 export default MainSection
 
 const HomeMainBtn = styled(Link)`
-border-radius: 50px;
+border-radius: 5px;
   background: #01bf71;
   white-space: nowrap;
   padding: 10px 10px;
@@ -125,7 +111,7 @@ border-radius: 50px;
   
   &:hover {
     transition: all 0.2s ease-in-out;
-    background: beige;
-    color: #010606;
+    background: #1c2237;
+    color: #fff;
 };
 `
