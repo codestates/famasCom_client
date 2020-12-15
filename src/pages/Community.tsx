@@ -6,6 +6,7 @@ import ChattForm  from 'components/write/ChattForm';
 import Navbar from '../components/common/navbar'
 import Siderbar from '../components/common/siderbar'
 import CommunitySection from 'components/communitySection/CommunitySection'
+import GoToTop from 'components/common/GoToTop'
 
 const Community = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -23,6 +24,7 @@ const Community = () => {
             </ChattTemplate>
           
         </ CommunityTemplateBlock>
+        <GoToTop />
         </>
     )
 }

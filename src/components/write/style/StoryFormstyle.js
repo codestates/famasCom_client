@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { Link as LinkR } from 'react-router-dom';
+
+
 export const EntiryWrapper = styled.div`
   display: inline;
 `;
@@ -34,14 +37,16 @@ export const StyleButton = styled.button`
   font-weight: bold;
   font-family: "맑은 고딕";
   color: black;
-  background: #6eb584;
+  background: #01bf71;
   display: inline-block;
   text-align: center;
   line-height: 22px;
+  transition: all 0.2s ease-in-out;
+
   &:hover {
-    color: blue;
-    border: 2px solid blue;
-  }
+    transition: all 0.2s ease-in-out;
+    background: #1c2237;
+    color: #fff;
 `;
 
 export const Line = styled.div`
@@ -51,3 +56,37 @@ export const Line = styled.div`
   width: 100%;
   height: 1px;
 `;
+
+export const ExplainText = styled.div`
+  font-size: 1.2rem;
+  line-height: 1.8;
+
+  span {
+    font-size: 1.7rem;
+  }
+`;
+
+
+
+export const GoToLoginBtn = styled(LinkR)`
+border-radius: 5px;
+background: #01bf71;
+height: 20px;
+max-width: 15%;
+white-space: nowrap;
+padding: 10px 22px;
+color: #010606;
+font-size: 1rem;
+outline: none;
+border: none;
+cursor: pointer;
+text-decoration: none;
+transition: all 0.2s ease-in-out;
+
+
+&:hover {
+  transition: all 0.2s ease-in-out;
+  background: #1c2237;
+  color: #fff;
+}
+`

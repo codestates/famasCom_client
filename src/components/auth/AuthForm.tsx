@@ -2,10 +2,11 @@ import React from 'react';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../common/Button';
-
 import { Kakao } from "./kakaoAuth"
 
-// 회원가입 또는 로그인 폼을 나타내는 컴포넌트
+
+
+
 type typeProps = {
   token: string;
   value: string;
@@ -26,6 +27,7 @@ const textMap: Indexable = {
 
 const AuthForm = ({ value, email, password, handleSubmit, handleChange }: typeProps) => {
   const text = textMap[value];
+
   return (
     <AuthFormBlock>
       <h3>{text}</h3>
@@ -36,8 +38,13 @@ const AuthForm = ({ value, email, password, handleSubmit, handleChange }: typePr
         <Kakao />
       </form>
       <Footer>
+      <span>💬 도움말</span>
         {value === "login" ? (<Link to="/signup">회원가입</Link>) : (<Link to="/login">로그인</Link>)}
+        
       </Footer>
+    
+        
+    
     </AuthFormBlock>
   )
 }
@@ -54,10 +61,19 @@ const AuthFormBlock = styled.div`
 
 // 폼 하단에 로그인 혹은 회원가입 링크 보여줌
 const Footer = styled.div`
+display; flex;
 margin-top: 2rem;
 font-size: 1.3rem;
-text-align: right;
+flex-direction: row;
+span {
+  cursor: pointer;
+  &:hover {
+    color: #01BF71;
+  }
+}
+
 a {
+  margin-left: 52%;
   color: #1c2237;
   text-decoration: none;
   &:hover {
@@ -65,6 +81,7 @@ a {
   }
 }
 `;
+
 // &은 sass 문법임 
 // css 에서 + 는 1 + 2애서 2에만 해당 css가 적용됨 https://developer.mozilla.org/ko/docs/Web/CSS/%EC%9D%B8%EC%A0%91_%ED%98%95%EC%A0%9C_%EC%84%A0%ED%83%9D%EC%9E%90
 const StyledInput = styled.input`

@@ -83,7 +83,7 @@ const MainSection = ({ lightBg, topLine, lightText, lightTextDesc, description,
                       : 'home__subtitle dark'
                   }
                 >
-                  {description}
+                  회원가입과 로그인 하는 방법부터 차근차근 알아가며 진행하고 새로운 세상을 접해봐요!
                 </p>
                 <HomeMainBtn to="/IDK">{buttonLabel}</HomeMainBtn>
               </div>
@@ -111,7 +111,7 @@ border-radius: 5px;
   
   &:hover {
     transition: all 0.2s ease-in-out;
-    background: beige;
-    color: #010606;
+    background: #1c2237;
+    color: #fff;
 };
 `

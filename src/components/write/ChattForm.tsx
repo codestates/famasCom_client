@@ -48,7 +48,7 @@ const ChattForm = () => {
     setCommentValue(e.currentTarget.value)
   }
   // 대댓글 등록 
-  const onsubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const onsubmit = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     axios.defaults.headers['Authorization'] = `Bearer ${localStorage.getItem("token")}`
     axios.post(`https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/addComment/${e.currentTarget.id}`,
@@ -70,15 +70,17 @@ const ChattForm = () => {
   //좋아요 관련 이벤트
   const handleLike = async (e: React.MouseEvent<HTMLInputElement>) => {
     e.preventDefault();
-    await axios
-      .post(`https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/addLike/${e.currentTarget.id}`)
-      .then((res) => {
-        console.log(res.status)
-        reRending()
-      }).catch((err) => {
-        console.log("좋아요 err :" + err)
-      })
-
+    {
+      localStorage.getItem("token") &&
+      await axios
+        .post(`https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/addLike/${e.currentTarget.id}`)
+        .then((res) => {
+          console.log(res.status)
+          reRending()
+        }).catch((err) => {
+          console.log("좋아요 err :" + err)
+        })
+    }
   }
 
   /*!------ 좋아요 ---------------------------------------------------*/
