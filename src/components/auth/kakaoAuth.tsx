@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 
-const key = "2b5add5ee8205a2f29c625c71f5360eb"
-const Kakaoimg = "../../images/kakao_login_medium_narrow.png"
+const key = process.env.kakaoKey
+
 
 export default {
     title: "KakaoLogin",

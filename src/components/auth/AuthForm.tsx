@@ -87,9 +87,11 @@ width: 100%;
 `;
 
 const Line = styled.div`
+  border: 100px;
+  border-color: white;
   border-radius: 5px;
-  background-color: #eaecec;
-  display: block;
+  background-color:black;
+  display: flex;
   width: 100%;
   height: 1px;
 `
