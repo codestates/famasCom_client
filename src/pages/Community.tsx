@@ -1,0 +1,43 @@
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import ChattTemplate from '../components/write/ChattTemplate';
+import Responsive from '../components/common/Responsive'
+import ChattForm  from 'components/write/ChattForm';
+import Navbar from '../components/common/navbar'
+import Siderbar from '../components/common/siderbar'
+import CommunitySection from 'components/communitySection/CommunitySection'
+
+const Community = () => {
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+  const toggle = () => {
+    setIsOpen(!isOpen)
+  }
+    return (
+      <>
+        <Navbar toggle={toggle}/>
+        <Siderbar isOpen={isOpen} toggle={toggle} />
+        <CommunitySection />
+        <CommunityTemplateBlock>
+            <ChattTemplate>
+                <ChattForm  />
+            </ChattTemplate>
+          
+        </ CommunityTemplateBlock>
+        </>
+    )
+}
+//
+export default Community;
+
+const CommunityTemplateBlock = styled(Responsive)`
+position: relative;
+left: 0;
+right: 0;
+top: 0;
+bottom: 0;
+background: #fff;
+margin-top: 5%;
+margin-top: -2.6%;
+
+
+`;
