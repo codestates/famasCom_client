@@ -10,7 +10,7 @@ import {
   NavItem,
   NavLinks,
   NavBtn,
-  NavBtnLink
+  NavBtnLink,
 } from './NavbarElement'
 //
 type navprop = {
@@ -39,13 +39,13 @@ const Navbar = ({ toggle }: navprop) => {
   
   return (
     <>
-      <IconContext.Provider value={{ color: '#fff' }}>
+      
     <Nav scrollNav={scrollNav}>
       <NavbarContainer> 
         <NavLogo  scrollNav={scrollNav} to="/">
           fama's
         </NavLogo>
-        <MobileIcon onClick={toggle}>
+        <MobileIcon scrollNav={scrollNav} onClick={toggle}>
           <FaBars />
         </MobileIcon>
         <NavMenu>
@@ -81,7 +81,7 @@ const Navbar = ({ toggle }: navprop) => {
           
       </NavbarContainer>
         </Nav>
-        </IconContext.Provider>
+       
   </>
    )
  

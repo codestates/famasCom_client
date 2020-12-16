@@ -19,6 +19,7 @@ import Siderbar from 'components/common/siderbar';
 import Responsive from 'components/common/Responsive';
 import Wrapper from 'themes/Wrapper';
 import MobSection from 'components/mobSection/MobSection';
+import GoToTop from 'components/common/GoToTop'
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -109,7 +110,7 @@ const Mobile = () => {
           </LectureBody>
         </Wrapper>
         </LectureTemplateBlock>
-
+        <GoToTop />
     </>
     )
   }
@@ -177,21 +178,24 @@ const Mobile = () => {
     display: block;
     width: 100%;
   `
-  const Btn = styled.button`
-    background: #00796B;
-    color: white;
+const Btn = styled.button`
+    background: #01bf71;
+    color: #010606;
     font-size: 20px;
     margin: 1em;
     padding: 0.25em 1em;
-    border: 1px solid green;
-    border-radius: 30px;
+    border: none;
+    border-radius: 5px;
     outline: none;
-    :hover{
-        background : white;
-        color: black;      
-        cursor: url(${click}), auto;
-      }
-`
+    transition: all 0.2s ease-in-out;
+
+    &:hover{
+      transition: all 0.2s ease-in-out;
+      background: #1c2237;
+      color: #fff;     
+      cursor: url(${click}), auto;
+    }
+`;
 const LectureTemplateBlock = styled(Responsive)`
 position: relative;
 left: 0;

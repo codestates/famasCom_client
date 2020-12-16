@@ -2,6 +2,7 @@ import React from 'react';
 import { BackTop } from 'antd';
 import 'antd/dist/antd.css';
 import CSS from 'csstype';
+import click from '../../images/click.png'
 //
 const style:CSS.Properties =  {
   height: '40px',
@@ -12,7 +13,8 @@ const style:CSS.Properties =  {
   color: '#010606',
   textAlign: 'center',
   fontSize: '30px',
-  fontWeight: 800
+  fontWeight: 800,
+  cursor: `url(${click}), auto`
 };
 
 const GoToTop = () => {

@@ -18,7 +18,6 @@ const content = (
 
   return (
     <>
-      <Icon to="/">fama's</Icon>
     <AuthTemplateBlock>
       <WhiteBox>
         <div className="logo-area">
@@ -58,22 +57,6 @@ const WhiteBox = styled.div`
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.025);
   padding: 2rem;
   width: 400px;
-  border: 2px solid #000;
+  border: 1px solid #000;
   background: white;
-`;
-
-const Icon = styled(Link)`
-position: relative;
-  margin-left: 32px;
-  margin-top: 50px;
-  text-decoration: none;
-  color: #01BF71;
-  font-weight: bold;
-  font-size: 32px;
-  cursor: pointer;
-
-  @media screen and (max-width: 480px) {
-    margin-left: 16px;
-    margin-top: 8px;
-  }
 `;
