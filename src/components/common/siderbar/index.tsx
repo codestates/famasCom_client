@@ -48,7 +48,7 @@ const Siderbar = ({ toggle, isOpen }: siderprops) => {
           }
           {localStorage.getItem("token") &&
             <SiderBtnWrap>
-              <SiderbarRoute to="/Login">접속 종료</SiderbarRoute>
+              <SiderbarRoute to="/Login" onClick={handleLogout}>접속 종료</SiderbarRoute>
             </SiderBtnWrap>
           }
           {!localStorage.getItem("token") &&

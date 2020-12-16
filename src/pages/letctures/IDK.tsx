@@ -19,6 +19,7 @@ import Siderbar from 'components/common/siderbar';
 import Responsive from 'components/common/Responsive';
 import Wrapper from 'themes/Wrapper';
 import IDKSection from 'components/IdkSection/IDKSection';
+import GoToTop from 'components/common/GoToTop'
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -108,7 +109,8 @@ const IDK = () => {
             </Accordion>
           </LectureBody>
         </Wrapper>
-        </LectureTemplateBlock>
+      </LectureTemplateBlock>
+      <GoToTop />
 
     </>
     )
@@ -178,19 +180,22 @@ const IDK = () => {
     width: 100%;
   `
   const Btn = styled.button`
-    background: #00796B;
-    color: white;
-    font-size: 20px;
-    margin: 1em;
-    padding: 0.25em 1em;
-    border: 1px solid green;
-    border-radius: 30px;
-    outline: none;
-    :hover{
-        background : white;
-        color: black;      
-        cursor: url(${click}), auto;
-      }
+  background: #01bf71;
+  color: #010606;
+  font-size: 20px;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+
+  &:hover{
+    transition: all 0.2s ease-in-out;
+    background: #1c2237;
+    color: #fff;     
+    cursor: url(${click}), auto;
+  }
 `
 const LectureTemplateBlock = styled(Responsive)`
 position: relative;

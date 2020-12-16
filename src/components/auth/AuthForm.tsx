@@ -44,9 +44,6 @@ const AuthForm = ({ value, email, password, handleSubmit, handleChange }: typePr
         {value === "login" ? (<Link to="/signup">회원가입</Link>) : (<Link to="/login">로그인</Link>)}
         
       </Footer>
-    
-        
-    
     </AuthFormBlock>
   )
 }
@@ -110,7 +107,6 @@ const Line = styled.div`
   width: 100%;
   padding: 10px 0;
 }
-
 .line-or:before,
 .line-or:after {
   display: inline-block;
@@ -121,7 +117,6 @@ const Line = styled.div`
   vertical-align: top;
   content: "";
 }
-
 .txt-or {
   display: inline-block;
   width: 40px;
@@ -131,4 +126,3 @@ const Line = styled.div`
   color: rgba(0, 0, 0, 0.49);
 }
 `
-

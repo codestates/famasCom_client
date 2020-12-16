@@ -2,6 +2,7 @@ import { Link as LinkR} from 'react-router-dom';
 import styled from 'styled-components';
 import { Link as LinkS} from 'react-scroll';
 import { FaTimes } from 'react-icons/fa'
+import click from 'images/click.png'
 
 type side = {
   isOpen: boolean;
@@ -29,14 +30,13 @@ color: #fff;
 `;
 
 export const Icon = styled.div`
-position: relative;
-top: -3rem;
 bottom: 0;
-left: 90%;
-backround: transparent;
+left:60%;
 font-size: 2rem;
-cursor: pointer;
+cursor: url(${click}), auto;
 outline: none;
+padding-right: 3rem;
+text-align: right;
 `;
 
 export const SiderbarWrapper = styled.div`
@@ -66,6 +66,7 @@ text-decoration: none;
 
 &:hover {
   transition: 0.2s ease-in-out;
+  cursor: url(${click}), auto;
   color: #01bf71;
 }
 `

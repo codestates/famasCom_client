@@ -18,9 +18,11 @@ const LectureNav = () => {
         </NavItems>
     )   
 }
-    const NavLink = styled(Link)`
-        text-decoration: none;
-    `
+
+const NavLink = styled(Link)`
+    text-decoration: none;
+`
+
     const NavItems = styled.div`
         display:flex;
         justify-content:flex-start;
@@ -30,11 +32,11 @@ const LectureNav = () => {
     const NavItem = styled.div`
         color:black;
         border-bottom: solid 5px white;
-        font-size:30px;
+        font-size: 1.77rem;
         padding:10px 20px;
         &:hover{ 
-            color:#00796B;
-            border-bottom:solid 5px #00796B; 
+            color:#01bf71;
+            border-bottom:solid 5px #01bf71; 
             cursor: url(${click}), auto;
             transition: all 0.2s ease-in-out;
         }

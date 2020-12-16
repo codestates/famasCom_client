@@ -6,8 +6,7 @@ import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import CSS from 'csstype';
 
-
-const key = process.env.KAKAO_KEY
+const key:any = process.env.KAKAO_KEY
 export default {
     title: "KakaoLogin",
     component: KakaoLogin,
