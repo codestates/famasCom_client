@@ -2,6 +2,7 @@
   color: #fff;
   padding: 160px 0;
   height: 350px;
+  text-shadow: black 2px 2px 5px;
 }
 
 .com_container {
@@ -60,7 +61,7 @@
 }
 
 .com_dark {
-  color: #101010;
+  color: #fff;
 }
 
 .com_darkBg {

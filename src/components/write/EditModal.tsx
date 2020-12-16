@@ -24,15 +24,12 @@ export default function EditModal({ editState, onEditclick, handleUpdateClick, h
             <QuillWrapper>
               <ReactQuill theme="snow" value={msgEditorHtml} onChange={handleEditStoryChange} />
             </QuillWrapper>
-            <Button type="primary" size="large" className="edit_btn"
-              id={msgid}
-              onClick={handleUpdateClick}>
-              수정
-            </Button>
+            <Btn id={msgid} className="edit_btn"
+              onClick={handleUpdateClick}>수정</Btn>
             &nbsp;&nbsp;
-            <Button type="primary" size="large" className="edit_btn" onClick={onEditclick}>
+            <Btn className="edit_btn" onClick={onEditclick}>
               취소
-            </Button>
+            </Btn>
           </div>
         </div>
       </Modal>
@@ -43,10 +40,16 @@ export default function EditModal({ editState, onEditclick, handleUpdateClick, h
 }
 
 const QuillWrapper = styled.div`
+.ql-toolbar {
+  background: #eaecec;
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+}
 .ql-container {
   min-height: 150px;
-  border-radius: 10px;
-  padding: 0;
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  padding: 10px;
   font-size: 1.125rem;
   line-height: 1.5;
 }
@@ -102,3 +105,23 @@ const Modal = styled.div`
   margin-top: 0.8rem;
 }
 `;
+
+const Btn = styled.div`
+border-radius: 5px;
+background: #01bf71;
+white-space: nowrap;
+padding: 10px 22px;
+color: #010606;
+font-size: 1.3rem;
+outline: none;
+border: none;
+cursor: pointer;
+text-decoration: none;
+transition: all 0.2s ease-in-out;
+
+&:hover {
+  transition: all 0.2s ease-in-out;
+  background: #1c2237;
+  color: #fff;
+}
+`

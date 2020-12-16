@@ -42,13 +42,14 @@
 }
 
 .top-line {
-  color: #1c2237;
-  font-size: 22px;
+  color: #fff;
+  font-size: 25px;
   line-height: 16px;
   font-weight: 750;
   letter-spacing: 1.4px;
   text-transform: uppercase;
   margin-bottom: 16px;
+  text-shadow: black 2px 2px 5px;
 }
 
 .heading {
@@ -57,14 +58,15 @@
   line-height: 1.1;
   font-weight: 600;
   color: #1c2237;
+  text-shadow: black 2px 2px 5px;
 }
 
 ._dark {
-  color: #1c2237;
+  color: #fff;
 }
 
 .darkBg {
-  background-image: url(https://ifh.cc/g/ktyq2j.jpg);
+  background-image: url('../../images/banners/BannerMain.jpg');
 }
 
 .home__hero-subtitle {
@@ -72,6 +74,8 @@
   margin-bottom: 35px;
   font-size: 26px;
   line-height: 1.1;
+  font-weight: 550;
+  text-shadow: black 2px 2px 5px;
 }
 
 .home__hero-img-wrapper {
@@ -110,4 +114,20 @@ img {
     flex-basis: 100%;
   }
 }
-/**/
+
+@media screen and (max-width: 500px) {
+  .home__hero-section {
+    color: #fff;
+    padding: 160px 0;
+    height: 900px;
+  }
+
+  .home__hero-text-wrapper {
+    padding-bottom: 65px;
+  }
+
+  .col {
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+}

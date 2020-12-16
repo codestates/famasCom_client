@@ -38,13 +38,10 @@ const Navbar = ({ toggle }: navprop) => {
             <NavLinks to="/">첫화면</NavLinks>
             </NavItem>
             <NavItem>
-            <NavLinks to="/ComExplain">컴퓨터</NavLinks>
+            <NavLinks to="/Lecture">강의</NavLinks>
             </NavItem>
             <NavItem>
-            <NavLinks to="/MobExplain">모바일</NavLinks>
-            </NavItem>
-            <NavItem>
-            <NavLinks to="/IDK">모르겠어요</NavLinks>
+            <NavLinks to="/Game">게임</NavLinks>
             </NavItem>
             <NavItem>
             <NavLinks to="/Community">정보공유</NavLinks>
@@ -57,12 +54,12 @@ const Navbar = ({ toggle }: navprop) => {
           </NavMenu>
           {localStorage.getItem("token") &&
             <NavBtn>
-              <NavBtnLink to="Login" onClick={handleLogout} >접속 종료</NavBtnLink>
+              <NavBtnLink to="/Login" onClick={handleLogout} >접속 종료</NavBtnLink>
             </NavBtn>
           }
           {!localStorage.getItem("token") &&
             <NavBtn>
-              <NavBtnLink to="Login" >회원으로 접속하기</NavBtnLink>
+              <NavBtnLink to="/Login" >회원으로 접속하기</NavBtnLink>
             </NavBtn>
           }
       </NavbarContainer>

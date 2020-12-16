@@ -286,21 +286,10 @@ export default function ModifyInfo() {
           </ButtonBox>
           
         </div>
-        <Footer1 onClick={handleSecessionOpen}>
-        회원 탈퇴
-        </Footer1>
-        <Footer2>
-        <HtmlTooltip
-        title={
-          <React.Fragment>
-            <Typography color="inherit">도움말을 클릭하시면 회원정보 수정 방법을 보실수 있어요!</Typography>
-          </React.Fragment>
-        }
-      >
-        <div onClick={handleOpen}><HelpIcon/>  도움말</div>
-      </HtmlTooltip>
-        
-        </Footer2>
+            <Footer>
+              <div onClick={handleOpen}>💬 도움말</div>
+              <div onClick={handleSecessionOpen}>회원 탈퇴</div>
+            </Footer>
         <Modal
           open={open}
           onClose={handleClose}
@@ -360,27 +349,14 @@ align-items: center;
 margin-top: 1rem;
 `;
 
-const Footer1 = styled.div`
+const Footer = styled.div`
 margin-top: 4rem;
 font-size: 1.125rem;
-text-align: right;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
 cursor: pointer;
-a {
-  color: gray;
-  text-decoration: none;
-  &:hover {
-    color: #01bf71;
-  }
-}
-`;
-
-const Footer2 = styled.div`
-margin-top: -1.9rem;
-font-size: 1.125rem;
-text-align: left;
-cursor: pointer;
-a {
-  color: gray;
+div {
   text-decoration: none;
   &:hover {
     color: #01bf71;

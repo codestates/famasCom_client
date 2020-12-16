@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
-import { GlobalStyles } from './pages/Global-style';
-import { Main, Login, Signup, ComExplain, Community, MobExplain, ModifyInfo, IDK} from './pages/Index';
+import { Main, Login, Signup, Community, ModifyInfo, Lecture, Computer, Mobile, IDK, Game, About } from './pages';
 
 import {
   BrowserRouter as Router,
@@ -13,15 +12,18 @@ const App: React.FC = () => {
   return (
     <>
     <div className="App">
-      <Router>
-        <Route exact path="/" component={Main} />
-        <Route exact path="/ComExplain" component={ComExplain} />
-        <Route exact path="/MobExplain" component={MobExplain} />
-        <Route exact path="/IDK" component={IDK} />
-        <Route exact path="/Login" component={Login} />
-        <Route exact path="/Signup" component={Signup} />
-        <Route exact path="/Community" component={Community} />
+        <Router>
+          <Route exact path="/" component={Main} />
+          <Route exact path="/Lecture" component={Lecture} />
+          <Route exact path="/Lecture/Computer" component={Computer} />
+          <Route exact path="/Lecture/Mobile" component={Mobile} />
+          <Route exact path="/Lecture/IDK" component={IDK} />
+          <Route exact path="/Game" component={Game} />
+          <Route exact path="/Login" component={Login} />
+          <Route exact path="/Signup" component={Signup} />
+          <Route exact path="/Community" component={Community} />
           <Route exact path="/ModifyInfo" component={ModifyInfo} />
+          <Route exact path="/About" component={About} />
       </Router>
       </div>
       </>

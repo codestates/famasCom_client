@@ -1,19 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import 'antd/dist/antd.css';
+import { Popover, Button } from 'antd';
+
 // ▼ 회원가입 또는 로그인 페이지의 레이아웃을 나타내는 컴포넌트 ▼
 //
 interface AuthTemplateProps {
   children: any;
 }
 const AuthTemplate = ({ children }: AuthTemplateProps) => {
+const content = (
+  <div>
+    <p>누르면 첫 화면으로 이동합니다.</p>
+  </div>
+);
+
   return (
     <>
-    <Icon to="/">fama's</Icon>
+      <Icon to="/">fama's</Icon>
     <AuthTemplateBlock>
       <WhiteBox>
         <div className="logo-area">
+        <Popover content={content} title="클릭! 🖕🏻">
           <Link to="/" style={{ textDecoration: 'none', color: '#01BF71' }}>fama's Com</Link>
+        </Popover>
           </div>
         {children}
       </WhiteBox>
