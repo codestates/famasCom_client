@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import './MainSection.css'
 import { Link } from 'react-scroll';
 
+
 type IndexProps = {
   lightBg: boolean;
   topLine: string;
@@ -22,9 +23,7 @@ const MainSection = ({ lightBg, topLine, lightText, lightTextDesc, headline, des
 
   return (
     <>
-       <div
-        className={lightBg ? 'home__hero-section' : 'home__hero-section darkBg'}
-      >
+       <video className='home__hero-section darkBg'  playsInline autoPlay loop muted src='videos/video.mp4'>
         <div className='container'>
           <div
             className='row home__hero-row'
@@ -57,7 +56,7 @@ const MainSection = ({ lightBg, topLine, lightText, lightTextDesc, headline, des
            
           </div>
         </div>
-      </div>
+      </video>
       </>
   )
 }

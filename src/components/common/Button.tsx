@@ -12,17 +12,17 @@ padding-bottom: 0.75rem;
 width: 100%;
 height: 3rem;
 border-radius: 4px;
-font-size: 1.3rem;
-font-weight: bold;
+font-size: 1.2rem;
+font-weight: 600;
 font-family: '맑은 고딕';
 line-height: 1.5;
 color: black;
-border:black;
-background: #fff;
-
+background: rgba(231,226,221,0.5);
+transition: all 0.2s ease-in-out;
 &:hover {
-  color:blue;
-  border: 2px solid blue;
+  transition: all 0.2s ease-in-out;
+  background: #1c2237;
+  color: #fff;
 }
 `;
 
