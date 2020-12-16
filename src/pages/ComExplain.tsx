@@ -12,6 +12,7 @@ import Wrapper from '../themes/Wrapper'
 import Modal from '@material-ui/core/Modal';
 import ComSection from 'components/computerSection/ComSection'
 import Responsive from '../components/common/Responsive'
+import GoToTop from 'components/common/GoToTop'
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -139,7 +140,9 @@ const ComExplain = () => {
     </ButtonArea>
     </ComExplainBox>
         </Wrapper>
-        </ComTemplateBlock>
+      </ComTemplateBlock>
+      <GoToTop />
+      
       </>
     )
   }

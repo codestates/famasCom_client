@@ -23,7 +23,7 @@ type StoryFormProps = {
   reRending: () => void;
   editorHtml: string;
   commentValue: string;
-  onHandleChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onHandleChange: (html: any) => void;
   handleLike: (e: React.MouseEvent<HTMLInputElement>) => void;
   handleStoryChange: (html: any) => void;
   handleSubmitClick: (e: React.MouseEvent<HTMLButtonElement>) => void;

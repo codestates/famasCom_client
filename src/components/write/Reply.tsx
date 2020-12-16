@@ -8,10 +8,36 @@ import Avatar from '@material-ui/core/Avatar';
 import { Comment, Tooltip, Form, Button, List, Input } from 'antd'
 import { Modal, DeleteBtn, DeleteBtnWrapper } from './DeleteModal'
 import EditModal from './EditModal'
-import { type } from 'os';
-import { StyleButton } from "./style/StoryFormstyle.js"
 import AddLike from './AddLike';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import Responsive from '../common/Responsive';
+import styled from "styled-components";
 
+const ReplyEditorBlock = styled(Responsive)`
+padding: 15px;
+outline:#6eb584;
+;`;
+
+const ReplyQuillWrapper = styled.div`
+  .ql-toolbar {
+    width: 96.5%;
+    background: #eaecec;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+  }
+  .ql-container {
+    width: 96.5%;
+    min-height: 20px;
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+  .ql-container .ql-blank ::before {
+    left: 0px;
+  }
+`;
 
 type StoryFormProps = {
   datas: any;
@@ -19,7 +45,7 @@ type StoryFormProps = {
   commentValue: string;
   reRending: () => void;
   handleLike: (e: React.MouseEvent<HTMLInputElement>) => void;
-  onHandleChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onHandleChange: (html: any) => void;
   onsubmit: (e: React.MouseEvent<HTMLDivElement>) => void;
 };
 
@@ -30,7 +56,6 @@ const Reply = ({ datas,
   onsubmit, reRending, onReset }: StoryFormProps) => {
 
   /*---------------------------------------------------*/
-
   const time = moment(datas.createdAt, "YYYYMMDD")
 
   //대댓글 랜더 관련 훅 
@@ -161,11 +186,16 @@ const Reply = ({ datas,
     ]
     // incode HTML
   const replyInput: any = [
-      <>
-      <TextArea rows={1} onChange={onHandleChange} value={commentValue} style={{  minWidth:'30px'}} />
-      <ReplyBtn onClick={onsubmit} id={datas.msgId}>
+    <>
+      <ReplyEditorBlock>
+          <ReplyQuillWrapper>
+            <ReactQuill theme="snow" value={commentValue} onChange={onHandleChange} placeholder={"남기실 글을 입력하세요."} />
+        </ReplyQuillWrapper>
+        <ReplyBtn onClick={onsubmit} id={datas.msgId}>
         댓글 등록
         </ReplyBtn>
+        </ReplyEditorBlock>
+     
       </>
     ]
 // const xSize = (e:React.KeyboardEvent<HTMLInputElement> ) =>
@@ -190,7 +220,7 @@ const Reply = ({ datas,
             {datas.comments.map((cmt: any) => (
               <Comment avatar={
                 <Avatar alt={datas.userName} src="/static/images/avatar/3.jpg" />
-              } author={cmt[0]} content={cmt[1]} />
+              } author={ <div style={{fontSize:'0.9rem' ,color: 'gray'}}>{cmt[0]}</div>} content={<div dangerouslySetInnerHTML={{ __html: cmt[1] }} style={{fontSize:'1rem'}}></div>} />
             )
             )
             }</List>
@@ -228,10 +258,9 @@ const Reply = ({ datas,
           <Form>
           <Comment
             key={datas.index}
-              avatar={replyAvatar}
-              content={replyInput}
+            avatar={replyAvatar}
+            content={replyInput}
           />
-          
           </Form>
         </FormWapper>
       }
