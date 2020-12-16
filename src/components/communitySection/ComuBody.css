@@ -15,9 +15,6 @@
 
 .community_row {
   align-items: center;
-}
-
-.community_row {
   display: flex;
   margin-right: -15px;
   margin-bottom: -15px;
@@ -65,7 +62,7 @@
 }
 
 .community_darkBg {
-  background-image: url('../../images/banners/BannerCommunity.jpg');
+  background-image: url("../../images/banners/BannerCommunity.jpg");
 }
 
 .community_subtitle {

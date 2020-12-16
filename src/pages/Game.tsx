@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Navbar from "components/common/navbar";
+import ContentNavbar from "components/common/navbar";
 import Siderbar from "components/common/siderbar";
 import ComSection from "components/computerSection/ComSection";
 
@@ -10,7 +10,7 @@ const Game = () => {
     }
   return (
     <>
-      <Navbar toggle={toggle}/>
+      <ContentNavbar toggle={toggle}/>
       <Siderbar isOpen={isOpen} toggle={toggle} />
       <ComSection />
     </>

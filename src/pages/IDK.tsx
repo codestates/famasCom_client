@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
-import Navbar from '../components/common/navbar'
+import ContentNavbar from '../components/common/navbar'
 import Siderbar from '../components/common/siderbar'
 import styled from 'styled-components'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
@@ -87,7 +87,7 @@ const IDK = () => {
 
   return (
     <>
-      <Navbar toggle={toggle}/>
+      <ContentNavbar toggle={toggle}/>
       <Siderbar isOpen={isOpen} toggle={toggle} />
       < IDKSection />
       <IDKTemplateBlock>

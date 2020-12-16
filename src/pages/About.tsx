@@ -4,7 +4,7 @@ import byeongkuk from '../images/ByeongKuk.png';
 import mira from '../images/MiRa.png';
 import haseok from '../images/HaSeok.png';
 import minju from '../images/MinJu.png';
-import Navbar from '../components/common/navbar'
+import ContentNavbar from 'components/common/navbar'
 import Siderbar from '../components/common/siderbar'
 import GoToTop from '../components/common/GoToTop'
 import Footer from '../components/Footer';
@@ -51,7 +51,7 @@ function About() {
 
   return (
 <>
-<Navbar toggle={toggle}/>
+<ContentNavbar toggle={toggle}/>
       <Siderbar isOpen={isOpen} toggle={toggle} />
       <AboutSection/>
     <div className="container">
