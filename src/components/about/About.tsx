@@ -8,8 +8,11 @@ import {
   AboutH2,
   AboutP,
   AboutExplain,
+  AboutExplainH4,
+  AboutExplainP,
   AboutHover,
-  AboutSLink
+  AboutSLink,
+  AboutSLinkA
 } from './AboutElements';
 import byeongkuk from '../../images/ByeongKuk.png';
 import mira from '../../images/MiRa.png';
@@ -25,8 +28,15 @@ const About = () => {
         <AboutCard>
           <AboutIcon  src={byeongkuk}>
             {/* <AboutHover>
-              <AboutExplain></AboutExplain>
-              <AboutSLink/>
+              <AboutExplain>
+                <AboutExplainH4>Hi There !</AboutExplainH4>
+                <AboutExplainP>I love to introduce myself as a hardcore Server Developer.</AboutExplainP>
+              </AboutExplain>
+              <AboutSLink>
+                <AboutSLinkA href="#"><i className="fa fa-facebook"></i></AboutSLinkA>
+                <AboutSLinkA href="#"><i className="fa fa-twitter"></i></AboutSLinkA>
+                <AboutSLinkA href="#"><i className="fa fa-google-plus"></i></AboutSLinkA>
+              </AboutSLink>
             </AboutHover> */}
           </AboutIcon>
           <AboutH2>유병국</AboutH2>

@@ -64,55 +64,32 @@ export const AboutIcon = styled.img`
 `;
 
 export const AboutHover = styled.div`
-position: absolute;
-top: 0;
-left: 0;
-bottom: 0;
-right: 0;
-margin: 0;
-border: 20px solid rgba(0, 0, 0, 0.1);
-background-color: rgba(255, 255, 255, 0.9);
-opacity: 0;
-transition: all 0.3s;
+
 &:hover {
-  top: 35%;
--webkit-transition: all 0.3s;
+
 }
 `
 export const AboutExplain = styled.div`
-position: absolute;
-top: 0%;
-width: 100%;
-opacity: 0;
--webkit-transform: translateY(-55%);
--ms-transform: translateY(-55%);
-transform: translateY(-55%);
--webkit-transition: all 0.3s 0.2s;
-transition: all 0.3s 0.2s;
-padding: 0 20px;
+
 `
-export const AboutSLink = styled.div`
-position: absolute;
-bottom: 0;
-width: 100%;
-opacity: 0;
-text-align: center;
--webkit-transform: translateY(45%);
--ms-transform: translateY(45%);
-transform: translateY(45%);
--webkit-transition: all 0.3s 0.2s;
-transition: all 0.3s 0.2s;
-font-size: 35px;
-.a {
-    text-align: center;
-    color: #222;
-  }
-&:hover {
-  bottom: 10%;
-  opacity: 1;
-}
+export const AboutExplainH4 = styled.h4`
+
+`
+export const AboutExplainP = styled.p`
+
 `
 
+export const AboutSLink = styled.div`
+
+
+&:hover {
+
+}
+`
+export const AboutSLinkA = styled.a`
+text-align: center;
+color: #222;
+`
 
 export const AboutH1 = styled.h1`
   font-size: 2.5rem;
