@@ -2,6 +2,7 @@
   color: #fff;
   padding: 160px 0;
   height: 350px;
+  text-shadow: black 2px 2px 5px;
 }
 
 .info_container {
@@ -60,11 +61,11 @@
 }
 
 .info_dark {
-  color: #1c2237;
+  color: #fff;
 }
 
 .info_darkBg {
-  background-image: url(https://ifh.cc/g/wPQBGf.png);
+  background-image: url('../../images/banners/BannerInfo.jpg');
 }
 
 .info_subtitle {

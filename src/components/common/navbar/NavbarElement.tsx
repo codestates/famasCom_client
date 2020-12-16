@@ -6,11 +6,10 @@ type nav = {
   scrollNav: boolean;
 }
 
-export const Nav = styled.nav<nav>`
-background: ${({ scrollNav }) => (scrollNav ? '#fff' : 'transparent')};
+export const ContentNav = styled.nav<nav>`
+background: ${({ scrollNav }) => (scrollNav ? '#fff' : '#fff')};
 height: 100px;
 display: flex;
-margin-top: -100px;
 justify-content: center;
 align-items: center;
 font-size: 1rem;
@@ -23,7 +22,7 @@ top: 0;
 }
 `
 
-export const NavbarContainer = styled.div`
+export const ContentNavbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   height: 90px;
@@ -33,8 +32,8 @@ export const NavbarContainer = styled.div`
   max-width: 1100px;
 `;
 
-export const NavLogo = styled(LinkR)<nav>`
- color: ${({ scrollNav }) => (scrollNav ? '#01bf71' : '#fff')};
+export const ContentNavLogo = styled(LinkR)<nav>`
+ color: ${({ scrollNav }) => (scrollNav ? '#01bf71' : '#01bf71')};
 justify-self: flex-start;
 font-size: 2.5rem;
 display: flex;
@@ -48,7 +47,7 @@ text-decoration: none;
 }
 `
 
-export const MobileIcon = styled.div`
+export const ContentMobileIcon = styled.div`
 display: none;
 
 @media screen and (max-width: 1000px) {
@@ -62,7 +61,7 @@ display: none;
   color: #1c2237;
 }
 `
-export const NavMenu = styled.ul`
+export const ContentNavMenu = styled.ul`
   display: flex;
   align-items: center;
   list-style: none;
@@ -75,13 +74,13 @@ export const NavMenu = styled.ul`
   }
 `;
 
-export const NavItem = styled.li`
+export const ContentNavItem = styled.li`
 height: 80px;
 font-size: 1.5rem;
 `
 
-export const NavLinks = styled(LinkR)<nav>`
-color: ${({ scrollNav }) => (scrollNav ? '#1c2237' : '#fff')} ;
+export const ContentNavLinks = styled(LinkR)<nav>`
+color: ${({ scrollNav }) => (scrollNav ? '#1c2237' : '#1c2237')} ;
 display: flex;
 align-items: center;
 text-decoration: none;
@@ -94,7 +93,7 @@ height: 100%;
 }
 `
 
-export const NavBtn = styled.nav`
+export const ContentNavBtn = styled.nav`
 display: flex;
 align-items: center;
 
@@ -102,12 +101,12 @@ align-items: center;
   display: none;
 }
 `
-export const NavBtnLink = styled(LinkR)<nav>`
+export const ContentNavBtnLink = styled(LinkR)<nav>`
 border-radius: 5px;
-background: ${({ scrollNav }) => (scrollNav ? '#01bf71' : 'none')};
+background: ${({ scrollNav }) => (scrollNav ? '#01bf71' : '#01bf71')};
 white-space: nowrap;
 padding: 10px 22px;
-color: ${({ scrollNav }) => (scrollNav ? '#1c2237' : '#fff')};
+color: ${({ scrollNav }) => (scrollNav ? '#1c2237' : '#1c2237' )};
 font-size: 1.3rem;
 outline: none;
 border: none;

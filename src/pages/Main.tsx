@@ -1,6 +1,6 @@
 import Footer from 'components/Footer';
 import React, { useState } from 'react';
-import Navbar from '../components/common/navbar'
+import Navbar from '../components/common/mainNavbar'
 import Siderbar from '../components/common/siderbar'
 import Home from 'components/HomePage/Home'
 import HeroSection from '../components/heroSection/index'

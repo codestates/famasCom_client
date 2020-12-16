@@ -2,22 +2,22 @@ import React, {useEffect, useState} from 'react';
 import { FaBars } from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib';
 import {
-  Nav,
-  NavbarContainer,
-  NavLogo,
-  MobileIcon,
-  NavMenu,
-  NavItem,
-  NavLinks,
-  NavBtn,
-  NavBtnLink
+  ContentNav,
+  ContentNavbarContainer,
+  ContentNavLogo,
+  ContentMobileIcon,
+  ContentNavMenu,
+  ContentNavItem,
+  ContentNavLinks,
+  ContentNavBtn,
+  ContentNavBtnLink
 } from './NavbarElement'
 //
 type navprop = {
   toggle: () => void;
 }
 
-const Navbar = ({ toggle }: navprop) => {
+const ContentNavbar = ({ toggle }: navprop) => {
   const [scrollNav, setScrollNav] = useState<boolean>(false);
 
   const changeNav = () => {
@@ -40,54 +40,51 @@ const Navbar = ({ toggle }: navprop) => {
   return (
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
-    <Nav scrollNav={scrollNav}>
-      <NavbarContainer> 
-        <NavLogo  scrollNav={scrollNav} to="/">
+    <ContentNav scrollNav={scrollNav}>
+      <ContentNavbarContainer> 
+        <ContentNavLogo  scrollNav={scrollNav} to="/">
           fama's
-        </NavLogo>
-        <MobileIcon onClick={toggle}>
+        </ContentNavLogo>
+        <ContentMobileIcon onClick={toggle}>
           <FaBars />
-        </MobileIcon>
-        <NavMenu>
-            <NavItem>
-            <NavLinks scrollNav={scrollNav} to="/">첫화면</NavLinks>
-            </NavItem>
-            <NavItem>
-            <NavLinks scrollNav={scrollNav} to="/ComExplain">컴퓨터</NavLinks>
-            </NavItem>
-            <NavItem>
-            <NavLinks scrollNav={scrollNav} to="/MobExplain">모바일</NavLinks>
-            </NavItem>
-            <NavItem>
-            <NavLinks scrollNav={scrollNav} to="/IDK">모르겠어요</NavLinks>
-            </NavItem>
-            <NavItem>
-            <NavLinks scrollNav={scrollNav} to="/Community">정보공유</NavLinks>
-            </NavItem>
+        </ContentMobileIcon>
+        <ContentNavMenu>
+            <ContentNavItem>
+            <ContentNavLinks scrollNav={scrollNav} to="/">첫화면</ContentNavLinks>
+            </ContentNavItem>
+            <ContentNavItem>
+            <ContentNavLinks scrollNav={scrollNav} to="/Lecture">강의</ContentNavLinks>
+            </ContentNavItem>
+            <ContentNavItem>
+            <ContentNavLinks scrollNav={scrollNav} to="/Game">게임</ContentNavLinks>
+            </ContentNavItem>
+            <ContentNavItem>
+            <ContentNavLinks scrollNav={scrollNav} to="/Community">정보공유</ContentNavLinks>
+            </ContentNavItem>
             {localStorage.getItem("token") &&
-              <NavItem>
-                <NavLinks scrollNav={scrollNav} to="/ModifyInfo">내 정보</NavLinks>
-              </NavItem>
+              <ContentNavItem>
+                <ContentNavLinks scrollNav={scrollNav} to="/ModifyInfo">내 정보</ContentNavLinks>
+              </ContentNavItem>
               }
               
               {localStorage.getItem("token") &&
-            <NavBtn>
-              <NavBtnLink scrollNav={scrollNav} to="Login" onClick={handleLogout} >접속 종료</NavBtnLink>
-            </NavBtn>
+            <ContentNavBtn>
+              <ContentNavBtnLink scrollNav={scrollNav} to="Login" onClick={handleLogout} >접속 종료</ContentNavBtnLink>
+            </ContentNavBtn>
           }
           {!localStorage.getItem("token") &&
-            <NavBtn>
-              <NavBtnLink scrollNav={scrollNav} to="Login" >회원으로 접속하기</NavBtnLink>
-            </NavBtn>
+            <ContentNavBtn>
+              <ContentNavBtnLink scrollNav={scrollNav} to="Login" >회원으로 접속하기</ContentNavBtnLink>
+            </ContentNavBtn>
           }
-          </NavMenu>
+          </ContentNavMenu>
           
-      </NavbarContainer>
-        </Nav>
+      </ContentNavbarContainer>
+        </ContentNav>
         </IconContext.Provider>
   </>
    )
  
  }
 
- export default Navbar
+ export default ContentNavbar

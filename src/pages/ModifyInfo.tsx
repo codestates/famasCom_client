@@ -16,7 +16,7 @@ import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import IconButton from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom';
 import Modal from '@material-ui/core/Modal';
-import Navbar from '../components/common/navbar'
+import ContentNavbar from '../components/common/navbar'
 import Siderbar from '../components/common/siderbar'
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
@@ -263,7 +263,7 @@ export default function ModifyInfo() {
   );
   return (
     <>
-      <Navbar toggle={toggle}/>
+      <ContentNavbar toggle={toggle}/>
       <Siderbar isOpen={isOpen} toggle={toggle} />
       <InfoSection />
       <MyInfoTemplateBlock>

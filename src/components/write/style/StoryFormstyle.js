@@ -60,7 +60,7 @@ export const Line = styled.div`
 export const ExplainText = styled.div`
   font-size: 1.2rem;
   line-height: 1.8;
-
+  text-align: left;
   span {
     font-size: 1.7rem;
   }

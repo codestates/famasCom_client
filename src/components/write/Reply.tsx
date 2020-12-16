@@ -144,7 +144,7 @@ const Reply = ({ datas,
   };
 
 
-
+localStorage.getItem("token")
 
 
 
@@ -153,9 +153,18 @@ const Reply = ({ datas,
   const actions: any = [
     <span id={datas.msgId} onClick={handleLike} className="iLike"
       style={{ cursor: 'pointer', color: 'red', fontSize: '1rem' }}> 좋아요 ♥︎ {datas.goodLike}</span>,
-    <span onClick={handleReplyOpen} key="comment-basic-reply-to" style={{ cursor: 'pointer', fontSize:'1rem',color: 'gray'  }}>댓글 등록</span>,
-    <span onClick={onEditclick} className="edit_btn" style={{ cursor: 'pointer', fontSize:'1rem',color: 'gray'  }}>수정</span>,
-    <span onClick={onDeleteClick} className="delete_btn" style={{ cursor: 'pointer', fontSize:'1rem',color: 'gray'  }}>삭제</span>,
+    <span onClick={handleReplyOpen} key="comment-basic-reply-to" style={{ cursor: 'pointer', fontSize: '1rem', color: 'gray' }}>
+      {localStorage.getItem("token") && '댓글 등록'}
+      {!localStorage.getItem("token") && ''}
+    </span>,
+    <span onClick={onEditclick} className="edit_btn" style={{ cursor: 'pointer', fontSize: '1rem', color: 'gray' }}>
+      {localStorage.getItem("token") && '수정'}
+      {!localStorage.getItem("token") && ''}
+    </span>,
+    <span onClick={onDeleteClick} className="delete_btn" style={{ cursor: 'pointer', fontSize: '1rem', color: 'gray' }}>
+      {localStorage.getItem("token") && '삭제'}
+      {!localStorage.getItem("token") && ''}
+    </span>,
     <div onClick={handleCommentOpen} className="comment_btn"
     style={{ cursor: 'pointer', fontSize: '1rem', color: 'gray' }}>댓글({datas.comments.length})</div>
   ]
@@ -208,6 +217,7 @@ const Reply = ({ datas,
   return (
     <CommentSwappar >
       <Comment
+        style={{textAlign:"left"}}
         actions={actions}
         key={datas.msgId}
         author={author}
