@@ -8,10 +8,10 @@ import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import CSS from 'csstype';
 import click from 'images/click.png'
+import {KAKAO_KEY} from 'config/kakao'
 
-dotenv.config()
+const key: any = KAKAO_KEY
 
-const key:any = process.env.KAKAO_KEY
 export default {
     title: "KakaoLogin",
     component: KakaoLogin,

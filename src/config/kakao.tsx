@@ -1,0 +1,1 @@
+export const KAKAO_KEY='2b5add5ee8205a2f29c625c71f5360eb'
