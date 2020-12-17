@@ -39,6 +39,126 @@ const accordions = [
             text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
         }
     },
+    {   
+        head:{
+            img:mouse,
+            title:'네이버 가입하기',
+            description:'네이버에 가입하고 회원이 되어보아요!'
+        },
+        body:{
+            img:powerOff,
+            title: 'What is Lorem Ipsum?',
+            text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+        }
+    },
+    {   
+        head:{
+            img:mouse,
+            title:'네이버 가입하기',
+            description:'네이버에 가입하고 회원이 되어보아요!'
+        },
+        body:{
+            img:powerOff,
+            title: 'What is Lorem Ipsum?',
+            text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+        }
+    },
+    {   
+        head:{
+            img:mouse,
+            title:'네이버 가입하기',
+            description:'네이버에 가입하고 회원이 되어보아요!'
+        },
+        body:{
+            img:powerOff,
+            title: 'What is Lorem Ipsum?',
+            text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+        }
+    },
+    {   
+        head:{
+            img:mouse,
+            title:'네이버 가입하기',
+            description:'네이버에 가입하고 회원이 되어보아요!'
+        },
+        body:{
+            img:powerOff,
+            title: 'What is Lorem Ipsum?',
+            text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+        }
+    },
+    {   
+        head:{
+            img:mouse,
+            title:'네이버 가입하기',
+            description:'네이버에 가입하고 회원이 되어보아요!'
+        },
+        body:{
+            img:powerOff,
+            title: 'What is Lorem Ipsum?',
+            text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+        }
+    },
+    {   
+        head:{
+            img:mouse,
+            title:'네이버 가입하기',
+            description:'네이버에 가입하고 회원이 되어보아요!'
+        },
+        body:{
+            img:powerOff,
+            title: 'What is Lorem Ipsum?',
+            text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+        }
+    },
+    {   
+        head:{
+            img:mouse,
+            title:'네이버 가입하기',
+            description:'네이버에 가입하고 회원이 되어보아요!'
+        },
+        body:{
+            img:powerOff,
+            title: 'What is Lorem Ipsum?',
+            text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+        }
+    },
+    {   
+        head:{
+            img:mouse,
+            title:'네이버 가입하기',
+            description:'네이버에 가입하고 회원이 되어보아요!'
+        },
+        body:{
+            img:powerOff,
+            title: 'What is Lorem Ipsum?',
+            text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+        }
+    },
+    {   
+        head:{
+            img:mouse,
+            title:'네이버 가입하기',
+            description:'네이버에 가입하고 회원이 되어보아요!'
+        },
+        body:{
+            img:powerOff,
+            title: 'What is Lorem Ipsum?',
+            text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+        }
+    },
+    {   
+        head:{
+            img:mouse,
+            title:'네이버 가입하기',
+            description:'네이버에 가입하고 회원이 되어보아요!'
+        },
+        body:{
+            img:powerOff,
+            title: 'What is Lorem Ipsum?',
+            text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+        }
+    },
   ];
 
 export default accordions

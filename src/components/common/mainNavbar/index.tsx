@@ -53,10 +53,13 @@ const Navbar = ({ toggle }: navprop) => {
             <NavLinks scrollNav={scrollNav} to="/">첫화면</NavLinks>
             </NavItem>
             <NavItem>
-            <NavLinks scrollNav={scrollNav} to="/Lecture">강의</NavLinks>
+            <NavLinks scrollNav={scrollNav} to="/Lecture/Computer">컴퓨터</NavLinks>
             </NavItem>
             <NavItem>
-            <NavLinks scrollNav={scrollNav} to="/Game">게임</NavLinks>
+            <NavLinks scrollNav={scrollNav} to="/Lecture/Mobile">모바일</NavLinks>
+            </NavItem>
+            <NavItem>
+            <NavLinks scrollNav={scrollNav} to="/Lecture/IDK">모르겠어요</NavLinks>
             </NavItem>
             <NavItem>
             <NavLinks scrollNav={scrollNav} to="/Community">정보공유</NavLinks>
