@@ -73,7 +73,7 @@ transition: all 0.2s ease-in-out;
 `
 export const DeleteBtnWrapper = styled.div` 
 display: flex;
-flex-direction: row
+flex-direction: row;
 justify-content: center;
 margin-left: 25%;
 `

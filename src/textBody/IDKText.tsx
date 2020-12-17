@@ -1,6 +1,6 @@
 import click from '../images/click.png'
 import powerOff from '../images/powerOff.png'
-import mouse from '../images/mouse.png'
+import mouse from '../images/Mouse.png'
 import power from '../images/power.png'
 const accordions = [
     {   
