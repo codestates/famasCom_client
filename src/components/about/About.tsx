@@ -30,7 +30,7 @@ const About = () => {
             {/* <AboutHover>
               <AboutExplain>
                 <AboutExplainH4>Hi There !</AboutExplainH4>
-                <AboutExplainP>I love to introduce myself as a hardcore Server Developer.</AboutExplainP>
+                <AboutExplainP>I love to introduce myself as a hardcore Developer.</AboutExplainP>
               </AboutExplain>
               <AboutSLink>
                 <AboutSLinkA href="#"><i className="fa fa-facebook"></i></AboutSLinkA>
@@ -45,21 +45,57 @@ const About = () => {
           </AboutP>
         </AboutCard>
         <AboutCard>
-          <AboutIcon  src={mira}/>
+          <AboutIcon  src={mira}>
+                      {/* <AboutHover>
+              <AboutExplain>
+                <AboutExplainH4>Hi There !</AboutExplainH4>
+                <AboutExplainP>I love to introduce myself as a hardcore Developer.</AboutExplainP>
+              </AboutExplain>
+              <AboutSLink>
+                <AboutSLinkA href="#"><i className="fa fa-facebook"></i></AboutSLinkA>
+                <AboutSLinkA href="#"><i className="fa fa-twitter"></i></AboutSLinkA>
+                <AboutSLinkA href="#"><i className="fa fa-google-plus"></i></AboutSLinkA>
+              </AboutSLink>
+            </AboutHover> */}
+          </AboutIcon>  
           <AboutH2>곽미라</AboutH2>
           <AboutP>
           Team Member  &amp; Full Stack Developer
           </AboutP>
         </AboutCard>
         <AboutCard>
-          <AboutIcon  src={haseok}/>
+          <AboutIcon  src={haseok}>
+{/* <AboutHover>
+              <AboutExplain>
+                <AboutExplainH4>Hi There !</AboutExplainH4>
+                <AboutExplainP>I love to introduce myself as a hardcore Developer.</AboutExplainP>
+              </AboutExplain>
+              <AboutSLink>
+                <AboutSLinkA href="#"><i className="fa fa-facebook"></i></AboutSLinkA>
+                <AboutSLinkA href="#"><i className="fa fa-twitter"></i></AboutSLinkA>
+                <AboutSLinkA href="#"><i className="fa fa-google-plus"></i></AboutSLinkA>
+              </AboutSLink>
+            </AboutHover> */}
+          </AboutIcon>  
           <AboutH2>김하석</AboutH2>
           <AboutP>
           Team Member  &amp; Full Stack Developer
           </AboutP>
         </AboutCard>
         <AboutCard>
-          <AboutIcon  src={minju}/>
+          <AboutIcon  src={minju}>
+{/* <AboutHover>
+              <AboutExplain>
+                <AboutExplainH4>Hi There !</AboutExplainH4>
+                <AboutExplainP>I love to introduce myself as a hardcore Developer.</AboutExplainP>
+              </AboutExplain>
+              <AboutSLink>
+                <AboutSLinkA href="#"><i className="fa fa-facebook"></i></AboutSLinkA>
+                <AboutSLinkA href="#"><i className="fa fa-twitter"></i></AboutSLinkA>
+                <AboutSLinkA href="#"><i className="fa fa-google-plus"></i></AboutSLinkA>
+              </AboutSLink>
+            </AboutHover> */}
+          </AboutIcon>  
           <AboutH2>임민주</AboutH2>
           <AboutP>
           Team Member  &amp; Full Stack Developer

@@ -22,7 +22,7 @@ export const AboutWrapper = styled.div`
   max-width: 1000px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   grid-gap: 16px;
   padding: 0 50px;
@@ -64,9 +64,21 @@ export const AboutIcon = styled.img`
 `;
 
 export const AboutHover = styled.div`
+position: absolute;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+margin: 0;
+border: 20px solid rgba(0, 0, 0, 0.1);
+background-color: rgba(255, 255, 255, 0.9);
+opacity: 0;
+-webkit-transition: all 0.3s;
+transition: all 0.3s;
 
 &:hover {
-
+  top: 35%;
+  opacity: 1;
 }
 `
 export const AboutExplain = styled.div`
