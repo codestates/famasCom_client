@@ -31,9 +31,9 @@ const Services = () => {
         </ServicesCard>
         <ServicesCard to="">
           <ServicesIcon  src='images/build.png'/>
-          <ServicesH2>성장</ServicesH2>
+          <ServicesH2>게임</ServicesH2>
           <ServicesP>
-            디지털 세상에서 원하는 정보를 얻고 소통할 수 있는 사람으로 성장할 수 있습니다.
+            강의 콘텐츠 안에 있는 게임들을 즐길 수 있습니다. 즐거운 성장이 기다리고 있습니다.
           </ServicesP>
         </ServicesCard>
       </ServicesWrapper>

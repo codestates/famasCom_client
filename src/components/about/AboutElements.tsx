@@ -7,7 +7,7 @@ export const AboutContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 100px 0;
-  background: rgba(204,204,204,0.5);
+  background: #fff;
 
   @media screen and (max-width: 1000px) {
     height: 1200px;
@@ -38,7 +38,7 @@ export const AboutWrapper = styled.div`
 `;
 
 export const AboutCard = styled.div`
-  background: #fff;
+  background: rgba(231,226,221,0.5);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
