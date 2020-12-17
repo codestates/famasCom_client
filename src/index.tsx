@@ -9,8 +9,6 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-require('dotenv').config()
-console.log(process.env.KAKAO_KEY)
 
 
 // If you want to start measuring performance in your app, pass a function
