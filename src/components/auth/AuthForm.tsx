@@ -4,9 +4,6 @@ import styled from 'styled-components';
 import Button from '../common/Button';
 import { Kakao } from "./kakaoAuth"
 
-
-
-
 type typeProps = {
   token: string;
   value: string;
@@ -36,17 +33,17 @@ const AuthForm = ({ value, email, password, handleSubmit, handleChange }: typePr
         <StyledInput autoComplete="new-password" name="password" type="password" value={password} onChange={handleChange} placeholder="두 번째! 비밀번호를 입력해 주세요." />
         <Button onClick={handleSubmit}>{text}</Button>
       </form>
-
-      <Line />
+      <Line>
+        <span className="line-or">
+					<span className="txt-or">또는</span>
+        </span>
+      </Line>
       <Kakao />
       <Footer>
       <span>💬 도움말</span>
         {value === "login" ? (<Link to="/signup">회원가입</Link>) : (<Link to="/login">로그인</Link>)}
         
       </Footer>
-    
-        
-    
     </AuthFormBlock>
   )
 }
@@ -73,7 +70,6 @@ span {
     color: #01BF71;
   }
 }
-
 a {
   margin-left: 52%;
   color: #1c2237;
@@ -104,9 +100,29 @@ width: 100%;
 `;
 
 const Line = styled.div`
-  border-radius: 5px;
-  background-color: #eaecec;
+.line-or {
+  top: 10%;
+  position: relative;
   display: block;
   width: 100%;
+  padding: 10px 0;
+}
+.line-or:before,
+.line-or:after {
+  display: inline-block;
+  width: calc(50% - 20px);
   height: 1px;
+  margin: 8px 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  vertical-align: top;
+  content: "";
+}
+.txt-or {
+  display: inline-block;
+  width: 40px;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.49);
+}
 `

@@ -2,6 +2,7 @@
   color: #fff;
   padding: 160px 0;
   height: 350px;
+  text-shadow: black 2px 2px 5px;
 }
 
 .com_container {
@@ -60,7 +61,7 @@
 }
 
 .com_dark {
-  color: #101010;
+  color: #fff;
 }
 
 .com_darkBg {
@@ -90,6 +91,25 @@
   .com_col {
     max-width: 100%;
     flex-basis: 100%;
+  }
+  .com_heading {
+    width: 400px;
+    margin-left: 33%;
+    margin-bottom: 24px;
+    font-size: 2.2rem;
+    line-height: 1.1;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .com_subtitle {
+    width: 400px;
+    margin-left: 33%;
+    margin-bottom: 32px;
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.1;
+    color: #fff;
   }
 }
 /*sss*/

@@ -14,17 +14,19 @@ import ImageIcon from '@material-ui/icons/Image';
 import Divider from '@material-ui/core/Divider';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import IconButton from '@material-ui/core/IconButton';
-import HelpIcon from '@material-ui/icons/Help';
 import { Link } from 'react-router-dom';
 import Modal from '@material-ui/core/Modal';
-import Secession from '../components/myinfo/SecessionModal'
-import Navbar from '../components/common/navbar'
+import ContentNavbar from '../components/common/navbar'
 import Siderbar from '../components/common/siderbar'
-import Tooltip, { TooltipProps } from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Box from '@material-ui/core/Box';
 import InfoSection from 'components/myinfoSection/InfoSection'
 import { Link as LinkR } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
+
 //
 function rand() {
     return Math.round(Math.random() * 20) - 10;
@@ -39,16 +41,51 @@ function rand() {
       left: `${left}%`,
       transform: `translate(-${top}%, -${left}%)`,
     };
-    }
+  }
+  //============ 도움말 ui ===========//
+  interface TabPanelProps {
+    children?: React.ReactNode;
+    index: any;
+    value: any;
+  }
+  function TabPanel(props: TabPanelProps) {
+    const { children, value, index, ...other } = props;
   
-  const useStyles = makeStyles((theme: Theme) =>
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && (
+          <Box p={2}>
+            <Typography>{children}</Typography>
+          </Box>
+        )}
+      </div>
+    );
+  }
+  
+  function a11yProps(index: any) {
+    return {
+      id: `simple-tab-${index}`,
+      'aria-controls': `simple-tabpanel-${index}`,
+    };
+  }
+  
+  
+  const useStyles = makeStyles((theme: Theme) => 
     createStyles({
       root: {
         display: 'flex',
         flexWrap: 'wrap',
-        width: 500,
+        width: '100%',
         flexDirection: 'column',
-        justifyContent: 'space-even'
+        justifyContent: 'space-even',
+        flexGrow: 1,
+        backgroundColor: theme.palette.background.paper,
       },
       '& > *': {
         margin: theme.spacing(1),
@@ -89,32 +126,19 @@ function rand() {
       },
       paper: {
         position: 'absolute',
-        width: 400,
+        width: 550,
+        marginLeft:'30%',
         backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
+        border: 'none',
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
       },
       arrow: {
         color: theme.palette.common.black,
       },
-      tooltip: {
-        backgroundColor: theme.palette.common.black,
-      },
     }),
   );
-
-  const HtmlTooltip = withStyles((theme: Theme) => ({
-    tooltip: {
-      backgroundColor: '#f5f5f9',
-      color: 'rgba(0, 0, 0, 0.87)',
-      maxWidth: 220,
-      fontSize: theme.typography.pxToRem(12),
-      border: '1px solid #dadde9',
-      right:'80%'
-    },
-  }))(Tooltip);
-
+  
 type ModifyInfoType = {
     // currentId: string;
     // currentPassword: string;
@@ -133,6 +157,8 @@ export default function ModifyInfo() {
         inputPassword: '',
         inputName:''
     });
+    const [helpValue, setHelpValue] = React.useState(0);
+
     let history = useHistory();
     const [secessionState, setSecessionState] = useState<boolean>(false);
     const classes = useStyles();
@@ -142,14 +168,7 @@ export default function ModifyInfo() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => {setOpen(true);};
     const handleClose = () => { setOpen(false); };
-    const body = (
-        <div style={modalStyle} className={classes.paper}>
-        <h2 id="simple-modal-title">모달 제목창</h2>
-        <p id="simple-modal-description">강의를 눌러서 확인해보세요 !</p>
-        <p>궁금한 점이 있다면 `질문하러 가기` 버튼을 눌러보세요!</p>
-        <Button onClick={handleClose}>알았어요!</Button>
-        </div>
-    );
+ 
  
     console.log(localStorage.getItem("token"))
     
@@ -162,11 +181,15 @@ export default function ModifyInfo() {
     //             setInfoModify(Object.assign({}, infoModify, { currentId: data.username, currentPassword: data.password, currentEmail: data.email }));
     //         })
     // }, [infoModify.currentId, infoModify.currentPassword, infoModify.currentEmail]);
-
+    //===============도움말 이벤트 =================//
+    const handleHelpChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+      setHelpValue(newValue);
+    };
+  
     const handleSecessionOpen = () => {
         setSecessionState(!secessionState)
     }
-    const infoModifyHandler = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    const infoModifyHandler = async (e: React.MouseEvent<HTMLDivElement>) => {
         if (e.currentTarget.id === 'modifyBtn') {
             axios.defaults.headers['Authorization'] = `Bearer ${localStorage.getItem("token")}`
             await axios.post('https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/update-userData/', {
@@ -200,15 +223,54 @@ export default function ModifyInfo() {
     const toggle = () => {
       setIsOpen(!isOpen)
     }
+  
+    const body = (
+      <div style={modalStyle} className={classes.paper}>
+        <div className={classes.root}>
+          <AppBar position="static">
+            <Tabs value={helpValue} onChange={handleHelpChange} aria-label="simple tabs example" style={{background: '#01bf71'}}>
+              <Tab label="회원 접속" {...a11yProps(0)} style={{color: '#1c2237', width:'50%'}} />
+              <Tab label="회원 가입" {...a11yProps(1)} style={{color: '#1c2237', width:'50%'}} />
+            </Tabs>
+          </AppBar>
+          <TabPanel value={helpValue} index={0}>
+                1. ~~~~~~~~ 
+          </TabPanel>
+              <TabPanel value={helpValue} index={1}>
+                1. ~~~~~~~~ sadfsdfsadfsdfasdfasdfsdfasdfasdf &br;
+                2.sadfsdfsdfasdf
+
+          </TabPanel>
+          <Button onClick={handleClose} style={{background: '#01bf71'}}>알았어요!</Button>
+        </div>
+      </div>
+  );
+
+    const SessionBody = (
+      <div style={modalStyle} className={classes.paper}>
+        <h2 id="simple-modal-title" style={{textAlign:"center", fontSize:"1.5rem"}}>탈퇴하시겠습니까?</h2>
+        <SessionWrapper>
+          <SessionBtn className="secession_btn" onClick={infoModifyHandler}>
+              <Link to="/" style={{ textDecoration: 'none' }}>
+                예
+              </Link>
+          </SessionBtn>
+          &nbsp;&nbsp;
+          <SessionBtn onClick={handleSecessionOpen}>아니오</SessionBtn>
+        </SessionWrapper>
+      </div>
+  );
   return (
     <>
-      <Navbar toggle={toggle}/>
+      <ContentNavbar toggle={toggle}/>
       <Siderbar isOpen={isOpen} toggle={toggle} />
       <InfoSection />
       <MyInfoTemplateBlock>
         <div className="border">
-      <WhiteBox>
-        <div className={classes.root}>
+          <WhiteBox>
+          
+            <div className={classes.root}>
+
         <ListItem>
         <ListItemAvatar>
           <Avatar>
@@ -265,7 +327,8 @@ export default function ModifyInfo() {
               id="inputModifyPassword"
                 label="비밀번호"
                 style={{ margin: 8 }}
-                placeholder="변경할 비밀번호를 입력해 주세요."
+                  placeholder="변경할 비밀번호를 입력해 주세요."
+                  helperText="변경한 비밀번호는 꼭 메모해주세요!"
                 fullWidth
                 margin="normal"
                 InputLabelProps={{
@@ -284,7 +347,6 @@ export default function ModifyInfo() {
           <Btn id='modifyBtn'
             onClick={infoModifyHandler} > <SaveIcon /> &nbsp; 저장하기</Btn>
           </ButtonBox>
-          
         </div>
             <Footer>
               <div onClick={handleOpen}>💬 도움말</div>
@@ -297,11 +359,20 @@ export default function ModifyInfo() {
           aria-describedby="simple-modal-description"
         >
           {body}
-        </Modal>
-        <Secession infoModifyHandler={infoModifyHandler} handleSecessionOpen={handleSecessionOpen} secessionState={secessionState} />
-          </WhiteBox>
+            </Modal>
+
+            <Modal
+          open={secessionState}
+          onClose={handleSecessionOpen}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+          {SessionBody}
+          </Modal>
           
-          </div>
+        </WhiteBox>
+          
+        </div>
           
       </MyInfoTemplateBlock>
       </>
@@ -323,10 +394,15 @@ justify-content: center;
 align-items: center;
 .border {
   width: 100%;
-  height: 580px;
+  height: 500px;
+  margin-bottom: 100px
   overflow: hidden;
   background-color: #fff;
-}
+
+  @media screen and (max-width: 1300px) {
+    margin-right: 60px;
+    };
+
 `;
 
 const WhiteBox = styled.div`
@@ -339,6 +415,15 @@ top: 7%;
   height: 500px;
   border: 1px solid #000;
   background: white;
+
+  @media screen and (max-width: 1300px) {
+  width: 50%
+  };
+
+  @media screen and (max-width: 750px) {
+    height: 600px;
+    width: 50%
+    };
 `;
 
 const ButtonBox = styled.div`
@@ -347,10 +432,26 @@ flex-direction: row;
 justify-content: center;
 align-items: center;
 margin-top: 1rem;
+
+@media screen and (max-width: 1300px) {
+  width: 70%
+  display: flex;
+  justify-content: center;
+align-items: center;
+  };
+
+@media screen and (max-width: 750px) {
+    width: 70%
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+align-items: center;
+    };
+
 `;
 
 const Footer = styled.div`
-margin-top: 4rem;
+margin-top: 2rem;
 font-size: 1.125rem;
 display: flex;
 flex-direction: row;
@@ -386,10 +487,13 @@ transition: all 0.2s ease-in-out;
   background: #1c2237;
   color: #fff;
 }
+@media screen and (max-width: 770px) {
+  width: 70%;
+  height: 40px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  };
 
-@media screen and (max-width: 1000px) {
-  display: none;
-}
 `
 const BtnLink = styled(LinkR)`
 color: #010606;
@@ -399,3 +503,29 @@ color: #010606;
 }
 `
 //다시 머지
+
+const SessionBtn = styled.div`
+border-radius: 5px;
+background: #01bf71;
+white-space: nowrap;
+padding: 10px 22px;
+color: #010606;
+font-size: 1.2rem;
+outline: none;
+border: none;
+cursor: pointer;
+text-decoration: none;
+transition: all 0.2s ease-in-out;
+
+&:hover {
+  transition: all 0.2s ease-in-out;
+  background: #1c2237;
+  color: #fff;
+}
+`
+
+const SessionWrapper = styled.div`
+display : flex;
+flex-direction: row;
+justify-content: center;
+`

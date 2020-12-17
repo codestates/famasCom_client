@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link as LinkR } from 'react-router-dom';
+import click from 'images/click.png'
 
 
 export const EntiryWrapper = styled.div`
@@ -33,19 +34,21 @@ export const StyleButton = styled.button`
   width: 8rem;
   height: 2.75rem;
   border-radius: 4px;
-  font-size: 1.125rem;
-  font-weight: bold;
+  font-size: 1.2rem;
+  font-weight: 500;
   font-family: "맑은 고딕";
   color: black;
   background: #01bf71;
   display: inline-block;
   text-align: center;
   line-height: 22px;
+  align-items: left;
   transition: all 0.2s ease-in-out;
 
   &:hover {
     transition: all 0.2s ease-in-out;
     background: #1c2237;
+    cursor: url(${click}), auto;
     color: #fff;
 `;
 
@@ -60,7 +63,7 @@ export const Line = styled.div`
 export const ExplainText = styled.div`
   font-size: 1.2rem;
   line-height: 1.8;
-
+  text-align: left;
   span {
     font-size: 1.7rem;
   }

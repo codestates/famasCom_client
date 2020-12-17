@@ -44,8 +44,8 @@ const ChattForm = () => {
   /*------ 대댓글 ---------------------------------------------------*/
 
   //대댓글 관련 체인지
-  const onHandleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setCommentValue(e.currentTarget.value)
+  const onHandleChange = (html: any) => {
+    setCommentValue(html)
   }
   // 대댓글 등록 
   const onsubmit = (e: React.MouseEvent<HTMLDivElement>) => {
