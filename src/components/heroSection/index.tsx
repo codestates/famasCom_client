@@ -16,7 +16,7 @@ function HeroSection() {
   return (
     <HeroContainer id='home'>
       <HeroBg>
-        <VideoBg playsInline autoPlay loop muted src='videos/pexels56.mp4'/>
+        <VideoBg playsInline autoPlay loop muted src='videos/20mb.mp4'/>
       </HeroBg>
       <HeroContent>
         <Topline>느려도 괜찮아 🙆🏻‍♂️</Topline>
