@@ -4,7 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
-dotenv.config();
+import CSS from 'csstype';
 
 
 const key = process.env.KAKAO_KEY
@@ -42,18 +42,22 @@ export const Kakao = () => {
         }
     }
     return (<StyledKakaoLogin
-        token={key}
-        onSuccess={result => kakaoLogin._success(result)}
-        onFail={console.error}
-        onLogout={console.info}
-    />)
+      token={key}
+      onSuccess={result => kakaoLogin._success(result)}
+      onFail={console.error}
+      onLogout={console.info}
+      style={style}
+    >
+      <div style={{ color: "#1c2237", textAlign: 'center'}}> 카카오톡 로그인</div>
+    </StyledKakaoLogin>
+    )
 };
 
 
 const StyledKakaoLogin = styled(KakaoLogin)`
         display: contents;
         padding: 0;
-        width: 250px;
+        
         height: 49px;
         line-height: 49px;
         color: #3C1E1E;
@@ -63,3 +67,19 @@ const StyledKakaoLogin = styled(KakaoLogin)`
         font-size: 16px;
         text-align: center;
 `;
+
+const style: CSS.Properties = {
+  width: '100%',
+  display: 'inline-block',
+  padding: '0px',
+  height: '49px',
+  lineHeight: '49px',
+  borderRadius: '3px',
+  backgroundColor: 'rgba(255,238,51,0.99)',
+  color: '#1c2237',
+  textAlign: 'center',
+  fontSize: '1.2rem',
+  border: 'none',
+  fontWeight: 600,
+  cursor: 'pointer'
+};
