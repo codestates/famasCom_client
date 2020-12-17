@@ -1,5 +1,5 @@
 import React from 'react';
-import {FaBars} from 'react-icons/fa'
+import { FaBars } from 'react-icons/fa'
 import {
   Nav,
   NavbarContainer,
@@ -17,34 +17,34 @@ type navprop = {
 }
 
 const Navbar = ({ toggle }: navprop) => {
-  
-  console.log(localStorage.getItem("token"))
+
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("kakao_token");
   }
-  
+
   return (
     <>
-    <Nav>
-      <NavbarContainer> 
-        <NavLogo to="/">
-          fama's
+      <Nav>
+        <NavbarContainer>
+          <NavLogo to="/">
+            fama's
         </NavLogo>
-        <MobileIcon onClick={toggle}>
-          <FaBars />
-        </MobileIcon>
-        <NavMenu>
+          <MobileIcon onClick={toggle}>
+            <FaBars />
+          </MobileIcon>
+          <NavMenu>
             <NavItem>
-            <NavLinks to="/">첫화면</NavLinks>
+              <NavLinks to="/">첫화면</NavLinks>
             </NavItem>
             <NavItem>
-            <NavLinks to="/Lecture">강의</NavLinks>
+              <NavLinks to="/Lecture">강의</NavLinks>
             </NavItem>
             <NavItem>
-            <NavLinks to="/Game">게임</NavLinks>
+              <NavLinks to="/Game">게임</NavLinks>
             </NavItem>
             <NavItem>
-            <NavLinks to="/Community">정보공유</NavLinks>
+              <NavLinks to="/Community">정보공유</NavLinks>
             </NavItem>
             {localStorage.getItem("token") &&
               <NavItem>
@@ -62,11 +62,11 @@ const Navbar = ({ toggle }: navprop) => {
               <NavBtnLink to="/Login" >회원으로 접속하기</NavBtnLink>
             </NavBtn>
           }
-      </NavbarContainer>
-    </Nav>
-  </>
-   )
- 
- }
+        </NavbarContainer>
+      </Nav>
+    </>
+  )
 
- export default Navbar
+}
+
+export default Navbar
