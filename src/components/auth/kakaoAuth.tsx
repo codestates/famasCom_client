@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import CSS from 'csstype';
+import click from 'images/click.png'
 
 const key: any = process.env.KAKAO_KEY
 export default {
@@ -73,17 +74,17 @@ const StyledKakaoLogin = styled(KakaoLogin)`
 `;
 
 const style: CSS.Properties = {
-    width: '100%',
-    display: 'inline-block',
-    padding: '0px',
-    height: '49px',
-    lineHeight: '49px',
-    borderRadius: '3px',
-    backgroundColor: 'rgba(255,238,51,0.99)',
-    color: '#1c2237',
-    textAlign: 'center',
-    fontSize: '1.2rem',
-    border: 'none',
-    fontWeight: 600,
-    cursor: 'pointer'
+  width: '100%',
+  display: 'inline-block',
+  padding: '0px',
+  height: '49px',
+  lineHeight: '49px',
+  borderRadius: '3px',
+  backgroundColor: 'rgba(255,238,51,0.99)',
+  color: '#1c2237',
+  textAlign: 'center',
+  fontSize: '1.2rem',
+  border: 'none',
+  fontWeight: 600,
+  cursor: `url(${click}), auto`
 };
