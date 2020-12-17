@@ -33,8 +33,8 @@ const Footer = () => {
         <FooterLinksContainer>
           <FooterLinksWrapper>
             <FooterLinkItems>
-              <FooterLinkTitle>우리가 궁금할 땐</FooterLinkTitle>
-              <FooterLink to='/About'>팀원 소개</FooterLink>
+              <FooterLinkTitle>그냥 궁금할 땐</FooterLinkTitle>
+              <FooterLink to='/About'>문의하기</FooterLink>
             </FooterLinkItems>
             <FooterLinkItems>
               <FooterLinkTitle>정책이 궁금할 땐</FooterLinkTitle>
