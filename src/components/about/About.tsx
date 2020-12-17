@@ -7,17 +7,18 @@ import {
   AboutIcon,
   AboutH2,
   AboutP,
-  AboutExplain,
-  AboutExplainH4,
-  AboutExplainP,
-  AboutHover,
-  AboutSLink,
-  AboutSLinkA
+  // AboutExplain,
+  // AboutExplainH4,
+  // AboutExplainP,
+  // AboutHover,
+  // AboutSLink,
+  // AboutSLinkA
 } from './AboutElements';
 import byeongkuk from '../../images/ByeongKuk.png';
 import mira from '../../images/MiRa.png';
 import haseok from '../../images/HaSeok.png';
 import minju from '../../images/MinJu.png';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const About = () => {
   return (
@@ -27,7 +28,7 @@ const About = () => {
       <AboutWrapper>
         <AboutCard>
           <AboutIcon  src={byeongkuk}>
-            {/* <AboutHover>
+          {/* <AboutHover>
               <AboutExplain>
                 <AboutExplainH4>Hi There !</AboutExplainH4>
                 <AboutExplainP>I love to introduce myself as a hardcore Developer.</AboutExplainP>

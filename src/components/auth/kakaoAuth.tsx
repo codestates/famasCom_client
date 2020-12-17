@@ -1,5 +1,4 @@
 import * as dotenv from 'dotenv';
-dotenv.config();
 import KakaoLogin from 'react-kakao-login'
 import { RiKakaoTalkFill } from "react-icons/ri"
 import React from 'react';
@@ -9,7 +8,9 @@ import { useHistory } from "react-router-dom";
 import CSS from 'csstype';
 import click from 'images/click.png'
 
-const key: any = KAKAO_KEY
+dotenv.config();
+
+const key: any = process.env.KAKAO_KEY
 
 export default {
     title: "KakaoLogin",
