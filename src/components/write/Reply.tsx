@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CommentSwappar, FormWapper, ReplyBtn } from "./style/ReplyStyle"
 import moment from 'moment';
 import axios from 'axios';
@@ -75,7 +75,7 @@ const Reply = ({ datas,
   const handleReplyOpen = () => {
     {
       localStorage.getItem("token") &&
-      setReplyOpen(!replyOpen);
+        setReplyOpen(!replyOpen);
     }
   }
   /*------ 대댓글모달훅 -------------------------*/
@@ -145,7 +145,7 @@ const Reply = ({ datas,
   };
 
 
-localStorage.getItem("token")
+  localStorage.getItem("token")
 
 
 
@@ -167,58 +167,58 @@ localStorage.getItem("token")
       {!localStorage.getItem("token") && ''}
     </span>,
     <div onClick={handleCommentOpen} className="comment_btn"
-    style={{ cursor: `url(${click}), auto`, fontSize: '1rem', color: 'gray' }}>댓글({datas.comments.length})</div>
+      style={{ cursor: `url(${click}), auto`, fontSize: '1rem', color: 'gray' }}>댓글({datas.comments.length})</div>
   ]
   // incode HTML
   const changeHtml: any = [
-    <div dangerouslySetInnerHTML={{ __html: datas.msg }} style={{fontSize:'1.2rem'}}></div>
+    <div dangerouslySetInnerHTML={{ __html: datas.msg }} style={{ fontSize: '1.2rem' }}></div>
   ]
 
   // username
   const author: any = [
-    <div style={{fontSize:'1rem' ,color: 'gray'}}>{datas.userName}</div>
+    <div style={{ fontSize: '1rem', color: 'gray' }}>{datas.userName}</div>
   ]
-    // time
-    const datetime: any = [
-      <Tooltip title={moment().subtract(1, 'hour').format('YYYY-MM-DD HH:mm:ss')} >
-          <span style={{fontSize:'1rem' ,color: 'gray'}}>{time.fromNow()}</span>
-      </Tooltip>
-    ]
-  
-    // avatar
-    const avatar: any = [
-      <Avatar alt={datas.userName} src="/static/images/avatar/1.jpg" style={{cursor: `url(${click}), auto`, fontSize:'1.5rem', width:'50px', height:'50px'}}/>
-    ]
+  // time
+  const datetime: any = [
+    <Tooltip title={moment().subtract(1, 'hour').format('YYYY-MM-DD HH:mm:ss')} >
+      <span style={{ fontSize: '1rem', color: 'gray' }}>{time.fromNow()}</span>
+    </Tooltip>
+  ]
+
+  // avatar
+  const avatar: any = [
+    <Avatar alt={datas.userName} src={datas.profileImage ? datas.profileImage : "/static/images/avatar/1.jpg"} style={{ cursor: `url(${click}), auto`, fontSize: '1.5rem', width: '50px', height: '50px' }} />
+  ]
   /*------ 대댓글 입력창 관련 -------------------------*/
-    // avatar
-    const replyAvatar: any = [
-      <Avatar alt={datas.userName} src="/static/images/avatar/1.jpg" style={{cursor: `url(${click}), auto`, fontSize:'1.5rem', width:'50px', height:'50px'}}/>
-    ]
-    // incode HTML
+  // avatar
+  const replyAvatar: any = [
+    <Avatar alt={datas.userName} src={datas.profileImage ? datas.profileImage : "/static/images/avatar/1.jpg"} style={{ cursor: `url(${click}), auto`, fontSize: '1.5rem', width: '50px', height: '50px' }} />
+  ]
+  // incode HTML
   const replyInput: any = [
     <>
       <ReplyEditorBlock>
-          <ReplyQuillWrapper>
-            <ReactQuill theme="snow" value={commentValue} onChange={onHandleChange} placeholder={"남기실 글을 입력하세요."} />
+        <ReplyQuillWrapper>
+          <ReactQuill theme="snow" value={commentValue} onChange={onHandleChange} placeholder={"남기실 글을 입력하세요."} />
         </ReplyQuillWrapper>
         <ReplyBtn onClick={onsubmit} id={datas.msgId}>
-        댓글 등록
+          댓글 등록
         </ReplyBtn>
-        </ReplyEditorBlock>
-     
-      </>
-    ]
-// const xSize = (e:React.KeyboardEvent<HTMLInputElement> ) =>
-// {
-//     e.style.height = '1px';
-//     e.style.height = (e.scrollHeight + 12) + 'px';
-// }
+      </ReplyEditorBlock>
+
+    </>
+  ]
+  // const xSize = (e:React.KeyboardEvent<HTMLInputElement> ) =>
+  // {
+  //     e.style.height = '1px';
+  //     e.style.height = (e.scrollHeight + 12) + 'px';
+  // }
 
 
   return (
     <CommentSwappar >
       <Comment
-        style={{textAlign:"left"}}
+        style={{ textAlign: "left" }}
         actions={actions}
         key={datas.msgId}
         author={author}
@@ -231,7 +231,7 @@ localStorage.getItem("token")
             {datas.comments.map((cmt: any) => (
               <Comment avatar={
                 <Avatar alt={datas.userName} src="/static/images/avatar/3.jpg" />
-              } author={ <div style={{fontSize:'0.9rem' ,color: 'gray'}}>{cmt[0]}</div>} content={<div dangerouslySetInnerHTML={{ __html: cmt[1] }} style={{fontSize:'1rem'}}></div>} />
+              } author={<div style={{ fontSize: '0.9rem', color: 'gray' }}>{cmt[0]}</div>} content={<div dangerouslySetInnerHTML={{ __html: cmt[1] }} style={{ fontSize: '1rem' }}></div>} />
             )
             )
             }</List>
@@ -251,9 +251,9 @@ localStorage.getItem("token")
           <div id="myModal" className="authModal">
             <div className="modal-content">
               <span className="close" onClick={onDeleteClick}>&times;</span>
-            <p>삭제하시겠습니까?</p>
-            <DeleteBtnWrapper>
-              <DeleteBtn onClick={handleMsgDelete} id={datas.msgId}>예</DeleteBtn>
+              <p>삭제하시겠습니까?</p>
+              <DeleteBtnWrapper>
+                <DeleteBtn onClick={handleMsgDelete} id={datas.msgId}>예</DeleteBtn>
               &nbsp;&nbsp;
               <DeleteBtn onClick={onDeleteClick}>아니오</DeleteBtn>
               </DeleteBtnWrapper>
@@ -267,11 +267,11 @@ localStorage.getItem("token")
       {replyOpen &&
         <FormWapper>
           <Form>
-          <Comment
-            key={datas.index}
-            avatar={replyAvatar}
-            content={replyInput}
-          />
+            <Comment
+              key={datas.index}
+              avatar={replyAvatar}
+              content={replyInput}
+            />
           </Form>
         </FormWapper>
       }
