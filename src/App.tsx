@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Main, Login, Signup, Community, ModifyInfo, Lecture, Computer, Mobile, IDK, Game, About } from './pages';
+import { Main, Login, Signup, Community, ModifyInfo, Lecture, Computer, Mobile, IDK, Game } from './pages';
 
 import {
   BrowserRouter as Router,
@@ -23,7 +23,7 @@ const App: React.FC = () => {
           <Route exact path="/Signup" component={Signup} />
           <Route exact path="/Community" component={Community} />
           <Route exact path="/ModifyInfo" component={ModifyInfo} />
-          <Route exact path="/About" component={About} />
+          {/* <Route exact path="/About" component={About} /> */}
       </Router>
       </div>
       </>

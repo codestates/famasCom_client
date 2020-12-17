@@ -7,4 +7,4 @@ export { default as Community } from './Community';
 export { default as NotFound } from './NotFound';
 export { default as Lecture } from './Lecture';
 export { default as Game } from './Game';
-export { default as About } from './About';
+// export { default as About } from './About';
