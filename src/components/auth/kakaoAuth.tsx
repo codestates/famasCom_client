@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import CSS from 'csstype';
+import click from 'images/click.png'
 
 const key:any = process.env.KAKAO_KEY
 export default {
@@ -80,5 +81,5 @@ const style: CSS.Properties = {
   fontSize: '1.2rem',
   border: 'none',
   fontWeight: 600,
-  cursor: 'pointer'
+  cursor: `url(${click}), auto`
 };

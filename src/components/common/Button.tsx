@@ -29,9 +29,9 @@ transition: all 0.2s ease-in-out;
 const StyleButton = styled.button`${buttonStyle}`;
 const StyleLink = styled(Link)`${buttonStyle}`;
 
-const Button = (props: any) => {
+const CommonButton = (props: any) => {
   return props.to ? (<StyleLink {...props} />)
     : (<StyleButton {...props} />)// 버튼이 받아오는 props를 스타일 버튼에게 던진다.
 }
-export default Button;
+export default CommonButton;
 

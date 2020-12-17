@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { createStyles, makeStyles, Theme ,withStyles} from '@material-ui/core/styles';
+import ContentNavbar from '../components/common/navbar'
+import Siderbar from '../components/common/siderbar'
+import InfoSection from 'components/myinfoSection/InfoSection'
+import { Link as LinkR } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
+import modifyModal from 'textBody/modalText/modifyModal'
+import { createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import ReplyIcon from '@material-ui/icons/Reply';
@@ -15,67 +21,15 @@ import Divider from '@material-ui/core/Divider';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import IconButton from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom';
+import click from 'images/click.png'
 import Modal from '@material-ui/core/Modal';
-import ContentNavbar from '../components/common/navbar'
-import Siderbar from '../components/common/siderbar'
-import Typography from '@material-ui/core/Typography';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Box from '@material-ui/core/Box';
-import InfoSection from 'components/myinfoSection/InfoSection'
-import { Link as LinkR } from 'react-router-dom';
-import { useHistory } from "react-router-dom";
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import MobileStepper from '@material-ui/core/MobileStepper';
+import Paper from '@material-ui/core/Paper';
+import { useTheme } from '@material-ui/core/styles';
+import Backdrop from '@material-ui/core/Backdrop';
 
-//
-function rand() {
-    return Math.round(Math.random() * 20) - 10;
-    }
-  
-  function getModalStyle() {
-    const top = 50 + rand();
-    const left = 50 + rand();
-  
-    return {
-      top: `${top}%`,
-      left: `${left}%`,
-      transform: `translate(-${top}%, -${left}%)`,
-    };
-  }
-  //============ 도움말 ui ===========//
-  interface TabPanelProps {
-    children?: React.ReactNode;
-    index: any;
-    value: any;
-  }
-  function TabPanel(props: TabPanelProps) {
-    const { children, value, index, ...other } = props;
-  
-    return (
-      <div
-        role="tabpanel"
-        hidden={value !== index}
-        id={`simple-tabpanel-${index}`}
-        aria-labelledby={`simple-tab-${index}`}
-        {...other}
-      >
-        {value === index && (
-          <Box p={2}>
-            <Typography>{children}</Typography>
-          </Box>
-        )}
-      </div>
-    );
-  }
-  
-  function a11yProps(index: any) {
-    return {
-      id: `simple-tab-${index}`,
-      'aria-controls': `simple-tabpanel-${index}`,
-    };
-  }
-  
-  
   const useStyles = makeStyles((theme: Theme) => 
     createStyles({
       root: {
@@ -124,14 +78,20 @@ function rand() {
         flexShrink: 0,
         padding:'1em 2em'
       },
+      modal: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        border: '1px solid #000',
+        
+      },
       paper: {
-        position: 'absolute',
-        width: 550,
-        marginLeft:'30%',
         backgroundColor: theme.palette.background.paper,
-        border: 'none',
+        border: '1px solid #000',
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
+        cursor: `url(${click}), auto`,
       },
       arrow: {
         color: theme.palette.common.black,
@@ -164,11 +124,49 @@ export default function ModifyInfo() {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
     //모달 설정
-    const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => {setOpen(true);};
     const handleClose = () => { setOpen(false); };
- 
+        //스테퍼 설정
+        const theme = useTheme();
+        const [activeStep, setActiveStep] = React.useState(0);
+        const maxSteps = modifyModal.length;
+        const handleNext = () => { setActiveStep((prevActiveStep) => prevActiveStep + 1); };
+        const handleBack = () => { setActiveStep((prevActiveStep) => prevActiveStep - 1); };
+        //도움말 BODY
+        const body = (
+          <ModalBox className={classes.modal}>
+            <h2 id="simple-modal-title">도움말</h2>
+            <ModalBody >
+              <Img
+                src={modifyModal[activeStep].imgPath}
+                alt={modifyModal[activeStep].label}
+              />
+              <ModalText square elevation={0} >
+                <div>{modifyModal[activeStep].label}</div>
+              </ModalText>
+              <MobileStepper
+                steps={maxSteps}
+                position="static"
+                variant="text"
+                activeStep={activeStep}
+                nextButton={
+                  <Button size="large" onClick={handleNext} disabled={activeStep === maxSteps - 1} style={{cursor: `url(${click}), auto`}}>
+                    다음으로
+                    {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+                  </Button>
+                }
+                backButton={
+                  <Button size="large" onClick={handleBack} disabled={activeStep === 0} style={{cursor: `url(${click}), auto`}}>
+                    {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+                    이전으로
+                  </Button>
+                }
+              />
+            </ModalBody>
+            <Btn style={{textAlign:'center'}} onClick={handleClose}>알았어요!</Btn>
+          </ModalBox>
+        );
  
     console.log(localStorage.getItem("token"))
     
@@ -223,43 +221,7 @@ export default function ModifyInfo() {
     const toggle = () => {
       setIsOpen(!isOpen)
     }
-  
-    const body = (
-      <div style={modalStyle} className={classes.paper}>
-        <div className={classes.root}>
-          <AppBar position="static">
-            <Tabs value={helpValue} onChange={handleHelpChange} aria-label="simple tabs example" style={{background: '#01bf71'}}>
-              <Tab label="회원 접속" {...a11yProps(0)} style={{color: '#1c2237', width:'50%'}} />
-              <Tab label="회원 가입" {...a11yProps(1)} style={{color: '#1c2237', width:'50%'}} />
-            </Tabs>
-          </AppBar>
-          <TabPanel value={helpValue} index={0}>
-                1. ~~~~~~~~ 
-          </TabPanel>
-              <TabPanel value={helpValue} index={1}>
-                1. ~~~~~~~~ sadfsdfsadfsdfasdfasdfsdfasdfasdf &br;
-                2.sadfsdfsdfasdf
 
-          </TabPanel>
-          <Button onClick={handleClose} style={{background: '#01bf71'}}>알았어요!</Button>
-        </div>
-      </div>
-  );
-
-    const SessionBody = (
-      <div style={modalStyle} className={classes.paper}>
-        <h2 id="simple-modal-title" style={{textAlign:"center", fontSize:"1.5rem"}}>탈퇴하시겠습니까?</h2>
-        <SessionWrapper>
-          <SessionBtn className="secession_btn" onClick={infoModifyHandler}>
-              <Link to="/" style={{ textDecoration: 'none' }}>
-                예
-              </Link>
-          </SessionBtn>
-          &nbsp;&nbsp;
-          <SessionBtn onClick={handleSecessionOpen}>아니오</SessionBtn>
-        </SessionWrapper>
-      </div>
-  );
   return (
     <>
       <ContentNavbar toggle={toggle}/>
@@ -281,7 +243,7 @@ export default function ModifyInfo() {
               <>
               <input accept="image/*" className={classes.input} id="icon-button-file" type="file" />
               <label htmlFor="icon-button-file">
-              <IconButton color="primary" aria-label="upload picture" component="span">
+              <IconButton style={{cursor: `url(${click}), auto`, color:'#01bf71'}}  aria-label="upload picture" component="span">
                 <PhotoCamera />
               </IconButton>
               </label>
@@ -349,27 +311,51 @@ export default function ModifyInfo() {
           </ButtonBox>
         </div>
             <Footer>
-              <div onClick={handleOpen}>💬 도움말</div>
-              <div onClick={handleSecessionOpen}>회원 탈퇴</div>
+              <div style={{cursor: `url(${click}), auto`}} onClick={handleOpen}>💬 도움말</div>
+              <div style={{cursor: `url(${click}), auto`}} onClick={handleSecessionOpen}>회원 탈퇴</div>
             </Footer>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
-        >
-          {body}
+            <Modal
+              aria-labelledby="transition-modal-title"
+              aria-describedby="transition-modal-description"
+              className={classes.modal}
+              open={open}
+              onClose={handleClose}
+              closeAfterTransition
+              BackdropComponent={Backdrop}
+              BackdropProps={{
+                timeout: 500,
+              }}
+            >
+              {body}
             </Modal>
 
             <Modal
-          open={secessionState}
-          onClose={handleSecessionOpen}
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
-        >
-          {SessionBody}
-          </Modal>
+              open={secessionState}
+              onClose={handleSecessionOpen}
+              className={classes.modal}
+              aria-labelledby="simple-modal-title"
+              aria-describedby="simple-modal-description"
+              closeAfterTransition
+              BackdropComponent={Backdrop}
+              BackdropProps={{
+                timeout: 500,
+              }}
+            >
           
+              <div className={classes.paper}>
+                <h2 id="simple-modal-title" style={{textAlign:"center", fontSize:"1.5rem"}}>탈퇴하시겠습니까?</h2>
+                <SessionWrapper>
+                  <SessionBtn className="secession_btn" onClick={infoModifyHandler}>
+                      <Link to="/" style={{ textDecoration: 'none' }}>
+                        예
+                      </Link>
+                  </SessionBtn>
+                  &nbsp;&nbsp;
+                  <SessionBtn onClick={handleSecessionOpen}>아니오</SessionBtn>
+                </SessionWrapper>
+              </div>
+            
+            </Modal>
         </WhiteBox>
           
         </div>
@@ -433,6 +419,7 @@ justify-content: center;
 align-items: center;
 margin-top: 1rem;
 
+
 @media screen and (max-width: 1300px) {
   width: 70%
   display: flex;
@@ -468,10 +455,12 @@ div {
 const Btn = styled.nav`
 display: flex;
 align-items: center;
+justify-content: center;
 border-radius: 5px;
 background: #01bf71;
 white-space: nowrap;
 padding: 10px 22px;
+margin-top: 10px;
 margin-right: 10px;
 margin-left: 10px;
 color: #010606;
@@ -485,6 +474,7 @@ transition: all 0.2s ease-in-out;
 &:hover {
   transition: all 0.2s ease-in-out;
   background: #1c2237;
+  cursor: url(${click}), auto;
   color: #fff;
 }
 @media screen and (max-width: 770px) {
@@ -493,7 +483,6 @@ transition: all 0.2s ease-in-out;
   font-size: 1rem;
   margin-bottom: 10px;
   };
-
 `
 const BtnLink = styled(LinkR)`
 color: #010606;
@@ -528,4 +517,33 @@ const SessionWrapper = styled.div`
 display : flex;
 flex-direction: row;
 justify-content: center;
+`
+
+const ModalBox = styled.div`
+display:block;
+justify-content:center;
+position: absolute;
+width: 400px;
+background: white;
+border: 2px solid #000;
+box-shadow:0px 2px 2px 1px rgba(0, 0, 0, 0.2);
+padding: 20px 35px;
+`
+const ModalBody = styled.div`
+max-width: 400px;
+flex-grow: 1;
+`
+const ModalText = styled(Paper)`
+display: flex;
+align-items: center;
+height: 50px;
+padding: 20px;
+background: #fafafa;
+`
+const Img = styled.img`
+height: 255px;
+max-width: 400px;
+overflow: hidden;
+display: block;
+width: 100%;
 `
