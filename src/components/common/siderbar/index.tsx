@@ -32,14 +32,11 @@ const Siderbar = ({ toggle, isOpen }: siderprops) => {
         <SiderLink to="/">
           첫 화면
         </SiderLink>
-        <SiderLink to="/ComExplain">
-        컴퓨터
+        <SiderLink to="/Lecture">
+          강의
         </SiderLink>
-        <SiderLink to="/MobExplain">
-          모바일
-        </SiderLink>
-        <SiderLink to="/IDK">
-        모르겠어요
+        <SiderLink to="/Game">
+          게임
         </SiderLink>
         <SiderLink to="/Community">
             정보공유
@@ -51,7 +48,7 @@ const Siderbar = ({ toggle, isOpen }: siderprops) => {
           }
           {localStorage.getItem("token") &&
             <SiderBtnWrap>
-              <SiderbarRoute to="/Login">접속 종료</SiderbarRoute>
+              <SiderbarRoute to="/Login" onClick={handleLogout}>접속 종료</SiderbarRoute>
             </SiderBtnWrap>
           }
           {!localStorage.getItem("token") &&

@@ -2,10 +2,8 @@ import React from 'react';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../common/Button';
-
 import { Kakao } from "./kakaoAuth"
 
-// 회원가입 또는 로그인 폼을 나타내는 컴포넌트
 type typeProps = {
   token: string;
   value: string;
@@ -26,6 +24,7 @@ const textMap: Indexable = {
 
 const AuthForm = ({ value, email, password, handleSubmit, handleChange }: typeProps) => {
   const text = textMap[value];
+
   return (
     <AuthFormBlock>
       <h3>{text}</h3>
@@ -34,11 +33,16 @@ const AuthForm = ({ value, email, password, handleSubmit, handleChange }: typePr
         <StyledInput autoComplete="new-password" name="password" type="password" value={password} onChange={handleChange} placeholder="두 번째! 비밀번호를 입력해 주세요." />
         <Button onClick={handleSubmit}>{text}</Button>
       </form>
-
-      <Line />
+      <Line>
+        <span className="line-or">
+					<span className="txt-or">또는</span>
+        </span>
+      </Line>
       <Kakao />
       <Footer>
+      <span>💬 도움말</span>
         {value === "login" ? (<Link to="/signup">회원가입</Link>) : (<Link to="/login">로그인</Link>)}
+        
       </Footer>
     </AuthFormBlock>
   )
@@ -56,10 +60,18 @@ const AuthFormBlock = styled.div`
 
 // 폼 하단에 로그인 혹은 회원가입 링크 보여줌
 const Footer = styled.div`
+display; flex;
 margin-top: 2rem;
 font-size: 1.3rem;
-text-align: right;
+flex-direction: row;
+span {
+  cursor: pointer;
+  &:hover {
+    color: #01BF71;
+  }
+}
 a {
+  margin-left: 52%;
   color: #1c2237;
   text-decoration: none;
   &:hover {
@@ -67,6 +79,7 @@ a {
   }
 }
 `;
+
 // &은 sass 문법임 
 // css 에서 + 는 1 + 2애서 2에만 해당 css가 적용됨 https://developer.mozilla.org/ko/docs/Web/CSS/%EC%9D%B8%EC%A0%91_%ED%98%95%EC%A0%9C_%EC%84%A0%ED%83%9D%EC%9E%90
 const StyledInput = styled.input`
@@ -87,11 +100,29 @@ width: 100%;
 `;
 
 const Line = styled.div`
-  border: 100px;
-  border-color: white;
-  border-radius: 5px;
-  background-color:black;
-  display: flex;
+.line-or {
+  top: 10%;
+  position: relative;
+  display: block;
   width: 100%;
+  padding: 10px 0;
+}
+.line-or:before,
+.line-or:after {
+  display: inline-block;
+  width: calc(50% - 20px);
   height: 1px;
+  margin: 8px 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  vertical-align: top;
+  content: "";
+}
+.txt-or {
+  display: inline-block;
+  width: 40px;
+  font-size: 16px;
+  line-height: 18px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.49);
+}
 `

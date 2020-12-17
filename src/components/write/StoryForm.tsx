@@ -8,7 +8,12 @@ const EditorBlock = styled(Responsive)`
 padding: 15px;
 outline:#6eb584;
 ;`;
-import { EntiryWrapper, QuillWrapper, StyleButton, Line } from "./style/StoryFormstyle.js"
+const ExplainBlock = styled(Responsive)`
+padding: 15px;
+outline:#6eb584;
+;`;
+
+import { EntiryWrapper, QuillWrapper, StyleButton, Line, GoToLoginBtn, ExplainText } from "./style/StoryFormstyle.js"
 
 // 댓글 폼을 나타내는 컴포넌트
 
@@ -18,11 +23,11 @@ type StoryFormProps = {
   reRending: () => void;
   editorHtml: string;
   commentValue: string;
-  onHandleChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onHandleChange: (html: any) => void;
   handleLike: (e: React.MouseEvent<HTMLInputElement>) => void;
   handleStoryChange: (html: any) => void;
   handleSubmitClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  onsubmit: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onsubmit: (e: React.MouseEvent<HTMLDivElement>) => void;
 };
 
 const StoryForm = ({
@@ -30,14 +35,26 @@ const StoryForm = ({
   handleSubmitClick, handleLike, onHandleChange,
   commentValue, onsubmit, reRending, onReset }: StoryFormProps) => {
 
+
   return (
     <EntiryWrapper>
-      <EditorBlock>
-        <QuillWrapper>
-          <ReactQuill theme="snow" value={editorHtml} onChange={handleStoryChange} placeholder={"남기실 글을 입력하세요."} />
-        </QuillWrapper>
-        <StyleButton onClick={handleSubmitClick}>등록</StyleButton>
-      </EditorBlock>
+      {localStorage.getItem("token") &&
+        <EditorBlock>
+          <QuillWrapper>
+            <ReactQuill theme="snow" value={editorHtml} onChange={handleStoryChange} placeholder={"남기실 글을 입력하세요."} />
+          </QuillWrapper>
+          <StyleButton onClick={handleSubmitClick}>등록</StyleButton>
+        </EditorBlock>
+      }
+      {!localStorage.getItem("token") &&
+        <ExplainBlock>
+          <ExplainText>이 곳에 글을 남기면 정보도 얻을수 있구, 회고도 할 수 있는데 <span>👉🏻👈🏻 </span> </ExplainText>
+          <ExplainText>말로 다 설명할 수가 없네요.. <span>😔</span></ExplainText>
+          <ExplainText>로그인 하면 이용 가능한데, 로그인 하시겠어요? &nbsp;&nbsp;
+          <GoToLoginBtn to="/Login">회원으로 접속하기</GoToLoginBtn>
+          </ExplainText>
+        </ExplainBlock>
+      }
       <Line></Line>
 
 
@@ -47,7 +64,9 @@ const StoryForm = ({
       </div> : datas.sort((one: any, two: any) =>
         (one.createdAt > two.createdAt ? -1 : 1)).map((item: any) => (
           <React.Fragment>
-            <Reply datas={item}
+            <Reply
+              key={item.msgId}
+              datas={item}
               onReset={onReset}
               reRending={reRending}
               onsubmit={onsubmit}

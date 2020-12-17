@@ -6,6 +6,8 @@ import { idText } from 'typescript';
 const ChattForm = () => {
   /*!------ 리플데이터훅 -------------------------*/
   const [datas, setDatas] = useState<any>(null);
+  /*!------ 유저데이터훅 -------------------------*/
+  //const [userDatas, setUserDatas] = useState<any>(null);
   /*!------ 댓글인풋데이터훅 -------------------------*/
   const [editorHtml, setEditorData] = useState<string>('');
   /*!------ 대댓글데이터훅 -------------------------*/
@@ -14,14 +16,31 @@ const ChattForm = () => {
   const [refresh, setRefresh] = useState(false);
 
   /*------ 유틸리티 ---------------------------------------------------*/
-
+  const _effectMethod = {
+    async _getMsg() {
+      return await axios
+        .get('https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/get-msg')
+    },
+    async _postUserData() {
+      axios.defaults.headers['Authorization'] = `Bearer ${localStorage.getItem("token")}`
+      return await axios
+        .post('https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/hello')
+    }
+  }
   // 화면 시작하자마자 데이터 랜더링하고 시작하기 위해 useEffect 사용
   useEffect(() => {
-    axios
-      .get('https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/get-msg')
+    _effectMethod._getMsg()
       .then((res) => {
-        console.log(res);
         const datas = res.data.data.Items
+        _effectMethod._postUserData()
+          .then((res) => {
+            let userDatas = res.data.user
+            // user data 중 사진을 datas에 넣는 과정
+            for (let i = 0; i < datas.length; i++) {
+              (datas[i].userId === userDatas.userId) ?
+                (datas[i].profileImage = userDatas.profileImage) : datas[i]
+            }
+          })
         setDatas(datas);
       })
   }, [refresh]);
@@ -44,11 +63,11 @@ const ChattForm = () => {
   /*------ 대댓글 ---------------------------------------------------*/
 
   //대댓글 관련 체인지
-  const onHandleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setCommentValue(e.currentTarget.value)
+  const onHandleChange = (html: any) => {
+    setCommentValue(html)
   }
   // 대댓글 등록 
-  const onsubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const onsubmit = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
     axios.defaults.headers['Authorization'] = `Bearer ${localStorage.getItem("token")}`
     axios.post(`https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/addComment/${e.currentTarget.id}`,
@@ -70,15 +89,17 @@ const ChattForm = () => {
   //좋아요 관련 이벤트
   const handleLike = async (e: React.MouseEvent<HTMLInputElement>) => {
     e.preventDefault();
-    await axios
-      .post(`https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/addLike/${e.currentTarget.id}`)
-      .then((res) => {
-        console.log(res.status)
-        reRending()
-      }).catch((err) => {
-        console.log("좋아요 err :" + err)
-      })
-
+    {
+      localStorage.getItem("token") &&
+        await axios
+          .post(`https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/addLike/${e.currentTarget.id}`)
+          .then((res) => {
+            console.log(res.status)
+            reRending()
+          }).catch((err) => {
+            console.log("좋아요 err :" + err)
+          })
+    }
   }
 
   /*!------ 좋아요 ---------------------------------------------------*/

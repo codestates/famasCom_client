@@ -2,6 +2,7 @@
   color: #fff;
   padding: 160px 0;
   height: 350px;
+  text-shadow: black 2px 2px 5px;
 }
 
 .idk_container {
@@ -60,11 +61,11 @@
 }
 
 .idk_dark {
-  color: #101010;
+  color: #fff;
 }
 
 .idk_darkBg {
-  background-image: url(https://ifh.cc/g/I3FMyU.png);
+  background-image: url("../../images/banners/BannerIDK.jpg");
 }
 
 .idk_subtitle {
@@ -82,7 +83,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
   .idk_text-wrapper {
     padding-bottom: 65px;
   }
@@ -90,6 +91,23 @@
   .idk_col {
     max-width: 100%;
     flex-basis: 100%;
+  }
+  .idk_heading {
+    width: 400px;
+
+    margin-bottom: 24px;
+    font-size: 2.2rem;
+    line-height: 1.1;
+    font-weight: 600;
+    color: #fff;
+  }
+  .idk_subtitle {
+    width: 400px;
+    margin-bottom: 32px;
+    font-size: 1.5rem;
+    line-height: 1.1;
+    font-weight: 600;
+    color: #fff;
   }
 }
 /*sss*/

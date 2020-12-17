@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import ChattTemplate from '../components/write/ChattTemplate';
 import Responsive from '../components/common/Responsive'
 import ChattForm  from 'components/write/ChattForm';
-import Navbar from '../components/common/navbar'
+import ContentNavbar from 'components/common/navbar'
 import Siderbar from '../components/common/siderbar'
 import CommunitySection from 'components/communitySection/CommunitySection'
+import GoToTop from 'components/common/GoToTop'
 
 const Community = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -14,7 +15,7 @@ const Community = () => {
   }
     return (
       <>
-        <Navbar toggle={toggle}/>
+        <ContentNavbar toggle={toggle}/>
         <Siderbar isOpen={isOpen} toggle={toggle} />
         <CommunitySection />
         <CommunityTemplateBlock>
@@ -23,6 +24,7 @@ const Community = () => {
             </ChattTemplate>
           
         </ CommunityTemplateBlock>
+        <GoToTop />
         </>
     )
 }

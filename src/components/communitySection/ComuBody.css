@@ -15,9 +15,6 @@
 
 .community_row {
   align-items: center;
-}
-
-.community_row {
   display: flex;
   margin-right: -15px;
   margin-bottom: -15px;
@@ -60,11 +57,12 @@
 }
 
 .community_dark {
-  color: #101010;
+  color: white;
+  text-shadow: black 2px 2px 5px;
 }
 
 .community_darkBg {
-  background-image: url(https://ifh.cc/g/xeJp6n.png);
+  background-image: url("../../images/banners/BannerCommunity.jpg");
 }
 
 .community_subtitle {
@@ -89,6 +87,24 @@
   .community_col {
     max-width: 100%;
     flex-basis: 100%;
+  }
+  .community_heading {
+    width: 400px;
+    text-align: left;
+    margin-bottom: 24px;
+    font-size: 2.2rem;
+    line-height: 1.1;
+    font-weight: 600;
+    color: #fff;
+  }
+  .community_subtitle {
+    width: 300px;
+    text-align: left;
+    margin-bottom: 32px;
+    font-size: 1.5rem;
+    line-height: 1.1;
+    font-weight: 600;
+    color: #fff;
   }
 }
 
