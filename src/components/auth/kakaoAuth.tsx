@@ -1,12 +1,13 @@
 import * as dotenv from 'dotenv';
 import KakaoLogin from 'react-kakao-login'
+import { RiKakaoTalkFill } from "react-icons/ri"
 import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import CSS from 'csstype';
 
-const key:any = process.env.KAKAO_KEY
+const key: any = process.env.KAKAO_KEY
 export default {
     title: "KakaoLogin",
     component: KakaoLogin,
@@ -41,22 +42,26 @@ export const Kakao = () => {
         }
     }
     return (<StyledKakaoLogin
-      token={key}
-      onSuccess={result => kakaoLogin._success(result)}
-      onFail={console.error}
-      onLogout={console.info}
-      style={style}
+        token={key}
+        onSuccess={result => kakaoLogin._success(result)}
+        onFail={console.error}
+        onLogout={console.info}
+        style={style}
     >
-      <div style={{ color: "#1c2237", textAlign: 'center'}}> 카카오톡 로그인</div>
+        <div style={{ color: "#1c2237", textAlign: 'center' }}><RiKakao />&nbsp;카카오로 로그인하기</div>
     </StyledKakaoLogin>
     )
 };
-
+const RiKakao = styled(RiKakaoTalkFill)`
+height:25px;
+width:25px;
+position: relative;
+bottom : -5px;
+`;
 
 const StyledKakaoLogin = styled(KakaoLogin)`
         display: contents;
         padding: 0;
-        
         height: 49px;
         line-height: 49px;
         color: #3C1E1E;
@@ -68,17 +73,17 @@ const StyledKakaoLogin = styled(KakaoLogin)`
 `;
 
 const style: CSS.Properties = {
-  width: '100%',
-  display: 'inline-block',
-  padding: '0px',
-  height: '49px',
-  lineHeight: '49px',
-  borderRadius: '3px',
-  backgroundColor: 'rgba(255,238,51,0.99)',
-  color: '#1c2237',
-  textAlign: 'center',
-  fontSize: '1.2rem',
-  border: 'none',
-  fontWeight: 600,
-  cursor: 'pointer'
+    width: '100%',
+    display: 'inline-block',
+    padding: '0px',
+    height: '49px',
+    lineHeight: '49px',
+    borderRadius: '3px',
+    backgroundColor: 'rgba(255,238,51,0.99)',
+    color: '#1c2237',
+    textAlign: 'center',
+    fontSize: '1.2rem',
+    border: 'none',
+    fontWeight: 600,
+    cursor: 'pointer'
 };
