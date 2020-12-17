@@ -34,7 +34,7 @@ const Footer = () => {
           <FooterLinksWrapper>
             <FooterLinkItems>
               <FooterLinkTitle>그냥 궁금할 땐</FooterLinkTitle>
-              <FooterLink to='/About'>문의하기</FooterLink>
+              <FooterLink to='/'>문의하기</FooterLink>
             </FooterLinkItems>
             <FooterLinkItems>
               <FooterLinkTitle>정책이 궁금할 땐</FooterLinkTitle>

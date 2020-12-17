@@ -6,6 +6,7 @@ import Home from 'components/HomePage/Home'
 import HeroSection from '../components/heroSection/index'
 import Services from 'components/service/Services'
 import GoToTop from 'components/common/GoToTop'
+import About from '../components/about/About'
 const Main = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const toggle = () => {
@@ -18,6 +19,7 @@ const Main = () => {
       <HeroSection />
       <Home />
       <Services />
+      <About/>
       <Footer />
       <GoToTop />
       </>
