@@ -13,6 +13,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import Responsive from '../common/Responsive';
 import styled from "styled-components";
+import click from 'images/click.png'
 
 const ReplyEditorBlock = styled(Responsive)`
 padding: 15px;
@@ -152,21 +153,21 @@ const Reply = ({ datas,
   //comment Actions
   const actions: any = [
     <span id={datas.msgId} onClick={handleLike} className="iLike"
-      style={{ cursor: 'pointer', color: 'red', fontSize: '1rem' }}> 좋아요 ♥︎ {datas.goodLike}</span>,
-    <span onClick={handleReplyOpen} key="comment-basic-reply-to" style={{ cursor: 'pointer', fontSize: '1rem', color: 'gray' }}>
+      style={{ cursor: `url(${click}), auto`, color: 'red', fontSize: '1rem' }}> 좋아요 ♥︎ {datas.goodLike}</span>,
+    <span onClick={handleReplyOpen} key="comment-basic-reply-to" style={{ cursor: `url(${click}), auto`, fontSize: '1rem', color: 'gray' }}>
       {localStorage.getItem("token") && '댓글 등록'}
       {!localStorage.getItem("token") && ''}
     </span>,
-    <span onClick={onEditclick} className="edit_btn" style={{ cursor: 'pointer', fontSize: '1rem', color: 'gray' }}>
+    <span onClick={onEditclick} className="edit_btn" style={{ cursor: `url(${click}), auto`, fontSize: '1rem', color: 'gray' }}>
       {localStorage.getItem("token") && '수정'}
       {!localStorage.getItem("token") && ''}
     </span>,
-    <span onClick={onDeleteClick} className="delete_btn" style={{ cursor: 'pointer', fontSize: '1rem', color: 'gray' }}>
+    <span onClick={onDeleteClick} className="delete_btn" style={{ cursor: `url(${click}), auto`, fontSize: '1rem', color: 'gray' }}>
       {localStorage.getItem("token") && '삭제'}
       {!localStorage.getItem("token") && ''}
     </span>,
     <div onClick={handleCommentOpen} className="comment_btn"
-      style={{ cursor: 'pointer', fontSize: '1rem', color: 'gray' }}>댓글({datas.comments.length})</div>
+      style={{ cursor: `url(${click}), auto`, fontSize: '1rem', color: 'gray' }}>댓글({datas.comments.length})</div>
   ]
   // incode HTML
   const changeHtml: any = [
@@ -186,12 +187,12 @@ const Reply = ({ datas,
 
   // avatar
   const avatar: any = [
-    <Avatar alt={datas.userName} src={datas.profileImage ? datas.profileImage : "/static/images/avatar/1.jpg"} style={{ fontSize: '1.5rem', width: '50px', height: '50px' }} />
+    <Avatar alt={datas.userName} src={datas.profileImage ? datas.profileImage : "/static/images/avatar/1.jpg"} style={{ cursor: `url(${click}), auto`, fontSize: '1.5rem', width: '50px', height: '50px' }} />
   ]
   /*------ 대댓글 입력창 관련 -------------------------*/
   // avatar
   const replyAvatar: any = [
-    <Avatar alt={datas.userName} src={datas.profileImage ? datas.profileImage : "/static/images/avatar/1.jpg"} style={{ fontSize: '1.5rem', width: '50px', height: '50px' }} />
+    <Avatar alt={datas.userName} src={datas.profileImage ? datas.profileImage : "/static/images/avatar/1.jpg"} style={{ cursor: `url(${click}), auto`, fontSize: '1.5rem', width: '50px', height: '50px' }} />
   ]
   // incode HTML
   const replyInput: any = [

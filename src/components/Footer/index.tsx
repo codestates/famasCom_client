@@ -33,26 +33,25 @@ const Footer = () => {
         <FooterLinksContainer>
           <FooterLinksWrapper>
             <FooterLinkItems>
-              <FooterLinkTitle>About Us</FooterLinkTitle>
-              <FooterLink to='/sign-up'>How it works</FooterLink>
-              <FooterLink to='/About'>Members</FooterLink>
+              <FooterLinkTitle>그냥 궁금할 땐</FooterLinkTitle>
+              <FooterLink to='/'>문의하기</FooterLink>
             </FooterLinkItems>
             <FooterLinkItems>
-              <FooterLinkTitle>Contact Us</FooterLinkTitle>
-              <FooterLink to='/'>Contact</FooterLink>
-              <FooterLink to='/'>Support</FooterLink>
+              <FooterLinkTitle>정책이 궁금할 땐</FooterLinkTitle>
+              <FooterLink to='/'>이용 약관</FooterLink>
+              <FooterLink to='/'>개인정보 처리 방침</FooterLink>
             </FooterLinkItems>
           </FooterLinksWrapper>
           <FooterLinksWrapper>
             <FooterLinkItems>
-              <FooterLinkTitle>Videos</FooterLinkTitle>
-              <FooterLink to='/'>Submit Video</FooterLink>
-              <FooterLink to='/'>Ambassadors</FooterLink>
+              <FooterLinkTitle>도움이 필요할 땐</FooterLinkTitle>
+              <FooterLink to='/'>고객 센터</FooterLink>
+              <FooterLink to='/'>자주 하는 질문</FooterLink>
             </FooterLinkItems>
             <FooterLinkItems>
-              <FooterLinkTitle>Social Media</FooterLinkTitle>
-              <FooterLink to='/'>Instagram</FooterLink>
-              <FooterLink to='/'>Youtube</FooterLink>
+              <FooterLinkTitle>소셜 미디어</FooterLinkTitle>
+              <FooterLink to='/'>인스타그램</FooterLink>
+              <FooterLink to='/'>페이스북</FooterLink>
             </FooterLinkItems>
           </FooterLinksWrapper>
         </FooterLinksContainer>
@@ -68,24 +67,6 @@ const Footer = () => {
               </SocialIconLink>
               <SocialIconLink href='/' target='_blank' aria-label='Instagram'>
                 <FaInstagram />
-              </SocialIconLink>
-              <SocialIconLink
-                href=''
-                target='_blank'
-                aria-label='Youtube'
-                rel='noopener noreferrer'
-              >
-                <FaYoutube />
-              </SocialIconLink>
-              <SocialIconLink
-                target='_blank'
-                aria-label='Twitter'
-                href=''
-              >
-                <FaTwitter />
-              </SocialIconLink>
-              <SocialIconLink href='/' target='_blank' aria-label='Linkedin'>
-                <FaLinkedin />
               </SocialIconLink>
             </SocialIcons>
           </SocialMediaWrap>

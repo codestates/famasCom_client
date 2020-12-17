@@ -26,6 +26,7 @@ import Box from '@material-ui/core/Box';
 import InfoSection from 'components/myinfoSection/InfoSection'
 import { Link as LinkR } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
+
 //
 function rand() {
     return Math.round(Math.random() * 20) - 10;
@@ -80,7 +81,7 @@ function rand() {
       root: {
         display: 'flex',
         flexWrap: 'wrap',
-        width: 500,
+        width: '100%',
         flexDirection: 'column',
         justifyContent: 'space-even',
         flexGrow: 1,
@@ -226,24 +227,22 @@ export default function ModifyInfo() {
     const body = (
       <div style={modalStyle} className={classes.paper}>
         <div className={classes.root}>
-      <AppBar position="static">
-        <Tabs value={helpValue} onChange={handleHelpChange} aria-label="simple tabs example" style={{background: '#01bf71'}}>
-          <Tab label="회원 접속" {...a11yProps(0)} style={{color: '#1c2237', width:'50%'}} />
-          <Tab label="회원 가입" {...a11yProps(1)} style={{color: '#1c2237', width:'50%'}} />
-        </Tabs>
-      </AppBar>
-      <TabPanel value={helpValue} index={0}>
-            1. ~~~~~~~~ 
-            
-      </TabPanel>
-          <TabPanel value={helpValue} index={1}>
-            1. ~~~~~~~~ sadfsdfsadfsdfasdfasdfsdfasdfasdf &br;
-             2.sadfsdfsdfasdf
-             
-      </TabPanel>
-      <Button onClick={handleClose} style={{background: '#01bf71'}}>알았어요!</Button>
-    </div>
-      
+          <AppBar position="static">
+            <Tabs value={helpValue} onChange={handleHelpChange} aria-label="simple tabs example" style={{background: '#01bf71'}}>
+              <Tab label="회원 접속" {...a11yProps(0)} style={{color: '#1c2237', width:'50%'}} />
+              <Tab label="회원 가입" {...a11yProps(1)} style={{color: '#1c2237', width:'50%'}} />
+            </Tabs>
+          </AppBar>
+          <TabPanel value={helpValue} index={0}>
+                1. ~~~~~~~~ 
+          </TabPanel>
+              <TabPanel value={helpValue} index={1}>
+                1. ~~~~~~~~ sadfsdfsadfsdfasdfasdfsdfasdfasdf &br;
+                2.sadfsdfsdfasdf
+
+          </TabPanel>
+          <Button onClick={handleClose} style={{background: '#01bf71'}}>알았어요!</Button>
+        </div>
       </div>
   );
 
@@ -251,14 +250,14 @@ export default function ModifyInfo() {
       <div style={modalStyle} className={classes.paper}>
         <h2 id="simple-modal-title" style={{textAlign:"center", fontSize:"1.5rem"}}>탈퇴하시겠습니까?</h2>
         <SessionWrapper>
-      <SessionBtn className="secession_btn" onClick={infoModifyHandler}>
+          <SessionBtn className="secession_btn" onClick={infoModifyHandler}>
               <Link to="/" style={{ textDecoration: 'none' }}>
                 예
               </Link>
           </SessionBtn>
           &nbsp;&nbsp;
           <SessionBtn onClick={handleSecessionOpen}>아니오</SessionBtn>
-          </SessionWrapper>
+        </SessionWrapper>
       </div>
   );
   return (
@@ -268,8 +267,10 @@ export default function ModifyInfo() {
       <InfoSection />
       <MyInfoTemplateBlock>
         <div className="border">
-      <WhiteBox>
-        <div className={classes.root}>
+          <WhiteBox>
+          
+            <div className={classes.root}>
+
         <ListItem>
         <ListItemAvatar>
           <Avatar>
@@ -346,7 +347,6 @@ export default function ModifyInfo() {
           <Btn id='modifyBtn'
             onClick={infoModifyHandler} > <SaveIcon /> &nbsp; 저장하기</Btn>
           </ButtonBox>
-          
         </div>
             <Footer>
               <div onClick={handleOpen}>💬 도움말</div>
@@ -368,10 +368,11 @@ export default function ModifyInfo() {
           aria-describedby="simple-modal-description"
         >
           {SessionBody}
-        </Modal>
-          </WhiteBox>
+          </Modal>
           
-          </div>
+        </WhiteBox>
+          
+        </div>
           
       </MyInfoTemplateBlock>
       </>
@@ -393,10 +394,15 @@ justify-content: center;
 align-items: center;
 .border {
   width: 100%;
-  height: 580px;
+  height: 500px;
+  margin-bottom: 100px
   overflow: hidden;
   background-color: #fff;
-}
+
+  @media screen and (max-width: 1300px) {
+    margin-right: 60px;
+    };
+
 `;
 
 const WhiteBox = styled.div`
@@ -409,6 +415,15 @@ top: 7%;
   height: 500px;
   border: 1px solid #000;
   background: white;
+
+  @media screen and (max-width: 1300px) {
+  width: 50%
+  };
+
+  @media screen and (max-width: 750px) {
+    height: 600px;
+    width: 50%
+    };
 `;
 
 const ButtonBox = styled.div`
@@ -417,10 +432,26 @@ flex-direction: row;
 justify-content: center;
 align-items: center;
 margin-top: 1rem;
+
+@media screen and (max-width: 1300px) {
+  width: 70%
+  display: flex;
+  justify-content: center;
+align-items: center;
+  };
+
+@media screen and (max-width: 750px) {
+    width: 70%
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+align-items: center;
+    };
+
 `;
 
 const Footer = styled.div`
-margin-top: 3rem;
+margin-top: 2rem;
 font-size: 1.125rem;
 display: flex;
 flex-direction: row;
@@ -456,10 +487,13 @@ transition: all 0.2s ease-in-out;
   background: #1c2237;
   color: #fff;
 }
+@media screen and (max-width: 770px) {
+  width: 70%;
+  height: 40px;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  };
 
-@media screen and (max-width: 1000px) {
-  display: none;
-}
 `
 const BtnLink = styled(LinkR)`
 color: #010606;

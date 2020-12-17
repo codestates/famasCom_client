@@ -51,6 +51,7 @@ const ContentNavbar = ({ toggle }: navprop) => {
   return (
     <>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <Nav>
         <NavbarContainer>
           <NavLogo to="/">
@@ -74,12 +75,15 @@ const ContentNavbar = ({ toggle }: navprop) => {
             </NavItem>
 =======
       <IconContext.Provider value={{ color: '#fff' }}>
+=======
+      
+>>>>>>> e2c2b62ab6ed9adfdfd29633f0cb15b523770ebe
     <ContentNav scrollNav={scrollNav}>
       <ContentNavbarContainer> 
         <ContentNavLogo  scrollNav={scrollNav} to="/">
           fama's
         </ContentNavLogo>
-        <ContentMobileIcon onClick={toggle}>
+        <ContentMobileIcon  onClick={toggle}>
           <FaBars />
         </ContentMobileIcon>
         <ContentNavMenu>
@@ -104,12 +108,12 @@ const ContentNavbar = ({ toggle }: navprop) => {
               
               {localStorage.getItem("token") &&
             <ContentNavBtn>
-              <ContentNavBtnLink scrollNav={scrollNav} to="Login" onClick={handleLogout} >접속 종료</ContentNavBtnLink>
+              <ContentNavBtnLink scrollNav={scrollNav} to="/Login" onClick={handleLogout} >접속 종료</ContentNavBtnLink>
             </ContentNavBtn>
           }
           {!localStorage.getItem("token") &&
             <ContentNavBtn>
-              <ContentNavBtnLink scrollNav={scrollNav} to="Login" >회원으로 접속하기</ContentNavBtnLink>
+              <ContentNavBtnLink scrollNav={scrollNav} to="/Login" >회원으로 접속하기</ContentNavBtnLink>
             </ContentNavBtn>
           }
 <<<<<<< HEAD
@@ -126,7 +130,7 @@ export default Navbar
           
       </ContentNavbarContainer>
         </ContentNav>
-        </IconContext.Provider>
+
   </>
    )
  
