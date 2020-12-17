@@ -230,7 +230,7 @@ const Reply = ({ datas,
           <List>
             {datas.comments.map((cmt: any) => (
               <Comment avatar={
-                <Avatar alt={datas.userName} src="/static/images/avatar/3.jpg" />
+                <Avatar alt={datas.userName} src={replyAvatar} />
               } author={<div style={{ fontSize: '0.9rem', color: 'gray' }}>{cmt[0]}</div>} content={<div dangerouslySetInnerHTML={{ __html: cmt[1] }} style={{ fontSize: '1rem' }}></div>} />
             )
             )

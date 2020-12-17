@@ -27,8 +27,9 @@ const ContentNavbar = ({ toggle }: navprop) => {
   useEffect(() => {
     window.addEventListener('scroll', changeNav);
   }, []);
-  console.log(localStorage.getItem("token"))
+
   const handleLogout = () => {
+    localStorage.removeItem("kakao_token");
     localStorage.removeItem("token");
   }
   return (
