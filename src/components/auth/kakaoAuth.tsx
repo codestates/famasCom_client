@@ -1,4 +1,5 @@
 import * as dotenv from 'dotenv';
+dotenv.config();
 import KakaoLogin from 'react-kakao-login'
 import { RiKakaoTalkFill } from "react-icons/ri"
 import React from 'react';
