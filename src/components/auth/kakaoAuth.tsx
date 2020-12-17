@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 import CSS from 'csstype';
 import click from 'images/click.png'
 
-const key: any = process.env.KAKAO_KEY
+const key = process.env.KAKAO_KEY
 export default {
     title: "KakaoLogin",
     component: KakaoLogin,
