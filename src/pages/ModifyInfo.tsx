@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme ,withStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import ReplyIcon from '@material-ui/icons/Reply';
@@ -18,8 +18,14 @@ import HelpIcon from '@material-ui/icons/Help';
 import { Link } from 'react-router-dom';
 import Modal from '@material-ui/core/Modal';
 import Secession from '../components/myinfo/SecessionModal'
-import Nav from '../components/Nav';
-
+import Navbar from '../components/common/navbar'
+import Siderbar from '../components/common/siderbar'
+import Tooltip, { TooltipProps } from '@material-ui/core/Tooltip';
+import Typography from '@material-ui/core/Typography';
+import InfoSection from 'components/myinfoSection/InfoSection'
+import { Link as LinkR } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
+//
 function rand() {
     return Math.round(Math.random() * 20) - 10;
     }
@@ -57,7 +63,10 @@ function rand() {
         margin: theme.spacing(1),
         height: 55,
         width: 200,
-        fontSize: 18
+        fontSize: 18,
+        background: "#01bf71",
+        color:"#010606"
+        
       },
       textField: {
         marginLeft: theme.spacing(1),
@@ -86,8 +95,25 @@ function rand() {
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
       },
+      arrow: {
+        color: theme.palette.common.black,
+      },
+      tooltip: {
+        backgroundColor: theme.palette.common.black,
+      },
     }),
   );
+
+  const HtmlTooltip = withStyles((theme: Theme) => ({
+    tooltip: {
+      backgroundColor: '#f5f5f9',
+      color: 'rgba(0, 0, 0, 0.87)',
+      maxWidth: 220,
+      fontSize: theme.typography.pxToRem(12),
+      border: '1px solid #dadde9',
+      right:'80%'
+    },
+  }))(Tooltip);
 
 type ModifyInfoType = {
     // currentId: string;
@@ -107,6 +133,7 @@ export default function ModifyInfo() {
         inputPassword: '',
         inputName:''
     });
+    let history = useHistory();
     const [secessionState, setSecessionState] = useState<boolean>(false);
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
@@ -123,7 +150,7 @@ export default function ModifyInfo() {
         <Button onClick={handleClose}>알았어요!</Button>
         </div>
     );
-    const token = localStorage.getItem("token")
+ 
     console.log(localStorage.getItem("token"))
     
     // useEffect(() => {
@@ -147,11 +174,13 @@ export default function ModifyInfo() {
                 nickName: infoModify.inputId,
                 password: infoModify.inputPassword
             });
-            // setInfoModify('')
-        } else if (e.currentTarget.className === 'secession_btn') {
+          await setInfoModify({ inputId: '', inputPassword: '', inputName: '' });
+
+        }
+        else if (e.currentTarget.className === 'secession_btn') {
             axios.defaults.headers['Authorization'] = `Bearer ${localStorage.getItem("token")}`
             await axios.post('https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/delete-userData/');
-            // history.push("/main")
+            await history.push("/main")
         }
     }
     console.log(infoModify);
@@ -167,10 +196,15 @@ export default function ModifyInfo() {
             console.log("본명은요>>>>>>>>>",e.currentTarget.value)
         }
     };
-    
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const toggle = () => {
+      setIsOpen(!isOpen)
+    }
   return (
     <>
-        <Nav />
+      <Navbar toggle={toggle}/>
+      <Siderbar isOpen={isOpen} toggle={toggle} />
+      <InfoSection />
       <MyInfoTemplateBlock>
         <div className="border">
       <WhiteBox>
@@ -244,36 +278,18 @@ export default function ModifyInfo() {
           </div>
 
           <ButtonBox>
-          <Button
-                                variant="contained"
-                                id='modifyBtn'
-            color="primary"
-            size="large"
-            className={classes.button}
-            startIcon={<ReplyIcon />}
-          >
-                <Link to="/" style={{ textDecoration: 'none' }}>나가기</Link>
-          </Button>   
-          <Button
-            variant="contained"
-            color="primary"
-                                size="large"
-                                id='modifyBtn'
-            className={classes.button}
-            startIcon={<SaveIcon />}
-            onClick={infoModifyHandler}
-          >
-              저장하기
-          </Button>
+          <Btn id='modifyBtn'>
+          <BtnLink to="/"> <ReplyIcon style={{fontSize:'20px'}} /> &nbsp; 나가기</BtnLink>
+          </Btn>   
+          <Btn id='modifyBtn'
+            onClick={infoModifyHandler} > <SaveIcon /> &nbsp; 저장하기</Btn>
           </ButtonBox>
           
         </div>
-        <Footer1 onClick={handleSecessionOpen}>
-        회원 탈퇴
-        </Footer1>
-        <Footer2>
-        <div onClick={handleOpen}><HelpIcon/> 도움말</div>
-        </Footer2>
+            <Footer>
+              <div onClick={handleOpen}>💬 도움말</div>
+              <div onClick={handleSecessionOpen}>회원 탈퇴</div>
+            </Footer>
         <Modal
           open={open}
           onClose={handleClose}
@@ -284,7 +300,9 @@ export default function ModifyInfo() {
         </Modal>
         <Secession infoModifyHandler={infoModifyHandler} handleSecessionOpen={handleSecessionOpen} secessionState={secessionState} />
           </WhiteBox>
+          
           </div>
+          
       </MyInfoTemplateBlock>
       </>
         );
@@ -293,12 +311,12 @@ export default function ModifyInfo() {
 
 
 const MyInfoTemplateBlock = styled.div`
-position: absolute;
+position: relative;
 left: 0;
 right: 0;
 top: 0;
 bottom: 0;
-background: transparent 100%;
+background: #fff;
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -307,14 +325,14 @@ align-items: center;
   width: 100%;
   height: 580px;
   overflow: hidden;
-  background-color: #f5f5f5;
+  background-color: #fff;
 }
 `;
 
 const WhiteBox = styled.div`
-position: absolute;
+position: relative;
 left: 33%;
-top: 24.5%;
+top: 7%;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
   padding: 2rem;
   width: 600px;
@@ -328,30 +346,56 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
+margin-top: 1rem;
 `;
 
-const Footer1 = styled.div`
+const Footer = styled.div`
 margin-top: 4rem;
 font-size: 1.125rem;
-text-align: right;
-a {
-  color: gray;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+cursor: pointer;
+div {
   text-decoration: none;
   &:hover {
-    color: black
+    color: #01bf71;
   }
 }
 `;
 
-const Footer2 = styled.div`
-margin-top: -1.9rem;
-font-size: 1.125rem;
-text-align: left;
-a {
-  color: gray;
-  text-decoration: none;
-  &:hover {
-    color: black
-  }
+const Btn = styled.nav`
+display: flex;
+align-items: center;
+border-radius: 5px;
+background: #01bf71;
+white-space: nowrap;
+padding: 10px 22px;
+margin-right: 10px;
+margin-left: 10px;
+color: #010606;
+font-size: 1.3rem;
+outline: none;
+border: none;
+cursor: pointer;
+text-decoration: none;
+transition: all 0.2s ease-in-out;
+
+&:hover {
+  transition: all 0.2s ease-in-out;
+  background: #1c2237;
+  color: #fff;
 }
-`;
+
+@media screen and (max-width: 1000px) {
+  display: none;
+}
+`
+const BtnLink = styled(LinkR)`
+color: #010606;
+&:hover {
+  
+  color: #fff;
+}
+`
+//다시 머지

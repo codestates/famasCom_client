@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import AuthForm from './AuthForm';
-
+//
 type Inputs = { email: string; password: string }
 const SignupForm = () => {
   

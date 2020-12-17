@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Nav from './components/Nav';
-import { Main, Login, Signup, ComExplain, Community, MobExplain, ModifyInfo, IDK } from './pages/Index';
+import { GlobalStyles } from './pages/Global-style';
+import { Main, Login, Signup, ComExplain, Community, MobExplain, ModifyInfo, IDK, About } from './pages/Index';
 
 import {
   BrowserRouter as Router,
@@ -11,6 +11,7 @@ import {
 
 const App: React.FC = () => {
   return (
+    <>
     <div className="App">
       <Router>
         <Route exact path="/" component={Main} />
@@ -20,10 +21,13 @@ const App: React.FC = () => {
         <Route exact path="/Login" component={Login} />
         <Route exact path="/Signup" component={Signup} />
         <Route exact path="/Community" component={Community} />
-        <Route exact path="/ModifyInfo" component={ModifyInfo} />
+          <Route exact path="/ModifyInfo" component={ModifyInfo} />
+          <Route exact path="/About" component={About} />
       </Router>
-    </div>
+      </div>
+      </>
   );
 }
 
 export default App;
+//
