@@ -1,4 +1,3 @@
-import * as dotenv from 'dotenv';
 import KakaoLogin from 'react-kakao-login'
 import { RiKakaoTalkFill } from "react-icons/ri"
 import React from 'react';
@@ -7,7 +6,12 @@ import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import CSS from 'csstype';
 
-const key: any = process.env.KAKAO_KEY
+
+const KAKAO_KEY = ""
+
+
+
+
 export default {
     title: "KakaoLogin",
     component: KakaoLogin,
@@ -42,7 +46,7 @@ export const Kakao = () => {
         }
     }
     return (<StyledKakaoLogin
-        token={key}
+        token={KAKAO_KEY}
         onSuccess={result => kakaoLogin._success(result)}
         onFail={console.error}
         onLogout={console.info}
