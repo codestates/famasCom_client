@@ -221,7 +221,9 @@ export default function ModifyInfo() {
     const toggle = () => {
       setIsOpen(!isOpen)
     }
-
+    useEffect(() => {
+      window.scrollTo(0, 0)
+    }, [])
   return (
     <>
       <ContentNavbar toggle={toggle}/>

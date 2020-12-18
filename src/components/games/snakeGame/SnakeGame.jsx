@@ -314,19 +314,15 @@ class SnakeGame extends React.Component {
     if (this.state.directionChanged) return
 
     switch (event.keyCode) {
-      case 37:
       case 65:
         this.goLeft()
         break
-      case 38:
       case 87:
         this.goUp()
         break
-      case 39:
       case 68:
         this.goRight()
         break
-      case 40:
       case 83:
         this.goDown()
         break
