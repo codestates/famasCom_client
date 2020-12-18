@@ -7,11 +7,15 @@ import HeroSection from '../components/heroSection/index'
 import Services from 'components/service/Services'
 import GoToTop from 'components/common/GoToTop'
 import About from '../components/about/About'
+import { useEffect } from 'react';
 const Main = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const toggle = () => {
     setIsOpen(!isOpen)
   }
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <>
       <Navbar toggle={toggle}/>

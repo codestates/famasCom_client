@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
-import { Main, Login, Signup, Community, ModifyInfo, Lecture, Computer, Mobile, IDK } from './pages';
-import { Mouse, Keyboard } from 'pages/letctures/comLectures';
-import { CommuJoin, MemberJoin } from 'pages/letctures/idkLectures';
-import { Wifi, Message, KakaoStory } from 'pages/letctures/mobLectures';
+import { Main, Login, Signup, Community, ModifyInfo, Computer, Mobile, IDK } from './pages';
+import { Mouse, Keyboard } from 'pages/lectures/comLectures';
+import { CommuJoin, MemberJoin } from 'pages/lectures/idkLectures';
+import { Wifi, Message, NaverMap } from 'pages/lectures/mobLectures';
 
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
 } from "react-router-dom";
 
@@ -17,14 +16,13 @@ const App: React.FC = () => {
     <div className="App">
         <Router>
           <Route exact path="/" component={Main} />
-          <Route exact path="/Lecture" component={Lecture} />
           <Route exact path="/Lecture/Computer" component={Computer} />
           <Route exact path="/Lecture/Computer/Mouse" component={Mouse} />
           <Route exact path="/Lecture/Computer/Keyboard" component={Keyboard} />
           <Route exact path="/Lecture/Mobile" component={Mobile} />
           <Route exact path="/Lecture/Mobile/Wifi" component={Wifi} />
           <Route exact path="/Lecture/Mobile/Message" component={Message} />
-          <Route exact path="/Lecture/Mobile/KakaoStory" component={KakaoStory} />
+          <Route exact path="/Lecture/Mobile/NaverMap" component={NaverMap} />
           <Route exact path="/Lecture/IDK" component={IDK} />
           <Route exact path="/Lecture/IDK/CommuJoin" component={CommuJoin} />
           <Route exact path="/Lecture/IDK/MemberJoin" component={MemberJoin} />
