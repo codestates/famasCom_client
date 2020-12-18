@@ -1,7 +1,7 @@
 ![](https://img.shields.io/badge/PROJECT-FamasCom-blue?style=for-the-badge) 
 ![](https://img.shields.io/badge/FamasCom-WEB-yellowgreen?style=for-the-badge)
 # 📗FamasCom
-<img src="https://ifh.cc/g/n6Y31Q.png" width="300" height="300"> & fabicon
+<img src="https://ifh.cc/g/n6Y31Q.png" width="300" height="300">
 
 
 누구나 새로운 것을 배울때 느리게 배우기 마련입니다.
