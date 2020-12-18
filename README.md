@@ -1,9 +1,7 @@
 ![](https://img.shields.io/badge/PROJECT-FamasCom-blue?style=for-the-badge) 
 ![](https://img.shields.io/badge/FamasCom-WEB-yellowgreen?style=for-the-badge)
 # 📗FamasCom
-### Main Logo & fabicon
-<img src="https://ifh.cc/g/n6Y31Q.png" width="300" height="300">
-<img src="https://user-images.githubusercontent.com/66916041/102559653-b910c480-4113-11eb-84e6-b69e8252208c.png" width="150" height="150">
+<img src="https://ifh.cc/g/n6Y31Q.png" width="300" height="300"> & fabicon
 
 
 누구나 새로운 것을 배울때 느리게 배우기 마련입니다.
@@ -46,4 +44,7 @@ _**"느려도 괜찮습니다."**_
 | [임민주](https://github.com/IMMINJU) | 🚩Frontend |
 
 # For project details
+### UI Design
+
+
 ### [checkout WIKI](https://github.com/codestates/famasCom_client/wiki)
