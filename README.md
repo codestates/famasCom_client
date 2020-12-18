@@ -27,12 +27,16 @@ _**"느려도 괜찮습니다."**_
 ## BACK
 ![](https://img.shields.io/badge/BACK-NODE-green?style=for-the-badge&logo=node.js) 
 
+![](https://img.shields.io/badge/BACK-EXPRESS-black?style=for-the-badge&logo=express) 
+
 ![](https://img.shields.io/badge/BACK-AWS-orange?style=for-the-badge&logo=Amazon-AWS) 
 
 
 # 🔨 Architecture
 ### Client-Side Full flow chart
 ![](https://postfiles.pstatic.net/MjAyMDEyMThfMSAg/MDAxNjA4MjU4NDg0MTAx.Af7TLgkswPi5UNivyoJmM8MVhmMv0VE659yXqcIdMYYg.3sOmhm7V1urJLN5YwWXfKomukvTcVjB00uXl_7-VaAMg.JPEG.rosic2012/mainflow.jpg?type=w966)
+### Client System Architecture
+![](https://ifh.cc/g/uluc9C.png)
 ### Server-Side flow chart
 ![](https://ifh.cc/g/gKaefX.jpg)
 ### Server System Architecture
