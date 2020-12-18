@@ -33,7 +33,8 @@ _**"느려도 괜찮습니다."**_
 
 
 # 🔨 Architecture
-### Client-Side flow chart
+### Client-Side Full flow chart
+![](https://postfiles.pstatic.net/MjAyMDEyMThfMSAg/MDAxNjA4MjU4NDg0MTAx.Af7TLgkswPi5UNivyoJmM8MVhmMv0VE659yXqcIdMYYg.3sOmhm7V1urJLN5YwWXfKomukvTcVjB00uXl_7-VaAMg.JPEG.rosic2012/mainflow.jpg?type=w966)
 ### Server-Side flow chart
 ![](https://ifh.cc/g/gKaefX.jpg)
 
