@@ -1,7 +1,7 @@
 ![](https://img.shields.io/badge/PROJECT-FamasCom-blue?style=for-the-badge) 
 ![](https://img.shields.io/badge/FamasCom-WEB-yellowgreen?style=for-the-badge)
 # 📗FamasCom
-<img src="https://ifh.cc/g/n6Y31Q.png" width="300" height="300"> & fabicon
+<img src="https://ifh.cc/g/n6Y31Q.png" width="300" height="300">
 
 
 누구나 새로운 것을 배울때 느리게 배우기 마련입니다.
@@ -27,16 +27,13 @@ _**"느려도 괜찮습니다."**_
 ## BACK
 ![](https://img.shields.io/badge/BACK-NODE-green?style=for-the-badge&logo=node.js) 
 
-![](https://img.shields.io/badge/BACK-EXPRESS-black?style=for-the-badge&logo=express) 
-
-![](https://img.shields.io/badge/BACK-AWS-orange?style=for-the-badge&logo=Amazon-AWS) 
+![](https://img.shields.io/badge/BACK-AWS-orange?style=for-the-badge&logo=Amazon-AWS)
 
 
 # 🔨 Architecture
 ### Client-Side Full flow chart
 ![](https://postfiles.pstatic.net/MjAyMDEyMThfMSAg/MDAxNjA4MjU4NDg0MTAx.Af7TLgkswPi5UNivyoJmM8MVhmMv0VE659yXqcIdMYYg.3sOmhm7V1urJLN5YwWXfKomukvTcVjB00uXl_7-VaAMg.JPEG.rosic2012/mainflow.jpg?type=w966)
-### Client System Architecture
-![](https://ifh.cc/g/uluc9C.png)
+![flow chart](https://user-images.githubusercontent.com/66916041/102568129-44935100-4126-11eb-9e99-a048ff4f1060.jpg)
 ### Server-Side flow chart
 ![](https://ifh.cc/g/gKaefX.jpg)
 ### Server System Architecture
