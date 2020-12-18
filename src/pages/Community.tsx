@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ChattTemplate from '../components/write/ChattTemplate';
 import Responsive from '../components/common/Responsive'
@@ -13,6 +13,9 @@ const Community = () => {
   const toggle = () => {
     setIsOpen(!isOpen)
   }
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
     return (
       <>
         <ContentNavbar toggle={toggle}/>
