@@ -33,6 +33,7 @@ _**"느려도 괜찮습니다."**_
 # 🔨 Architecture
 ### Client-Side Full flow chart
 ![](https://postfiles.pstatic.net/MjAyMDEyMThfMSAg/MDAxNjA4MjU4NDg0MTAx.Af7TLgkswPi5UNivyoJmM8MVhmMv0VE659yXqcIdMYYg.3sOmhm7V1urJLN5YwWXfKomukvTcVjB00uXl_7-VaAMg.JPEG.rosic2012/mainflow.jpg?type=w966)
+### Client-Side Community & Login
 ![flow chart](https://user-images.githubusercontent.com/66916041/102568129-44935100-4126-11eb-9e99-a048ff4f1060.jpg)
 ### Server-Side flow chart
 ![](https://ifh.cc/g/gKaefX.jpg)
