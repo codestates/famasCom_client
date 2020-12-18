@@ -1,7 +1,7 @@
 ![](https://img.shields.io/badge/PROJECT-FamasCom-blue?style=for-the-badge) 
 ![](https://img.shields.io/badge/FamasCom-WEB-yellowgreen?style=for-the-badge)
 # 📗FamasCom
-<img src="https://ifh.cc/g/n6Y31Q.png" width="300" height="300">
+<img src="https://ifh.cc/g/n6Y31Q.png" width="300" height="300"> & fabicon
 
 
 누구나 새로운 것을 배울때 느리게 배우기 마련입니다.
@@ -35,6 +35,7 @@ _**"느려도 괜찮습니다."**_
 # 🔨 Architecture
 ### Client-Side flow chart
 ### Server-Side flow chart
+![](https://ifh.cc/g/gKaefX.jpg)
 
 # 🗣️우리를 소개합니다.
 | [유병국](https://github.com/godkor200) | 🏁Backend  |
