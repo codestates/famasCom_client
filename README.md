@@ -27,8 +27,6 @@ _**"느려도 괜찮습니다."**_
 ## BACK
 ![](https://img.shields.io/badge/BACK-NODE-green?style=for-the-badge&logo=node.js) 
 
-![](https://img.shields.io/badge/BACK-EXPRESS-black?style=for-the-badge&logo=express) 
-
 ![](https://img.shields.io/badge/BACK-AWS-orange?style=for-the-badge&logo=Amazon-AWS) 
 
 
