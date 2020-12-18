@@ -18,7 +18,6 @@ import byeongkuk from '../../images/ByeongKuk.png';
 import mira from '../../images/MiRa.png';
 import haseok from '../../images/HaSeok.png';
 import minju from '../../images/MinJu.png';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const About = () => {
   return (
