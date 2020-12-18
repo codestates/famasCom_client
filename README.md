@@ -1,17 +1,22 @@
 ![](https://img.shields.io/badge/PROJECT-FamasCom-blue?style=for-the-badge) 
 ![](https://img.shields.io/badge/FamasCom-WEB-yellowgreen?style=for-the-badge)
 # 📗FamasCom
-![](https://postfiles.pstatic.net/MjAyMDEyMThfMTEy/MDAxNjA4MjUzMTM0NTA0.hyFDIWzFw8--FIuPuYnucee4yXARH5mtycK9z-HyLfkg.xkRyOEOa5N_DiSO4UNPzUPWxHU1Bf-eszxbtUc5QbhUg.PNG.rosic2012/SE-3eacd05a-09a6-4e62-a10c-6dee60144351.png?type=w966)
+### Main Logo & fabicon
+<img src="https://ifh.cc/g/n6Y31Q.png" width="300" height="300">
+<img src="https://user-images.githubusercontent.com/66916041/102559653-b910c480-4113-11eb-84e6-b69e8252208c.png" width="150" height="150">
 
-나날이 스마트해지는 현대 사회에서 소외되는 이웃을 도울 순 없을까요?
 
-FamasCom 을 찾아 고민을 나눠보세요~
+누구나 새로운 것을 배울때 느리게 배우기 마련입니다.
 
-현대 문물에 대한 강의와 커뮤니티까지, A to Z로 도와드립니다.
+우린 이 세상에서 접하는 모든 것이 처음이니까요.
 
-"여러분과 나란히 함께 걷고 싶은 파트너” 
+_**"느려도 괜찮습니다."**_
 
-FamasCom 입니다 :)
+****FAMAS COM****은 자신의 속도에 맞춰서 배움을 이어나갈 수 있습니다. 
+
+지식을 습득하고 또 사람들과 공유해보세요. 
+
+여러분의 더 나은 내일을 **FAMAS COM**이 함께하겠습니다. :)
 
 
 # 🕵🏼어떤 기술이 사용되었나요? 
