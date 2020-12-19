@@ -77,26 +77,29 @@ opacity: 0;
 transition: all 0.3s;
 
 &:hover {
-  top: 35%;
   opacity: 1;
 }
 `
 export const AboutExplain = styled.div`
-
+position: absolute;
+top: 5%;
+width: 100%;
+padding: 0 20px;
 `
 export const AboutExplainH4 = styled.h4`
-
+font-size: 1.8rem;
+font-weight: 600;
 `
 export const AboutExplainP = styled.p`
-
+font-size: 1.4rem;
 `
 
 export const AboutSLink = styled.div`
-
-
-&:hover {
-
-}
+position: absolute;
+bottom: 5%;
+width: 100%;
+text-align: center;
+font-size: 2rem;
 `
 export const AboutSLinkA = styled.a`
 text-align: center;
