@@ -120,6 +120,8 @@ const Computer = () => {
     flex-directoin:row;
     @media all and (max-width: 1030px) {
       display:block;
+      margin-left:auto;
+      margin-right:auto;
     }
   `
   const LectureCard = styled(Card)`

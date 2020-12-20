@@ -124,9 +124,12 @@ const LectureBox = styled.div`
 const HeadText = styled.h1`
 font-size:3em;
 border-bottom:10px solid #01bf71;
-width:50%;
+width:70%;
 padding-bottom:10px;
 word-break:keep-all;
+@media all and (max-width:768px){
+  width:auto;
+}
 `
 const Stepper = styled.div`
   padding-bottom:70px;

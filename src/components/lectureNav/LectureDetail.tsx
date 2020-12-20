@@ -98,6 +98,11 @@ align-items:flex-end;
 margin: 30px 0px 80px 0px;
 padding:20px 0 20px 20px;
 border-bottom:5px solid #01bf71;
+@media all and (max-width: 768px) {
+  display:flex;
+  align-items:center;
+  flex-direction:column;
+}
 `
 const GobackBtn = styled.button`
 border:none;
@@ -128,6 +133,7 @@ word-break:keep-all;
 const Btns = styled.div`
 @media all and (max-width: 768px) {
   display:flex;
+  flex-direction:column;
 }
 `
 const Btn = styled.button`
@@ -146,6 +152,11 @@ word-break:keep-all;
   background: #1c2237;
   color: #fff;     
   cursor: url(${click}), auto;
+}
+@media all and (max-width: 768px) {
+  width:100%;
+  margin: 0;
+  margin-top:10px;
 }
 `
 const ModalBox = styled.div`

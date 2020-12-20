@@ -105,7 +105,7 @@ const Mouse = () => {
                   />
                   </Stepper>
                   <HeadText>게임: 카드 맞추기</HeadText>
-                  <CardMatchGame/>
+                  <CardMatch/>
             </LectureBox>
         </Wrapper>
       </LectureTemplateBlock>
@@ -136,15 +136,11 @@ border-bottom:10px solid #01bf71;
 width:50%;
 padding-bottom:10px;
 word-break:keep-all;
+@media all and (max-width:768px){
+  width:auto;
+}
 `
 const Stepper = styled.div`
 margin-bottom:70px;
-`
-const CardMatchGame = styled(CardMatch)`
-@media all and (max-width:1440px){
-  display:block;
-  width:50px;
-  color:red;
-}
 `
 export default Mouse
