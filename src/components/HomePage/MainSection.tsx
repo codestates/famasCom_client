@@ -28,7 +28,7 @@ const MainSection = ({ lightBg, topLine, lightText, lightTextDesc, description,
                 <img src='images/mob.png' alt='mob' className='home__hero-img'  />
               </div>
               <div className='home__text-wrapper'>
-                <div className='home_top-line'>{topLine}</div>
+                {/* <div className='home_top-line'>어렵지 않아요</div> */}
                 <p className={lightText ? 'home_heading' : 'home_heading dark'}>
                   휴대폰 사용이 어려우신가요?
                 </p>
@@ -50,7 +50,7 @@ const MainSection = ({ lightBg, topLine, lightText, lightTextDesc, description,
                 <img src='images/desk.png' alt='desk' className='home__hero-img' />
               </div>
               <div className='home__text-wrapper'>
-                <div className='home_top-line'>{topLine}</div>
+                {/* <div className='home_top-line'></div> */}
                 <p className={lightText ? 'home_heading' : 'home_heading dark'}>
                   컴퓨터 사용이 어려우신가요?
                 </p>
@@ -73,7 +73,7 @@ const MainSection = ({ lightBg, topLine, lightText, lightTextDesc, description,
                 <img src='images/new.png' alt='new' className='home__hero-img'/>
               </div>
               <div className='home__text-wrapper'>
-                <div className='home_top-line'>{topLine}</div>
+                {/* <div className='home_top-line'>도전해보세요</div> */}
                 <p className={lightText ? 'home_heading' : 'home_heading dark'}>
                   시작이 어려우신가요?
                 </p>
