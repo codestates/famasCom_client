@@ -35,10 +35,10 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(4),
       marginLeft: 'auto',
       marginRight: 'auto',
-      height:400,
+      height:'auto',
     },
     text: {
-      height:70,
+      height:'auto',
       fontSize:20,
       wordBreak:'keep-all'
     },

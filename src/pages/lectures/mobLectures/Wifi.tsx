@@ -32,8 +32,6 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'block',
       marginLeft: 'auto',
       marginRight: 'auto',
-      marginTop:-100,
-      width:'80%',
     },
     text: {
       height:70,
@@ -74,7 +72,7 @@ const NaverMap = () => {
             <LectureBox>
                 <HeadText>와이파이 설정하기</HeadText>
                 <Stepper className={classes.root}>
-                <ImgBox>
+                  <ImgBox>
                     <img
                     className={classes.img}
                     src={WifiText[activeStep].imgPath}
@@ -133,13 +131,13 @@ font-size:3em;
 border-bottom:10px solid #01bf71;
 width:50%;
 padding-bottom:10px;
-word-break: keep-all;
+word-break:keep-all;
 `
 const Stepper = styled.div`
   padding-bottom:70px;
 `
 const ImgBox = styled.div`
   overflow: hidden;
-  height:600px;
+  height:auto;
 `
 export default NaverMap

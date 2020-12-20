@@ -33,12 +33,12 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '100%',
     },
     text: {
-      height:70,
+      height:'auto',
       fontSize:20,
       wordBreak:'keep-all'
     },
     body: {
-      height:100,
+      height:'100',
     }
   }),
 );
