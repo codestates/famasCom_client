@@ -1,5 +1,4 @@
 import * as dotenv from 'dotenv';
-dotenv.config();
 import KakaoLogin from 'react-kakao-login'
 import { RiKakaoTalkFill } from "react-icons/ri"
 import React from 'react';
@@ -10,7 +9,7 @@ import CSS from 'csstype';
 import click from 'images/click.png'
 
 
-const key: any = ''
+const key: any = '';
 
 export default {
     title: "KakaoLogin",
