@@ -108,7 +108,7 @@ background: ${({ scrollNav }) => (scrollNav ? '#01bf71' : '#01bf71')};
 white-space: nowrap;
 padding: 10px 22px;
 color: ${({ scrollNav }) => (scrollNav ? '#1c2237' : '#1c2237' )};
-font-size: 1.3rem;
+font-size: 1.5rem;
 outline: none;
 border: none;
 cursor: pointer;

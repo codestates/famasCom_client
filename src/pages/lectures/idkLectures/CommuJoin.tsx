@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import CommuJoinText from './texts/CommuJoinText'
-import Navbar from 'components/common/mainNavbar';
+import Navbar from 'components/common/navbar';
 import Responsive from 'components/common/Responsive';
 import Siderbar from 'components/common/siderbar';
 import LectureUpper from 'components/lectureNav/LectureDetail';
@@ -14,6 +14,7 @@ import Wrapper from 'themes/Wrapper';
 import styled from "styled-components";
 import { useTheme, makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import IDKSection from 'components/IdkSection/IDKSection';
+import Footer from 'components/Footer';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -101,6 +102,7 @@ const CommuJoin = () => {
             </LectureBox>
         </Wrapper>
       </LectureTemplateBlock>
+      <Footer/>
   </Wra>
   )
 }

@@ -91,13 +91,18 @@ display:flex;
 justify-content space-between;
 align-items:flex-end;
 margin: 30px 0px 80px 0px;
-padding:20px 0;
+padding:20px 0 20px 20px;
 border-bottom:5px solid #01bf71;
 `
 const TableText = styled.div`
 font-size:24px;
+word-break:keep-all;
 `
-const Btns = styled.div``
+const Btns = styled.div`
+@media all and (max-width: 768px) {
+  display:flex;
+}
+`
 const Btn = styled.button`
 background: #01bf71;
 color: #010606;
@@ -108,7 +113,8 @@ border: none;
 border-radius: 5px;
 outline: none;
 transition: all 0.2s ease-in-out;
-
+word-break:keep-all;
+align-items: center;
 &:hover{
   transition: all 0.2s ease-in-out;
   background: #1c2237;
@@ -117,8 +123,10 @@ transition: all 0.2s ease-in-out;
 }
 `
 const ModalBox = styled.div`
-display:block;
+display:flex;
+flex-direction:column;
 justify-content:center;
+align-items:center;
 position: absolute;
 width: 400px;
 background: white;
