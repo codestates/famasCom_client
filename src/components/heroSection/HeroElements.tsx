@@ -46,6 +46,20 @@ export const HeroBg = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
+
+  iframe {
+    top:0;
+    margin:0;
+    padding:0;
+    -o-object-fit: cover;
+    overflow: hidden;
+    display: block;       /* iframes are inline by default */
+    border: none;         /* Reset default border */
+    height: 100vh;        /* Viewport-relative units */
+    width: 100vw;
+    object-fit: cover;
+    background: #232a34;
+}
 `;
 
 export const VideoBg = styled.video`
