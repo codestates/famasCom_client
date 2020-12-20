@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import MouseText from './texts/MouseText'
-import Navbar from 'components/common/mainNavbar';
+import Navbar from 'components/common/navbar';
 import Responsive from 'components/common/Responsive';
 import Siderbar from 'components/common/siderbar';
 import LectureUpper from 'components/lectureNav/LectureDetail';
@@ -15,11 +15,13 @@ import Wrapper from 'themes/Wrapper';
 import styled from "styled-components";
 import { useTheme, makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import CardMatch from 'components/games/cardMatch/CardMatch';
+import Footer from 'components/Footer';
 
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      backgroundColor: theme.palette.background.default,
     },
     header: {
       display: 'flex',
@@ -30,10 +32,13 @@ const useStyles = makeStyles((theme: Theme) =>
     img: {
       overflow: 'hidden',
       display: 'block',
-      width: '100%',
+      padding: theme.spacing(4),
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      height:'auto',
     },
     text: {
-      height:70,
+      height:'auto',
       fontSize:20,
       wordBreak:'keep-all'
     },
@@ -100,10 +105,11 @@ const Mouse = () => {
                   />
                   </Stepper>
                   <HeadText>게임: 카드 맞추기</HeadText>
-                  <CardMatch/>
+                  <CardMatchGame/>
             </LectureBox>
         </Wrapper>
       </LectureTemplateBlock>
+      <Footer/>
   </Wra>
   )
 }
@@ -120,8 +126,8 @@ bottom: 0;
 background: #fff;
 `;
 const LectureBox = styled.div`
-  margin:50px 0;
-  padding:60px;
+  margin:50px 0px;
+  padding:60px 60px 100px 60px;
   border: 1px solid #C2C5CD;
 `
 const HeadText = styled.h1`
@@ -129,8 +135,16 @@ font-size:3em;
 border-bottom:10px solid #01bf71;
 width:50%;
 padding-bottom:10px;
+word-break:keep-all;
 `
 const Stepper = styled.div`
-  padding-bottom:70px;
+margin-bottom:70px;
+`
+const CardMatchGame = styled(CardMatch)`
+@media all and (max-width:1440px){
+  display:block;
+  width:50px;
+  color:red;
+}
 `
 export default Mouse

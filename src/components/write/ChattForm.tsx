@@ -21,10 +21,9 @@ const ChattForm = () => {
       return await axios
         .get('https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/get-msg')
     },
-    async _postUserData() {
-      axios.defaults.headers['Authorization'] = `Bearer ${localStorage.getItem("token")}`
+    async _getUserData() {
       return await axios
-        .post('https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/hello')
+        .get('https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/hello')
     }
   }
   // 화면 시작하자마자 데이터 랜더링하고 시작하기 위해 useEffect 사용
@@ -32,15 +31,7 @@ const ChattForm = () => {
     _effectMethod._getMsg()
       .then((res) => {
         const datas = res.data.data.Items
-        _effectMethod._postUserData()
-          .then((res) => {
-            let userDatas = res.data.user
-            // user data 중 사진을 datas에 넣는 과정
-            for (let i = 0; i < datas.length; i++) {
-              (datas[i].userId === userDatas.userId) ?
-                (datas[i].profileImage = userDatas.profileImage) : datas[i]
-            }
-          })
+        console.log("🚀 ~ file: ChattForm.tsx ~ line 34 ~ .then ~ datas", datas)
         setDatas(datas);
       })
   }, [refresh]);

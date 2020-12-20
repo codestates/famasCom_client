@@ -138,9 +138,17 @@ const Mobile = () => {
   `
   const LectureBox = styled.div`
     display:flex;
+    flex-directoin:row;
+    @media all and (max-width: 1030px) {
+      display:block;
+    }
   `
   const LectureCard = styled(Card)`
   margin:0px 10px;
+  width:100%;
+  @media all and (max-width: 1030px) {
+    margin-bottom:20px;
+  }
   `
   const Typo = styled(Typography)`
   word-break:keep-all;
@@ -153,4 +161,5 @@ top: 0;
 bottom: 0;
 background: #fff;
 `;
+
 export default Mobile;

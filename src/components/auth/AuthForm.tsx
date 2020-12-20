@@ -59,8 +59,8 @@ const AuthForm = ({ value, email, password, handleSubmit, handleChange }: typePr
   //모달 설정
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => {setOpen(true);};
-  const handleClose = () => {setOpen(false);};
+  const handleOpen = () => { setOpen(true); };
+  const handleClose = () => { setOpen(false); };
   //스테퍼 설정
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = authModal.length;
@@ -97,10 +97,10 @@ const AuthForm = ({ value, email, password, handleSubmit, handleChange }: typePr
           }
         />
       </ModalBody>
-      <Btn  onClick={handleClose}>알았어요!</Btn>
+      <Btn onClick={handleClose}>알았어요!</Btn>
     </ModalBox>
   );
-  
+
 
   return (
     <AuthFormBlock>
@@ -112,27 +112,27 @@ const AuthForm = ({ value, email, password, handleSubmit, handleChange }: typePr
       </form>
       <Line>
         <span className="line-or">
-					<span  className="txt-or">또는</span>
+          <span className="txt-or">또는</span>
         </span>
       </Line>
       <Kakao />
       <Footer>
-        <span style={{cursor:`url(${click}), auto`}} onClick={handleOpen}>💬 도움말</span>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        {body}
-      </Modal>
-        {value === "login" ? (<Link style={{cursor:`url(${click}), auto`}} to="/signup">회원가입</Link>) : (<Link style={{cursor:`url(${click}), auto`}} to="/login">로그인</Link>)}
+        <span style={{ cursor: `url(${click}), auto` }} onClick={handleOpen}>💬 도움말</span>
+        <Modal
+          aria-labelledby="transition-modal-title"
+          aria-describedby="transition-modal-description"
+          className={classes.modal}
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
+          {body}
+        </Modal>
+        {value === "login" ? (<Link style={{ cursor: `url(${click}), auto` }} to="/signup">회원가입</Link>) : (<Link style={{ cursor: `url(${click}), auto` }} to="/login">로그인</Link>)}
       </Footer>
     </AuthFormBlock>
   )
@@ -150,7 +150,7 @@ const AuthFormBlock = styled.div`
 
 // 폼 하단에 로그인 혹은 회원가입 링크 보여줌
 const Footer = styled.div`
-display; flex;
+display: flex;
 margin-top: 2rem;
 font-size: 1.3rem;
 flex-direction: row;

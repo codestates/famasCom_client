@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css); 
 
 * {
+  cursor: url(/src/images/pointer.png), auto;
   box-sizing: border-box;
   margin: 0;
   padding: 0;

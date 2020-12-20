@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import Navbar from 'components/common/mainNavbar';
+import Navbar from 'components/common/navbar';
 import Responsive from 'components/common/Responsive';
 import Siderbar from 'components/common/siderbar';
 import LectureUpper from 'components/lectureNav/LectureDetail';
@@ -14,6 +14,7 @@ import styled from "styled-components";
 import { useTheme, makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import MemberJoinText from './texts/MemberJoin';
 import IDKSection from 'components/IdkSection/IDKSection';
+import Footer from 'components/Footer';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '100%',
     },
     text: {
-      height:70,
+      height:'auto',
       fontSize:20,
       wordBreak:'keep-all'
     },
@@ -99,6 +100,7 @@ const MemberJoin = () => {
           </LectureBox>
       </Wrapper>
     </LectureTemplateBlock>
+    <Footer/>
   </Wra>
   )
 }

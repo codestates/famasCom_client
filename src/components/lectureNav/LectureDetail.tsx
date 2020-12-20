@@ -76,7 +76,8 @@ const body = (
         <>
             <TableArea>
               <GobackBtn onClick={()=>window.history.back()}>
-                  <TableText>↺목록으로 돌아가기</TableText>
+                  <TableText>목록으로 돌아가기</TableText>
+                  <TableIcon>↺</TableIcon>
               </GobackBtn>    
                   <Btns>
                     <Link to="/Community">
@@ -95,7 +96,7 @@ display:flex;
 justify-content space-between;
 align-items:flex-end;
 margin: 30px 0px 80px 0px;
-padding:20px 0;
+padding:20px 0 20px 20px;
 border-bottom:5px solid #01bf71;
 `
 const GobackBtn = styled.button`
@@ -107,10 +108,28 @@ outline:none;
   cursor: url(${click}), auto;
 }
 `
-const TableText = styled.div`
+const TableIcon = styled.span`
 font-size:24px;
+font-weight:bold;
+padding-left: 0.5em;
+color: #01bf71;
+&:hover{
+  cursor: url(${click}), auto;
+}
 `
-const Btns = styled.div``
+const TableText = styled.span`
+font-size:24px;
+word-break:keep-all;
+&:hover{
+  color: #01bf71;
+  cursor: url(${click}), auto;
+}
+`
+const Btns = styled.div`
+@media all and (max-width: 768px) {
+  display:flex;
+}
+`
 const Btn = styled.button`
 background: #01bf71;
 color: #010606;
@@ -121,7 +140,7 @@ border: none;
 border-radius: 5px;
 outline: none;
 transition: all 0.2s ease-in-out;
-
+word-break:keep-all;
 &:hover{
   transition: all 0.2s ease-in-out;
   background: #1c2237;

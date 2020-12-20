@@ -145,5 +145,5 @@ border-radius: 5px;
     background: #1c2237;
     color: #fff;
     cursor: url(${click}), auto;
-};
+    };
 `
