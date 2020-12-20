@@ -105,6 +105,7 @@ const Keyboard = () => {
                   />
                   </Stepper>
                   <HeadText>게임: 뱀 게임</HeadText>
+                  <Text>`ㅁ`,`ㄴ`,`ㅈ`,`ㅇ` 키를 움직여 뱀을 조종해보세요!</Text>
                   <SnakeGame/>
             </LectureBox>
         </Wrapper>
@@ -135,8 +136,16 @@ font-size:3em;
 border-bottom:10px solid #01bf71;
 width:50%;
 padding-bottom:10px;
+@media all and (max-width:768px){
+  width:auto;
+}
 `
 const Stepper = styled.div`
   margin-bottom:70px;
+`
+const Text = styled.div`
+  font-size:20px;
+  margin-bottom:20px;
+  word-break:keep-all;
 `
 export default Keyboard

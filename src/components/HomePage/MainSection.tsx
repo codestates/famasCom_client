@@ -39,7 +39,7 @@ const MainSection = ({ lightBg, topLine, lightText, lightTextDesc, description,
                       : 'home__subtitle dark'
                   }
                 >
-                  내거인듯 내거아닌 휴대폰. 이번 기회에 나의 영원한 동반자로 만들보지 않을래요?
+                  내 거인 듯 내 거 아닌 휴대폰. 이번 기회에 나의 영원한 동반자로 만들어보지 않을래요?
                 </p>
                 <HomeMainBtn to="/Lecture/Mobile">{buttonLabel}</HomeMainBtn>
               </div>
@@ -61,7 +61,7 @@ const MainSection = ({ lightBg, topLine, lightText, lightTextDesc, description,
                       : 'home__subtitle dark'
                   }
                 >
-                  기본 조작법부터 네이버 활용법등을 배울 수 있어요. 컴퓨터, 인터넷과 친구가 되어볼까요?
+                  기본 조작법부터 단계 별로 차근차근 알려드립니다. 컴퓨터, 인터넷과 친구가 되어볼까요?
                 </p>
                 <HomeMainBtn to="/Lecture/Computer">{buttonLabel}</HomeMainBtn>
               </div>
@@ -84,7 +84,7 @@ const MainSection = ({ lightBg, topLine, lightText, lightTextDesc, description,
                       : 'home__subtitle dark'
                   }
                 >
-                  회원가입과 로그인 하는 방법부터 차근차근 알아가며 진행하고 새로운 세상을 접해봐요!
+                  회원가입과 로그인 하는 방법부터 시작해보세요. 여러분에게 펼쳐질 새로운 세상을 접해봐요!
                 </p>
                 <HomeMainBtn to="/Lecture/IDK">{buttonLabel}</HomeMainBtn>
               </div>

@@ -93,6 +93,11 @@ align-items:flex-end;
 margin: 30px 0px 80px 0px;
 padding:20px 0 20px 20px;
 border-bottom:5px solid #01bf71;
+@media all and (max-width: 768px) {
+  display:flex;
+  align-items:center;
+  flex-direction:column;
+}
 `
 const TableText = styled.div`
 font-size:24px;
@@ -101,6 +106,7 @@ word-break:keep-all;
 const Btns = styled.div`
 @media all and (max-width: 768px) {
   display:flex;
+  flex-direction:column;
 }
 `
 const Btn = styled.button`
@@ -120,6 +126,11 @@ align-items: center;
   background: #1c2237;
   color: #fff;     
   cursor: url(${click}), auto;
+}
+@media all and (max-width: 768px) {
+  width:100%;
+  margin: 0;
+  margin-top:10px;
 }
 `
 const ModalBox = styled.div`
