@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import ContentNavbar from '../components/common/navbar'
 import Siderbar from '../components/common/siderbar'
 import InfoSection from 'components/myinfoSection/InfoSection'
+// import Footer from 'components/Footer';
 import { Link as LinkR } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 import modifyModal from 'textBody/modalText/modifyModal'
@@ -363,6 +364,7 @@ export default function ModifyInfo() {
         </div>
           
       </MyInfoTemplateBlock>
+      <Footer />
       </>
         );
 }

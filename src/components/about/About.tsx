@@ -37,7 +37,7 @@ const About = () => {
           </AboutP>
             <AboutHover>
               <AboutExplain>
-                <AboutExplainH4>안녕하세요</AboutExplainH4>
+                <AboutExplainH4>안녕하세요.</AboutExplainH4>
                 <AboutExplainP>team helpers의 팀장 유병국입니다. 저는 백앤드 개발자를 꿈꾸고 있습니다. 많은 관심 부탁드립니다!</AboutExplainP>
               </AboutExplain>
               <AboutSLink>
@@ -70,12 +70,12 @@ const About = () => {
             <AboutIcon src={haseok} />
             <AboutH2>김하석</AboutH2>
             <AboutP>
-              Team Member  &amp; Full Stack Developer
+              Team Member  &amp; Front-end Developer
           </AboutP>
             <AboutHover>
               <AboutExplain>
-                <AboutExplainH4>Hi There !</AboutExplainH4>
-                <AboutExplainP>I love to introduce myself as a hardcore Developer.</AboutExplainP>
+                <AboutExplainH4>안녕하세요.</AboutExplainH4>
+                <AboutExplainP>UI/UX를 신경쓰는 개발자가 되려하는 김하석 입니다. team helpers에서 프론트 개발을 맡았습니다.</AboutExplainP>
               </AboutExplain>
               <AboutSLink>
                 <AboutSLinkA href="https://hsssss-90.tistory.com/"><FontAwesomeIcon icon={faBlogger} /></AboutSLinkA>
@@ -94,7 +94,7 @@ const About = () => {
           </AboutP>
             <AboutHover>
               <AboutExplain>
-                <AboutExplainH4>Hello World !</AboutExplainH4>
+                <AboutExplainH4>안녕하세요.</AboutExplainH4>
                 <AboutExplainP> 어제보다 나은 개발자가 되고 싶은 임민주입니다. team helpers에서 프론트 개발을 맡았습니다.</AboutExplainP>
               </AboutExplain>
               <AboutSLink>

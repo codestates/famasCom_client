@@ -7,6 +7,7 @@ import ContentNavbar from 'components/common/navbar'
 import Siderbar from '../components/common/siderbar'
 import CommunitySection from 'components/communitySection/CommunitySection'
 import GoToTop from 'components/common/GoToTop'
+import Footer from 'components/Footer';
 
 const Community = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -27,6 +28,7 @@ const Community = () => {
             </ChattTemplate>
           
         </ CommunityTemplateBlock>
+        {/* <Footer /> */}
         <GoToTop />
         </>
     )
