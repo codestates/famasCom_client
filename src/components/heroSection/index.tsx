@@ -18,7 +18,10 @@ function HeroSection() {
   return (
     <HeroContainer id='home'>
       <HeroBg>
-      <VideoBg playsInline autoPlay loop muted src="https://ifh.cc/v/7p7Sbq.mp4"/>
+        <VideoBg playsInline autoPlay loop muted src="https://ifh.cc/v/ENcxx2.mp4" />
+         {/* <VideoBg playsInline autoPlay loop muted src={video}/> */}
+       
+        {/* <iframe width="100%" height="100%" src="http://play.smartucc.kr/player.php?origin=d331559f6c036a48de38676599625647&width=454&height=240"  frameBorder="0" ></iframe> */}
       </HeroBg>
       <HeroContent>
         <Topline>느려도 괜찮아 🙆🏻‍♂️</Topline>
