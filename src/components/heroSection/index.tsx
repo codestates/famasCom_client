@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   HeroContainer,
   HeroBg,
@@ -10,12 +10,15 @@ import {
   MainBtn,
   Topline
 } from './HeroElements';
+import video from 'videos/video.mp4'
+
+//
 
 function HeroSection() {
   return (
     <HeroContainer id='home'>
       <HeroBg>
-        <VideoBg playsInline autoPlay loop muted src='videos/video1__Original.mp4' />
+      <VideoBg playsInline autoPlay loop muted src="https://ifh.cc/v/7p7Sbq.mp4"/>
       </HeroBg>
       <HeroContent>
         <Topline>느려도 괜찮아 🙆🏻‍♂️</Topline>

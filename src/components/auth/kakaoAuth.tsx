@@ -1,38 +1,46 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import KakaoLogin from 'react-kakao-login'
 import { RiKakaoTalkFill } from "react-icons/ri"
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import CSS from 'csstype';
-
-
-const KAKAO_KEY = ""
-
-
-
+import click from 'images/click.png'
 
 export default {
     title: "KakaoLogin",
     component: KakaoLogin,
 };
-const _method = {
-    async _signIn(result: any) {
-        return await axios.post(`https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/kakaoSignIn/${result.profile.id}`)
-    },
-    async _signUp(result: any) {
-        return await axios.post("https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/kakaoSignUp", {
-            userId: String(result.profile.id),
-            email: result.profile.kakao_account.email,
-            nickName: result.profile.kakao_account.profile.nickname,
-            profileImage: result.profile.kakao_account.profile.thumbnail_image_url
-        })
-    }
-}
 
-
-export const Kakao = () => {
+export const Kakao: any = () => {
+    const [datas, setDatas] = useState<string>("");
     const history = useHistory();
+    const _method = {
+        async _signIn(result: any) {
+            return await axios.post(`https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/kakaoSignIn/${result.profile.id}`)
+        },
+        async _signUp(result: any) {
+            return await axios.post("https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/kakaoSignUp", {
+                userId: String(result.profile.id),
+                email: result.profile.kakao_account.email,
+                nickName: result.profile.kakao_account.profile.nickname,
+                profileImage: result.profile.kakao_account.profile.thumbnail_image_url
+            })
+        },
+        async _getKey() {
+            return await axios.post("https://jven72vca8.execute-api.ap-northeast-2.amazonaws.com/dev/hello")
+        },
+        async _kakao() {
+            return await _method._getKey().then(res =>
+                res.data.message
+            )
+        }
+    }
+    useEffect(() => {
+        _method._kakao().then(res => { setDatas(res) })
+    })
     const kakaoLogin = {
         async _success(result: any) {
             if (result) {
@@ -43,17 +51,17 @@ export const Kakao = () => {
                 }).catch(err =>
                     _method._signUp(result).then(res => this._success(result)))
             }
-        }
+        },
     }
     return (<StyledKakaoLogin
-        token={KAKAO_KEY}
+        token={`${datas}`}
         onSuccess={result => kakaoLogin._success(result)}
         onFail={console.error}
         onLogout={console.info}
         style={style}
     >
         <div style={{ color: "#1c2237", textAlign: 'center' }}><RiKakao />&nbsp;카카오로 로그인하기</div>
-    </StyledKakaoLogin>
+    </StyledKakaoLogin >
     )
 };
 const RiKakao = styled(RiKakaoTalkFill)`
@@ -89,5 +97,5 @@ const style: CSS.Properties = {
     fontSize: '1.2rem',
     border: 'none',
     fontWeight: 600,
-    cursor: 'pointer'
+    cursor: `url(${click}), auto`
 };

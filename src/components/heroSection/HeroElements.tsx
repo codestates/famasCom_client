@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-scroll';
-import click from 'images/click.png'
+import click from 'images/click.png';
 
 export const HeroContainer = styled.div`
   background: #0c0c0c;
