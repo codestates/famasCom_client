@@ -56,13 +56,13 @@ const About = () => {
           </AboutP>
             <AboutHover>
               <AboutExplain>
-                <AboutExplainH4>Hi There !</AboutExplainH4>
-                <AboutExplainP>I love to introduce myself as a hardcore Developer.</AboutExplainP>
+                <AboutExplainH4>안녕하세요!</AboutExplainH4>
+                <AboutExplainP>번뜩이는 아이디어를 실현시키는 개발자가 되고 싶은 곽미라 입니다.  team helpers에서 프론트 개발을 맡았습니다.</AboutExplainP>
               </AboutExplain>
               <AboutSLink>
-                <AboutSLinkA href="#"><FontAwesomeIcon icon={faBlogger} /></AboutSLinkA>
+                <AboutSLinkA href="https://hanliang38.tistory.com/"><FontAwesomeIcon icon={faBlogger} /></AboutSLinkA>
                 &nbsp;&nbsp;
-                <AboutSLinkA href="#"><FontAwesomeIcon icon={faGithub} /></AboutSLinkA>
+                <AboutSLinkA href="https://github.com/hanliang38"><FontAwesomeIcon icon={faGithub} /></AboutSLinkA>
               </AboutSLink>
             </AboutHover>
           </AboutCard>
