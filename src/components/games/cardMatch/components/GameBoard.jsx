@@ -12,6 +12,12 @@ const useStyles = createUseStyles({
     display: "grid",
     gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
     justifyItems: "center",
+    ['@media (max-width:1024px)']: {
+      gridTemplateColumns: "1fr 1fr 1fr",
+    },
+    ['@media (max-width:600px)']: {
+      gridTemplateColumns: "1fr 1fr",
+    }
   },
 });
 

@@ -6,7 +6,6 @@ import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import WifiText from './texts/WifiText'
-import Navbar from 'components/common/mainNavbar';
 import Responsive from 'components/common/Responsive';
 import Siderbar from 'components/common/siderbar';
 import LectureUpper from 'components/lectureNav/LectureDetail';
@@ -14,11 +13,13 @@ import Wrapper from 'themes/Wrapper';
 import styled from "styled-components";
 import { useTheme, makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import MobSection from 'components/mobSection/MobSection';
-
+import Footer from 'components/Footer';
+import Navbar from 'components/common/navbar';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      backgroundColor: theme.palette.background.default,
     },
     header: {
       display: 'flex',
@@ -29,7 +30,10 @@ const useStyles = makeStyles((theme: Theme) =>
     img: {
       overflow: 'hidden',
       display: 'block',
-      width: '100%',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      marginTop:-100,
+      width:'80%',
     },
     text: {
       height:70,
@@ -70,11 +74,13 @@ const NaverMap = () => {
             <LectureBox>
                 <HeadText>와이파이 설정하기</HeadText>
                 <Stepper className={classes.root}>
-                  <img
-                  className={classes.img}
-                  src={WifiText[activeStep].imgPath}
-                  alt={WifiText[activeStep].label}
-                  />
+                <ImgBox>
+                    <img
+                    className={classes.img}
+                    src={WifiText[activeStep].imgPath}
+                    alt={WifiText[activeStep].label}
+                    />
+                  </ImgBox>
                   <Paper square elevation={0} className={classes.header}>
                   <Typography className={classes.text}>{WifiText[activeStep].label}</Typography>
                   </Paper>                
@@ -101,6 +107,7 @@ const NaverMap = () => {
             </LectureBox>
         </Wrapper>
       </LectureTemplateBlock>
+      <Footer/>
   </Wra>
   )
 }
@@ -126,8 +133,13 @@ font-size:3em;
 border-bottom:10px solid #01bf71;
 width:50%;
 padding-bottom:10px;
+word-break: keep-all;
 `
 const Stepper = styled.div`
   padding-bottom:70px;
+`
+const ImgBox = styled.div`
+  overflow: hidden;
+  height:600px;
 `
 export default NaverMap

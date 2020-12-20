@@ -117,9 +117,16 @@ const Computer = () => {
   `
   const LectureBox = styled.div`
     display:flex;
+    flex-directoin:row;
+    @media all and (max-width: 1030px) {
+      display:block;
+    }
   `
   const LectureCard = styled(Card)`
   margin:0px 10px;
+  @media all and (max-width: 1030px) {
+    margin-bottom:20px;
+  }
   `
   const Typo = styled(Typography)`
   word-break:keep-all;

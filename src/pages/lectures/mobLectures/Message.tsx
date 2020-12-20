@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import MsgText from './texts/MsgText'
-import Navbar from 'components/common/mainNavbar';
+import Navbar from 'components/common/navbar';
 import Responsive from 'components/common/Responsive';
 import Siderbar from 'components/common/siderbar';
 import LectureUpper from 'components/lectureNav/LectureDetail';
