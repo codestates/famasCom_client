@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import ContentNavbar from '../components/common/navbar'
 import Siderbar from '../components/common/siderbar'
 import InfoSection from 'components/myinfoSection/InfoSection'
-// import Footer from 'components/Footer';
+import Footer from 'components/Footer';
 import { Link as LinkR } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 import modifyModal from 'textBody/modalText/modifyModal'
@@ -304,7 +304,6 @@ export default function ModifyInfo() {
                 type="text"
               />
           </div>
-
           <ButtonBox>
           <Btn id='modifyBtn'>
           <BtnLink to="/"> <ReplyIcon style={{fontSize:'20px'}} /> &nbsp; 나가기</BtnLink>
@@ -313,10 +312,10 @@ export default function ModifyInfo() {
             onClick={infoModifyHandler} > <SaveIcon /> &nbsp; 저장하기</Btn>
           </ButtonBox>
         </div>
-            <Footer>
+            <InfoFooter>
               <div style={{cursor: `url(${click}), auto`}} onClick={handleOpen}>💬 도움말</div>
               <div style={{cursor: `url(${click}), auto`}} onClick={handleSecessionOpen}>회원 탈퇴</div>
-            </Footer>
+            </InfoFooter>
             <Modal
               aria-labelledby="transition-modal-title"
               aria-describedby="transition-modal-description"
@@ -344,7 +343,6 @@ export default function ModifyInfo() {
                 timeout: 500,
               }}
             >
-          
               <div className={classes.paper}>
                 <h2 id="simple-modal-title" style={{textAlign:"center", fontSize:"1.5rem"}}>탈퇴하시겠습니까?</h2>
                 <SessionWrapper>
@@ -357,12 +355,10 @@ export default function ModifyInfo() {
                   <SessionBtn onClick={handleSecessionOpen}>아니오</SessionBtn>
                 </SessionWrapper>
               </div>
-            
             </Modal>
         </WhiteBox>
           
         </div>
-          
       </MyInfoTemplateBlock>
       <Footer />
       </>
@@ -384,13 +380,13 @@ justify-content: center;
 align-items: center;
 .border {
   width: 100%;
-  height: 500px;
+  height: 100%;
   margin-bottom: 100px
   overflow: hidden;
   background-color: #fff;
 
   @media screen and (max-width: 1300px) {
-    margin-right: 60px;
+    margin-right: 30%;
     };
 
 `;
@@ -405,6 +401,8 @@ top: 7%;
   height: 500px;
   border: 1px solid #000;
   background: white;
+  margin-top: 5%;
+  margin-bottom: 5%;
 
   @media screen and (max-width: 1300px) {
   width: 50%
@@ -412,7 +410,7 @@ top: 7%;
 
   @media screen and (max-width: 750px) {
     height: 600px;
-    width: 50%
+    width: 70%
     };
 `;
 
@@ -441,7 +439,7 @@ align-items: center;
 
 `;
 
-const Footer = styled.div`
+const InfoFooter = styled.div`
 margin-top: 2rem;
 font-size: 1.125rem;
 display: flex;

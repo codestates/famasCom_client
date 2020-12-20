@@ -5,6 +5,7 @@ import click from 'images/click.png'
 
 export const EntiryWrapper = styled.div`
   display: inline;
+
 `;
 export const QuillWrapper = styled.div`
   .ql-toolbar {
