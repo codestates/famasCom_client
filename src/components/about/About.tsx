@@ -94,13 +94,13 @@ const About = () => {
           </AboutP>
             <AboutHover>
               <AboutExplain>
-                <AboutExplainH4>Hi There !</AboutExplainH4>
-                <AboutExplainP>I love to introduce myself as a hardcore Developer.</AboutExplainP>
+                <AboutExplainH4>Hello World !</AboutExplainH4>
+                <AboutExplainP> 어제보다 나은 개발자가 되고 싶은 임민주입니다. team helpers에서 프론트 개발을 맡았습니다.</AboutExplainP>
               </AboutExplain>
               <AboutSLink>
-                <AboutSLinkA href="#"><FontAwesomeIcon icon={faBlogger} /></AboutSLinkA>
+                <AboutSLinkA href="https://minju2996.tistory.com"><FontAwesomeIcon icon={faBlogger} /></AboutSLinkA>
                 &nbsp;&nbsp;
-                <AboutSLinkA href="#"><FontAwesomeIcon icon={faGithub} /></AboutSLinkA>
+                <AboutSLinkA href="https://github.com/imminju"><FontAwesomeIcon icon={faGithub} /></AboutSLinkA>
               </AboutSLink>
             </AboutHover>
           </AboutCard>

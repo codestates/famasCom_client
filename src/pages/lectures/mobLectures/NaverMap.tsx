@@ -131,12 +131,13 @@ font-size:3em;
 border-bottom:10px solid #01bf71;
 width:50%;
 padding-bottom:10px;
+word-break:keep-all;
 `
 const Stepper = styled.div`
   padding-bottom:70px;
 `
 const ImgBox = styled.div`
   overflow: hidden;
-  height:500px;
+  height:auto;
 `
 export default NaverMap
