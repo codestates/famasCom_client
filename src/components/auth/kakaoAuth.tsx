@@ -9,7 +9,7 @@ import CSS from 'csstype';
 import click from 'images/click.png'
 
 
-const key: any = process.env.KAKAO_KEY
+const key: any = '';
 
 export default {
     title: "KakaoLogin",
