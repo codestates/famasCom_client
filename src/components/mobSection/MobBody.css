@@ -3,6 +3,8 @@
   padding: 160px 0;
   height: 350px;
   text-shadow: black 2px 2px 5px;
+  font-weight:bold;
+  word-break:keep-all;
 }
 
 .mob_container {

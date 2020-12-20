@@ -30,7 +30,7 @@ export const ContentNavbarContainer = styled.div`
   z-index: 1;
   width: 100%;
   padding: 0 24px;
-  max-width: 1100px;
+  max-width: 1600px;
 `;
 
 export const ContentNavLogo = styled(LinkR)<nav>`
@@ -108,7 +108,7 @@ background: ${({ scrollNav }) => (scrollNav ? '#01bf71' : '#01bf71')};
 white-space: nowrap;
 padding: 10px 22px;
 color: ${({ scrollNav }) => (scrollNav ? '#1c2237' : '#1c2237' )};
-font-size: 1.3rem;
+font-size: 1.5rem;
 outline: none;
 border: none;
 cursor: pointer;

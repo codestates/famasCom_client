@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ChattTemplate from '../components/write/ChattTemplate';
 import Responsive from '../components/common/Responsive'
@@ -7,12 +7,16 @@ import ContentNavbar from 'components/common/navbar'
 import Siderbar from '../components/common/siderbar'
 import CommunitySection from 'components/communitySection/CommunitySection'
 import GoToTop from 'components/common/GoToTop'
+import Footer from 'components/Footer';
 
 const Community = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
   const toggle = () => {
     setIsOpen(!isOpen)
   }
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
     return (
       <>
         <ContentNavbar toggle={toggle}/>
@@ -24,6 +28,7 @@ const Community = () => {
             </ChattTemplate>
           
         </ CommunityTemplateBlock>
+        {/* <Footer /> */}
         <GoToTop />
         </>
     )

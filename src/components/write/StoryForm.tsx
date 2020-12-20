@@ -35,6 +35,7 @@ const StoryForm = ({
   handleSubmitClick, handleLike, onHandleChange,
   commentValue, onsubmit, reRending, onReset }: StoryFormProps) => {
 
+
   return (
     <EntiryWrapper>
       {localStorage.getItem("token") &&

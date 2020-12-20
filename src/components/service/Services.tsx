@@ -26,14 +26,14 @@ const Services = () => {
           <ServicesIcon  src='images/social.png'/>
           <ServicesH2>커뮤니티</ServicesH2>
           <ServicesP>
-            알게된 지식을 여러 사용자와 공유하거나, 새로운 지식을 얻어갈 수 있습니다.
+            새로운 지식을 얻어가거나 여러 사용자와 지식을 공유할 수 있습니다.
           </ServicesP>
         </ServicesCard>
         <ServicesCard to="">
           <ServicesIcon  src='images/build.png'/>
-          <ServicesH2>성장</ServicesH2>
+          <ServicesH2>게임</ServicesH2>
           <ServicesP>
-            디지털 세상에서 원하는 정보를 얻고 소통할 수 있는 사람으로 성장할 수 있습니다.
+            강의 콘텐츠내 게임들을 즐길 수 있습니다. 즐거운 성장을 맞이하세요.
           </ServicesP>
         </ServicesCard>
       </ServicesWrapper>

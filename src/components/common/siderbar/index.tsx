@@ -32,11 +32,14 @@ const Siderbar = ({ toggle, isOpen }: siderprops) => {
         <SiderLink to="/">
           첫 화면
         </SiderLink>
-        <SiderLink to="/Lecture">
-          강의
+        <SiderLink to="/Lecture/Computer">
+          컴퓨터
         </SiderLink>
-        <SiderLink to="/Game">
-          게임
+        <SiderLink to="/Lecture/Mobile">
+          모바일
+        </SiderLink>
+        <SiderLink to="/Lecture/IDK">
+          모르겠어요
         </SiderLink>
         <SiderLink to="/Community">
             정보공유

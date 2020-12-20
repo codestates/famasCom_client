@@ -56,7 +56,7 @@ const WhiteBox = styled.div`
   }
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.025);
   padding: 2rem;
-  width: 400px;
+  width: 450px;
   border: 1px solid #000;
   background: white;
 `;
