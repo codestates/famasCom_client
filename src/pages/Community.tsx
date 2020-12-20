@@ -8,6 +8,7 @@ import Siderbar from '../components/common/siderbar'
 import CommunitySection from 'components/communitySection/CommunitySection'
 import GoToTop from 'components/common/GoToTop'
 import Footer from 'components/Footer';
+import CSS from 'csstype';
 
 const Community = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -22,29 +23,28 @@ const Community = () => {
         <ContentNavbar toggle={toggle}/>
         <Siderbar isOpen={isOpen} toggle={toggle} />
         <CommunitySection />
-        <CommunityTemplateBlock>
+        {/* <CommunityTemplateBlock> */}
             <ChattTemplate>
-                <ChattForm  />
+                <ChattForm />
             </ChattTemplate>
-          
-        </ CommunityTemplateBlock>
-        {/* <Footer /> */}
+        {/* </CommunityTemplateBlock> */}
+   
+        <Footer />
         <GoToTop />
-        </>
+       
+      </>
     )
 }
 //
 export default Community;
 
-const CommunityTemplateBlock = styled(Responsive)`
+const CommunityTemplateBlock = styled.div`
 position: relative;
 left: 0;
 right: 0;
 top: 0;
 bottom: 0;
+
 background: #fff;
-margin-top: 5%;
-margin-top: -2.6%;
-
-
 `;
+
