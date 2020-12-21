@@ -269,7 +269,7 @@ const Reply = ({ datas,
           <Form>
             <Comment
               key={datas.index}
-              avatar={replyAvatar}
+              //avatar={replyAvatar}
               content={replyInput}
             />
           </Form>
